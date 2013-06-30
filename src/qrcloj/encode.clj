@@ -52,21 +52,34 @@
 (defmethod encode-data :byte [{:keys [data]}]
   (general-encode int 1 (comp (partial dec-to-bin 8) first) data))
 
-(defn data-to-bitstream [{:keys [mode ecl] :as data}]
-  (let [bitstream (concat
-                    (mode-indicator mode)
-                    (char-count data)
-                    (encode-data data))]
-    (concat bitstream (terminator ecl (count bitstream)))))
-
-
 (defn mode [data]
   (cond (re-matches #"\d*" data) :numeric
     (re-matches #"[0-9A-Z $%*+-./:]*" data) :alphanumeric
     (every? #(<= 0 % 255) (map int data)) :byte)
   )
 
+(defn data-to-bitstream [ecl data]
+  (let [tagged {:data data :mode (mode data)}
+        bitstream (concat
+                  (mode-indicator (:mode tagged))
+                  (char-count tagged)
+                  (encode-data tagged))]
+    (concat bitstream (terminator ecl (count bitstream)))))
+
+(defn pad-to [version-size bitstream]
+  (concat bitstream
+    (take (- version-size (count bitstream)) (flatten (repeat [1 1 1 0 1 1 0 0 0 0 0 1 0 0 0 1])))))
+
+(defn bitstream-to-codewords [ecl bitstream]
+  (let [version-size (version/best-fit ecl (count bitstream))
+        to-boundary (- 8 (rem (count bitstream) 8))
+        zero-padded (concat bitstream (repeat to-boundary 0))]
+    (pad-to version-size zero-padded)))
+
+
 (defn encode [ecl data]
-  (let [tagged {:data data :ecl ecl :mode (mode data)}]
-    (data-to-bitstream tagged)
-  ))
+  (->> data
+       (data-to-bitstream ecl)
+       (bitstream-to-codewords ecl)))
+
+
