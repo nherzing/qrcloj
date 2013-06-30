@@ -32,6 +32,12 @@
   (is (= [0 0 0 0 0 1 0 1] (char-count {:mode :byte :data "hello"})))
   )
 
+(deftest terminator-test
+  (is (= [0 0 0 0] (terminator :L 15)))
+  (is (= [0 0] (terminator :L 270)))
+  (is (= [] (terminator :H 128)))
+  )
+
 (deftest encode-data-test
   (is (= [0 0 0 0 0 0 1 1 0 0 0 1 0 1 0 1 1 0 0 1 1 0 0 0 0 1 1] 
     (encode-data {:mode :numeric :data "01234567"})))
@@ -49,10 +55,10 @@
   )
 
 (deftest encode-numeric-test
-  (is (= [0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 1 0 0 0 1 0 1 0 1 1 0 0 1 1 0 0 0 0 1 1]
-    (encode "01234567")))
-  (is (= [0 0 1 0 0 0 0 0 0 0 1 0 1 0 1 0 0 1 0 0 0 1 0 1 0 0 0 1 0 1 0 0 0 0 0 0 1 1 0 0 0]
-    (encode "C-3PO")))
+  (is (= [0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 1 0 0 0 1 0 1 0 1 1 0 0 1 1 0 0 0 0 1 1 0 0 0 0]
+    (encode :L "01234567")))
+  (is (= [0 0 1 0 0 0 0 0 0 0 1 0 1 0 1 0 0 1 0 0 0 1 0 1 0 0 0 1 0 1 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0]
+    (encode :L "C-3PO")))
   )
 
 

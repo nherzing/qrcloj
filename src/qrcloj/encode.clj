@@ -1,4 +1,5 @@
-(ns qrcloj.encode)
+(ns qrcloj.encode
+  (:require [qrcloj.version :as version]))
 
 (defn dec-to-bin [len n]
   (let [bin (Integer/toString n 2)]
@@ -20,6 +21,9 @@
 
 (defn char-count [{:keys [mode data]}]
   (dec-to-bin (bits-in-count mode) (count data)))
+
+(defn terminator [ecl num-bits]
+  (take (- (version/best-fit ecl num-bits) num-bits) [0 0 0 0]))
 
 (defn general-encode [val-map group-size group-fn data]
   (->> data
@@ -48,6 +52,13 @@
 (defmethod encode-data :byte [{:keys [data]}]
   (general-encode int 1 (comp (partial dec-to-bin 8) first) data))
 
+(defn data-to-bitstream [{:keys [mode ecl] :as data}]
+  (let [bitstream (concat
+                    (mode-indicator mode)
+                    (char-count data)
+                    (encode-data data))]
+    (concat bitstream (terminator ecl (count bitstream)))))
+
 
 (defn mode [data]
   (cond (re-matches #"\d*" data) :numeric
@@ -55,10 +66,7 @@
     (every? #(<= 0 % 255) (map int data)) :byte)
   )
 
-(defn encode [data]
-  (let [tagged {:data data :mode (mode data)}]
-    (concat 
-      (mode-indicator (tagged :mode)) 
-      (char-count tagged)
-      (encode-data tagged))
+(defn encode [ecl data]
+  (let [tagged {:data data :ecl ecl :mode (mode data)}]
+    (data-to-bitstream tagged)
   ))
