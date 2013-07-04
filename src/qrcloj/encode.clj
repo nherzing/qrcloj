@@ -1,5 +1,7 @@
 (ns qrcloj.encode
-  (:require [qrcloj.version :as version]))
+  (:require [qrcloj.version :as v])
+  (:use [qrcloj.utils :only [sinterleave]])
+  (:use [qrcloj.error-correction :only [attach-error-correction-codewords]]))
 
 (defn dec-to-bin [len n]
   (let [bin (Integer/toString n 2)]
@@ -23,7 +25,7 @@
   (dec-to-bin (bits-in-count mode) (count data)))
 
 (defn terminator [ecl num-bits]
-  (take (- (version/best-fit ecl num-bits) num-bits) [0 0 0 0]))
+  (take (- (v/bit-capacity (v/best-fit ecl num-bits)) num-bits) [0 0 0 0]))
 
 (defn general-encode [val-map group-size group-fn data]
   (->> data
@@ -71,15 +73,24 @@
     (take (- version-size (count bitstream)) (flatten (repeat [1 1 1 0 1 1 0 0 0 0 0 1 0 0 0 1])))))
 
 (defn bitstream-to-codewords [ecl bitstream]
-  (let [version-size (version/best-fit ecl (count bitstream))
+  (let [version-size (v/bit-capacity (v/best-fit ecl (count bitstream)))
         to-boundary (- 8 (rem (count bitstream) 8))
         zero-padded (concat bitstream (repeat to-boundary 0))]
-    (pad-to version-size zero-padded)))
+    (map (comp #(Integer/parseInt % 2) (partial apply str)) (partition 8 (pad-to version-size zero-padded)))))
+
+
+(defn interleave-eccs [ecl codewords]
+  (let [version (v/best-fit ecl (* 8 (count codewords)))
+        codewords-and-eccs (attach-error-correction-codewords codewords (v/error-correction-layout version))
+        codewords (map first codewords-and-eccs)
+        eccs (map second codewords-and-eccs)]
+    (concat (apply sinterleave codewords) (apply sinterleave eccs))))
 
 
 (defn encode [ecl data]
   (->> data
        (data-to-bitstream ecl)
-       (bitstream-to-codewords ecl)))
+       (bitstream-to-codewords ecl)
+       (interleave-eccs ecl)))
 
 
