@@ -1,7 +1,8 @@
-(ns qrcloj.symbol)
+(ns qrcloj.symbol
+  (:use [clojure.math.combinatorics :only [selections]]))
 
-(defn blank [version-n] 
-  {:dim (+ 17 (* 4 version-n)) :grid {}})
+(defn blank [version] 
+  {:version version :dim (+ 17 (* 4 version)) :grid {}})
 
 (defn color [c ms]
   (zipmap ms (repeat (count ms) c)))
@@ -11,25 +12,21 @@
 (defn shift [s ms]
   (zipmap (map (partial map + s) (keys ms)) (vals ms)))
 
+(defn square [on dim]
+  (let [ext (quot dim 2)
+        low (- ext)
+        high ext]
+    (map (partial map + on) (distinct (apply concat 
+      (for [x (range low (inc high))]
+        [[x low] [x high] [low x] [high x]]))))))
+
 (defn add-finders [{:keys [dim grid] :as sym}]
-  (let [finder-7 [[0 0] [0 1] [0 2] [0 3] [0 4] [0 5] [0 6]
-                 [1 6] [2 6] [3 6] [4 6] [5 6] [6 6]
-                 [6 5] [6 4] [6 3] [6 2] [6 1] [6 0]
-                 [5 0] [4 0] [3 0] [2 0] [1 0]]
-        finder-5 [[1 1] [1 2] [1 3] [1 4] [1 5]
-                  [2 5] [3 5] [4 5] [5 5]
-                  [5 4] [5 3] [5 2] [5 1]
-                  [4 1] [3 1] [2 1]]
-        finder-3 [[2 2] [2 3] [2 4]
-                  [3 4] [4 4]
-                  [4 3] [4 2]
-                  [3 2] [3 3]]
-        finder (merge (darken finder-7) (lighten finder-5) (darken finder-3))]
-  (assoc sym :grid (merge grid 
-    finder 
-    (shift [(- dim 7) 0] finder) 
-    (shift [(- dim 7) (- dim 7)] finder) 
-    (shift [0 (- dim 7)] finder)))))
+  (let [finder (merge (darken (square [3 3] 7)) (lighten (square [3 3] 5)) 
+                      (darken (square [3 3] 3)) (darken (square [3 3] 1)))]
+    (assoc sym :grid (merge grid 
+      finder 
+      (shift [(- dim 7) 0] finder) 
+      (shift [0 (- dim 7)] finder)))))
 
 (defn add-separators [{:keys [dim grid] :as sym}]
   (let [vert (lighten [[0 0] [0 1] [0 2] [0 3] [0 4] [0 5] [0 6] [0 7]])
@@ -37,8 +34,7 @@
     (assoc sym :grid (merge grid
       (shift [7 0] vert) (shift [0 7] horz)
       (shift [(- dim 8) 0] vert) (shift [(- dim 8) 7] horz)
-      (shift [7 (- dim 8)] vert) (shift [0 (- dim 8)] horz)
-      (shift [(- dim 8) (- dim 8)] vert) (shift [(- dim 8) (- dim 8)] horz)))))
+      (shift [7 (- dim 8)] vert) (shift [0 (- dim 8)] horz)))))
 
 
 (defn add-timing [{:keys [dim grid] :as sym}]
@@ -47,14 +43,34 @@
         vert (zipmap (map reverse (keys horz)) (vals horz))]
     (assoc sym :grid (merge grid vert horz))))
 
+(def alignment-coords [nil [] [6 18] [6 22] [6 26] [6 30] [6 34] [6 22 38] [6 24 42]
+  [6 26 46] [6 28 50] [6 30 54] [6 32 58] [6 34 62] [6 26 46 66] [6 26 48 70]
+  [6 26 50 74] [6 30 54 78] [6 30 56 82] [6 30 58 86] [6 34 62 90] [6 28 50 72 94]
+  [6 26 50 74 98] [6 30 54 78 102] [6 28 54 80 106] [6 32 58 84 110] [6 30 58 86 114]
+  [6 34 62 90 118] [6 26 50 74 98 122] [6 30 54 78 102 126] [6 26 52 78 104 130]
+  [6 30 56 82 108 134] [6 34 60 86 112 138] [6 30 58 86 114 142] [6 34 62 90 118 146]
+  [6 30 54 78 102 126 150] [6 24 50 76 102 128 154] [6 28 54 80 106 132 158]
+  [6 32 58 84 110 136 162] [6 26 54 82 110 138 166] [6 30 58 86 114 142 170]])
+(defn add-alignment [{:keys [version dim grid] :as sym}]
+  (let [pattern (merge (darken (square [0 0] 5)) (lighten (square [0 0] 3)) (darken (square [0 0] 1)))]
+    (assoc sym :grid (merge grid
+      (apply merge (map #(shift % pattern) (remove grid (selections (alignment-coords version) 2))))))
+  ))
+
 
 (defn disp [{:keys [dim grid]}]
   (doseq [y (range dim)]
     (doseq [x (range dim)]
-      (print (grid [x y]) " "))
+      (print (get grid [x y] :0) " "))
     (prn)))
 
-(disp (add-timing (add-separators (add-finders (blank 1)))))
+(-> 2 
+    blank
+    add-finders
+    add-separators
+    add-alignment
+    add-timing
+    disp)
 
 
 

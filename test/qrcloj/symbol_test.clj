@@ -2,6 +2,11 @@
   (:use clojure.test
         qrcloj.symbol))
 
+(deftest square-test
+  (is (= [[0 0]] (square [0 0] 1)))
+  (is (= #{[0 0] [0 1] [0 2] [1 2] [2 2] [2 1] [2 0] [1 0]} (set (square [1 1] 3))))
+  )
+
 (deftest blank-test
   (is (= 21 (:dim (blank 1))))
   (is (= 29 (:dim (blank 3))))
@@ -12,7 +17,7 @@
   (let [v1 (:grid (add-finders (blank 1)))]
     (is (= :d (v1 [0 0])))
     (is (= :l (v1 [1 3])))
-    (is (= :d (v1 [20 20])))
+    (is (= nil (v1 [20 20])))
     (is (= nil (v1 [10 10])))
     (is (= :d (v1 [3 3])))
   ))
