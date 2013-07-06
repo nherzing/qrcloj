@@ -64,13 +64,13 @@
       (print (get grid [x y] :0) " "))
     (prn)))
 
-(-> 2 
-    blank
-    add-finders
-    add-separators
-    add-alignment
-    add-timing
-    disp)
+(defn generate [version data]
+  (-> version
+      blank
+      add-finders
+      add-separators
+      add-alignment
+      add-timing))
 
 
 

@@ -1,5 +1,5 @@
 (ns qrcloj.version
-  (:use [clojure.contrib.seq :only [positions]]))
+  (:use [qrcloj.utils :only [positions]]))
 
 
 (def data-capacity-by-ecl {

@@ -8,3 +8,8 @@
   ([c1] c1)
   ([c1 c2 & colls] (apply interleave (concat [c1 c2] colls))))
 
+(defn indexed [s]
+  (map vector (iterate inc 0) s))
+
+(defn positions [pred coll]
+  (for [[idx elt] (indexed coll) :when (pred elt)] idx))

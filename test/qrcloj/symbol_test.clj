@@ -26,7 +26,7 @@
   (let [v1 (:grid (add-separators (blank 1)))]
     (is (= :l (v1 [7 0])))
     (is (= :l (v1 [0 7])))
-    (is (= :l (v1 [13 13])))
+    (is (= nil (v1 [13 13])))
     (is (= nil (v1 [12 13])))
   ))
 

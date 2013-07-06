@@ -1,10 +1,11 @@
 (ns qrcloj.encode
   (:require [qrcloj.version :as v])
-  (:use [qrcloj.utils :only [sinterleave]])
-  (:use [qrcloj.error-correction :only [attach-error-correction-codewords]]))
+  (:use [qrcloj.utils :only [sinterleave]]
+        [qrcloj.error-correction :only [attach-error-correction-codewords]]
+        [qrcloj.interop :only [int-to-str str-to-int]]))
 
 (defn dec-to-bin [len n]
-  (let [bin (Integer/toString n 2)]
+  (let [bin (int-to-str n 2)]
     (map {\0 0 \1 1} (concat (repeat (- len (count bin)) \0) bin))
   ))
 
@@ -38,11 +39,10 @@
 
 (def numeric-values (zipmap (seq "0123456789") (range 0 10)))
 (defmethod encode-data :numeric [{:keys [data]}]
-  (let [group-to-bin #(dec-to-bin ({1 4 2 7 3 10} (count %)) (Integer. (apply str %)))]
+  (let [group-to-bin #(dec-to-bin ({1 4 2 7 3 10} (count %)) (str-to-int (apply str %)))]
     (general-encode numeric-values 3 group-to-bin data)))
 
    
-
 (def alphanumeric-values (zipmap (seq "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ $%*+-./:") (range 0 45)))
 (defmethod encode-data :alphanumeric [{:keys [data]}]
   (let [group-to-bin (fn [vs] (dec-to-bin ({1 6 2 11} (count vs)) 
@@ -76,7 +76,7 @@
   (let [version-size (v/bit-capacity (v/best-fit ecl (count bitstream)))
         to-boundary (- 8 (rem (count bitstream) 8))
         zero-padded (concat bitstream (repeat to-boundary 0))]
-    (map (comp #(Integer/parseInt % 2) (partial apply str)) (partition 8 (pad-to version-size zero-padded)))))
+    (map (comp #(str-to-int % 2) (partial apply str)) (partition 8 (pad-to version-size zero-padded)))))
 
 
 (defn interleave-eccs [ecl codewords]
@@ -92,5 +92,4 @@
        (data-to-bitstream ecl)
        (bitstream-to-codewords ecl)
        (interleave-eccs ecl)))
-
 
