@@ -1,7 +1,9 @@
 (ns qrcloj.core
   (:use [qrcloj.encode :only [encode]]
-        [qrcloj.symbol :only [generate]]))
+        [qrcloj.symbol :only [generate]]
+        [qrcloj.canvas-display :only [draw-symbol full-screen]]))
 
 
-(defn ^{:export make_symbol} make-symbol [ecl data]
-  (generate 1 (encode (keyword ecl) data)))
+(defn ^{:export make_symbol} make-symbol [canvas-id ecl data]
+  (full-screen canvas-id)
+  (draw-symbol canvas-id (generate 3 (encode (keyword ecl) data))))
