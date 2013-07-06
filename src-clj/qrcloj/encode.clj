@@ -68,28 +68,30 @@
                   (encode-data tagged))]
     (concat bitstream (terminator ecl (count bitstream)))))
 
+(defn tag-with-version [ecl data]
+  (assoc (v/best-fit ecl (count data)) :data data))
+
 (defn pad-to [version-size bitstream]
   (concat bitstream
     (take (- version-size (count bitstream)) (flatten (repeat [1 1 1 0 1 1 0 0 0 0 0 1 0 0 0 1])))))
 
-(defn bitstream-to-codewords [ecl bitstream]
-  (let [version-size (v/bit-capacity (v/best-fit ecl (count bitstream)))
-        to-boundary (- 8 (rem (count bitstream) 8))
-        zero-padded (concat bitstream (repeat to-boundary 0))]
-    (map (comp #(str-to-int % 2) (partial apply str)) (partition 8 (pad-to version-size zero-padded)))))
+(defn bitstream-to-codewords [{:keys [ecl data] :as sym}]
+  (let [to-boundary (- 8 (rem (count data) 8))
+        zero-padded (concat data (repeat to-boundary 0))]
+    (assoc sym :data (map (comp #(str-to-int % 2) (partial apply str)) (partition 8 (pad-to (v/bit-capacity sym) zero-padded))))))
 
 
-(defn interleave-eccs [ecl codewords]
-  (let [version (v/best-fit ecl (* 8 (count codewords)))
-        codewords-and-eccs (attach-error-correction-codewords codewords (v/error-correction-layout version))
-        codewords (map first codewords-and-eccs)
+(defn interleave-eccs [{:keys [ecl data] :as sym}]
+  (let [codewords-and-eccs (attach-error-correction-codewords data (v/error-correction-layout sym))
+        data (map first codewords-and-eccs)
         eccs (map second codewords-and-eccs)]
-    (concat (apply sinterleave codewords) (apply sinterleave eccs))))
+    (assoc sym :data (concat (apply sinterleave data) (apply sinterleave eccs)))))
 
 
 (defn encode [ecl data]
   (->> data
        (data-to-bitstream ecl)
-       (bitstream-to-codewords ecl)
-       (interleave-eccs ecl)))
+       (tag-with-version ecl)
+       bitstream-to-codewords
+       interleave-eccs))
 

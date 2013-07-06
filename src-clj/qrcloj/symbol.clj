@@ -64,7 +64,7 @@
       (print (get grid [x y] :0) " "))
     (prn)))
 
-(defn generate [version data]
+(defn generate [{:keys [version data]}]
   (-> version
       blank
       add-finders

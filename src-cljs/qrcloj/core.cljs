@@ -6,4 +6,4 @@
 
 (defn ^{:export make_symbol} make-symbol [canvas-id ecl data]
   (full-screen canvas-id)
-  (draw-symbol canvas-id (generate 3 (encode (keyword ecl) data))))
+  (draw-symbol canvas-id (generate (encode (keyword ecl) data))))
