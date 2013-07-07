@@ -1,4 +1,7 @@
 (ns qrcloj.interop)
 
-(def int-to-str js/toString)
+(defn int-to-str ([n] (. n toString))
+                 ([n r] (. n (toString r))))
 (def str-to-int js/parseInt)
+
+(defn char-to-ascii [c] (. c (charCodeAt 0)))

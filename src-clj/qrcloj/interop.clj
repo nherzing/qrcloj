@@ -4,3 +4,6 @@
 (defn str-to-int 
   ([s] (Integer/parseInt s))
   ([s b] (Integer/parseInt s b)))
+
+(def char-to-ascii int)
+

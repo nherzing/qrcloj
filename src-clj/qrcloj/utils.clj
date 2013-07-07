@@ -1,4 +1,5 @@
-(ns qrcloj.utils)
+(ns qrcloj.utils
+  (:use [qrcloj.interop :only [int-to-str]]))
 
 (defn take-many [counts s] 
   (first (reduce 
@@ -13,3 +14,8 @@
 
 (defn positions [pred coll]
   (for [[idx elt] (indexed coll) :when (pred elt)] idx))
+
+(defn dec-to-bin [len n]
+  (let [bin (int-to-str n 2)]
+    (map {\0 0 \1 1} (concat (repeat (- len (count bin)) \0) bin))
+  ))

@@ -1,5 +1,6 @@
 (ns qrcloj.symbol
-  (:use [clojure.math.combinatorics :only [selections]]))
+  (:use [clojure.math.combinatorics :only [selections]]
+        [qrcloj.utils :only [dec-to-bin]]))
 
 (defn blank [version] 
   {:version version :dim (+ 17 (* 4 version)) :grid {}})
@@ -58,6 +59,34 @@
   ))
 
 
+(defn raw-data-path [dim]
+  (let [on-sym? (fn [y] (and (>= y 0) (< y dim)))
+        doit (fn doit [[prev-x prev-y] direction]
+          (let [new-y (direction prev-y)
+                new-x (if (= prev-x 8) 5 (- prev-x 2))]
+            (if (on-sym? new-y)
+              (cons [[prev-x new-y] [(dec prev-x) new-y]] 
+                    (doit [prev-x new-y] direction))
+              (if (< new-x 0) []
+                (doit [new-x new-y] ({inc dec dec inc} direction))))))]
+    (apply concat (doit [(dec dim) dim] dec))))
+
+(defn format-modules [dim]
+  (let [vert (concat (map (partial conj [8]) (range 0 9))
+                     (map (partial conj [8]) (range (- dim 8) dim)))]
+    (set (concat vert (map reverse vert)))))
+
+(defn add-data [{:keys [version dim grid] :as sym} data]
+  (let [version-modules #{}]
+  (assoc sym :grid (merge grid
+    (zipmap
+      (remove (format-modules dim)
+        (remove version-modules
+          (remove grid (raw-data-path dim))))
+      (map {1 :d 0 :l} (apply concat (map (partial dec-to-bin 8) data))))))))
+
+
+
 (defn disp [{:keys [dim grid]}]
   (doseq [y (range dim)]
     (doseq [x (range dim)]
@@ -70,7 +99,8 @@
       add-finders
       add-separators
       add-alignment
-      add-timing))
+      add-timing
+      (add-data data)))
 
 
 

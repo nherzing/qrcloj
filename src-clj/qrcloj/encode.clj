@@ -2,7 +2,7 @@
   (:require [qrcloj.version :as v])
   (:use [qrcloj.utils :only [sinterleave]]
         [qrcloj.error-correction :only [attach-error-correction-codewords]]
-        [qrcloj.interop :only [int-to-str str-to-int]]))
+        [qrcloj.interop :only [int-to-str str-to-int char-to-ascii]]))
 
 (defn dec-to-bin [len n]
   (let [bin (int-to-str n 2)]
@@ -52,12 +52,12 @@
     (general-encode alphanumeric-values 2 group-to-bin data)))
 
 (defmethod encode-data :byte [{:keys [data]}]
-  (general-encode int 1 (comp (partial dec-to-bin 8) first) data))
+  (general-encode char-to-ascii 1 (comp (partial dec-to-bin 8) first) data))
 
 (defn mode [data]
   (cond (re-matches #"\d*" data) :numeric
     (re-matches #"[0-9A-Z $%*+-./:]*" data) :alphanumeric
-    (every? #(<= 0 % 255) (map int data)) :byte)
+    (every? #(<= 0 % 255) (map char-to-ascii data)) :byte)
   )
 
 (defn data-to-bitstream [ecl data]

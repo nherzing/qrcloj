@@ -37,3 +37,13 @@
     (is (= :d (v1 [6 12])))
     (is (= nil (v1 [6 13])))
   ))
+
+(deftest raw-data-path-test
+  (is (= [[3 3] [2 3] [3 2] [2 2] [3 1] [2 1] [3 0] [2 0] [1 0] [0 0] [1 1] [0 1] [1 2] [0 2] [1 3] [0 3]]
+    (raw-data-path 4)))
+  (is (= [0 0] (last (raw-data-path 6))))
+  (is (= 64 (count (raw-data-path 8))))
+  (is (= 420 (count (raw-data-path 21))))
+  (is (= nil ((set (raw-data-path 21)) [6 0])))
+  )
+

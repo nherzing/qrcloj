@@ -1,8 +1,25 @@
 <html>
   <head></head>
-  <body onload="make_symbol('canvas', 'L', '1234')">
+  <body onload="onload()">
     <script type="text/javascript" src="out/main.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script>
+      function encodeIt () {
+        make_symbol('canvas', $('input[name=ecl]:checked').val(), document.getElementById('to-encode').value);
+      }
+      function onload () {
+        set_size('canvas', 500, 500);
+        encodeIt();
+      }
+    </script>
+    <input type="radio" name="ecl" value="L" onchange="encodeIt()" checked>L<br>
+    <input type="radio" name="ecl" value="M" onchange="encodeIt()">M<br>
+    <input type="radio" name="ecl" value="Q" onchange="encodeIt()">Q<br>
+    <input type="radio" name="ecl" value="H" onchange="encodeIt()">H<br>
 
+    Text to encode:
+    <textarea type="text" cols="80" rows="10" style="display: block" id="to-encode" value="encode me!" onblur="encodeIt()" oninput="encodeIt()"></textarea>
+    <br />
     <canvas id="canvas"></canvas>
   </body>
 </html>
