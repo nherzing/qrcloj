@@ -22556,27 +22556,27 @@ qrcloj.version.data_capacity_by_ecl = cljs.core.PersistentArrayMap.fromArray(["\
 782, 860, 914, 1E3, 1062, 1128, 1193, 1267, 1373, 1455, 1541, 1631, 1725, 1812, 1914, 1992, 2102, 2216, 2334], true), "\ufdd0:Q", cljs.core.PersistentVector.fromArray([13, 22, 34, 48, 62, 76, 88, 110, 132, 154, 180, 206, 244, 261, 295, 325, 367, 397, 445, 485, 512, 568, 614, 664, 718, 754, 808, 871, 911, 985, 1033, 1115, 1171, 1231, 1286, 1354, 1426, 1502, 1582, 1666], true), "\ufdd0:H", cljs.core.PersistentVector.fromArray([9, 16, 26, 36, 46, 60, 66, 86, 100, 122, 140, 158, 180, 197, 223, 253, 283, 
 313, 341, 385, 406, 442, 464, 514, 538, 596, 628, 661, 701, 745, 793, 845, 901, 961, 986, 1054, 1096, 1142, 1222, 1276], true)], true);
 qrcloj.version.bit_capacity_by_ecl = cljs.core.into.call(null, cljs.core.ObjMap.EMPTY, function() {
-  var iter__3042__auto__ = function iter__3604(s__3605) {
+  var iter__3042__auto__ = function iter__3613(s__3614) {
     return new cljs.core.LazySeq(null, false, function() {
-      var s__3605__$1 = s__3605;
+      var s__3614__$1 = s__3614;
       while(true) {
-        var temp__4092__auto__ = cljs.core.seq.call(null, s__3605__$1);
+        var temp__4092__auto__ = cljs.core.seq.call(null, s__3614__$1);
         if(temp__4092__auto__) {
-          var s__3605__$2 = temp__4092__auto__;
-          if(cljs.core.chunked_seq_QMARK_.call(null, s__3605__$2)) {
-            var c__3040__auto__ = cljs.core.chunk_first.call(null, s__3605__$2);
+          var s__3614__$2 = temp__4092__auto__;
+          if(cljs.core.chunked_seq_QMARK_.call(null, s__3614__$2)) {
+            var c__3040__auto__ = cljs.core.chunk_first.call(null, s__3614__$2);
             var size__3041__auto__ = cljs.core.count.call(null, c__3040__auto__);
-            var b__3607 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
+            var b__3616 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
             if(function() {
-              var i__3606 = 0;
+              var i__3615 = 0;
               while(true) {
-                if(i__3606 < size__3041__auto__) {
-                  var vec__3610 = cljs.core._nth.call(null, c__3040__auto__, i__3606);
-                  var ecl = cljs.core.nth.call(null, vec__3610, 0, null);
-                  var versions = cljs.core.nth.call(null, vec__3610, 1, null);
-                  cljs.core.chunk_append.call(null, b__3607, cljs.core.PersistentVector.fromArray([ecl, cljs.core.vec.call(null, cljs.core.map.call(null, cljs.core.partial.call(null, cljs.core._STAR_, 8), versions))], true));
-                  var G__3612 = i__3606 + 1;
-                  i__3606 = G__3612;
+                if(i__3615 < size__3041__auto__) {
+                  var vec__3619 = cljs.core._nth.call(null, c__3040__auto__, i__3615);
+                  var ecl = cljs.core.nth.call(null, vec__3619, 0, null);
+                  var versions = cljs.core.nth.call(null, vec__3619, 1, null);
+                  cljs.core.chunk_append.call(null, b__3616, cljs.core.PersistentVector.fromArray([ecl, cljs.core.vec.call(null, cljs.core.map.call(null, cljs.core.partial.call(null, cljs.core._STAR_, 8), versions))], true));
+                  var G__3621 = i__3615 + 1;
+                  i__3615 = G__3621;
                   continue
                 }else {
                   return true
@@ -22584,15 +22584,15 @@ qrcloj.version.bit_capacity_by_ecl = cljs.core.into.call(null, cljs.core.ObjMap.
                 break
               }
             }()) {
-              return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3607), iter__3604.call(null, cljs.core.chunk_rest.call(null, s__3605__$2)))
+              return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3616), iter__3613.call(null, cljs.core.chunk_rest.call(null, s__3614__$2)))
             }else {
-              return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3607), null)
+              return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3616), null)
             }
           }else {
-            var vec__3611 = cljs.core.first.call(null, s__3605__$2);
-            var ecl = cljs.core.nth.call(null, vec__3611, 0, null);
-            var versions = cljs.core.nth.call(null, vec__3611, 1, null);
-            return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([ecl, cljs.core.vec.call(null, cljs.core.map.call(null, cljs.core.partial.call(null, cljs.core._STAR_, 8), versions))], true), iter__3604.call(null, cljs.core.rest.call(null, s__3605__$2)))
+            var vec__3620 = cljs.core.first.call(null, s__3614__$2);
+            var ecl = cljs.core.nth.call(null, vec__3620, 0, null);
+            var versions = cljs.core.nth.call(null, vec__3620, 1, null);
+            return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([ecl, cljs.core.vec.call(null, cljs.core.map.call(null, cljs.core.partial.call(null, cljs.core._STAR_, 8), versions))], true), iter__3613.call(null, cljs.core.rest.call(null, s__3614__$2)))
           }
         }else {
           return null
@@ -22604,10 +22604,10 @@ qrcloj.version.bit_capacity_by_ecl = cljs.core.into.call(null, cljs.core.ObjMap.
   return iter__3042__auto__.call(null, qrcloj.version.data_capacity_by_ecl)
 }());
 qrcloj.version.best_fit = function best_fit(ecl, num_bits) {
-  return cljs.core.PersistentArrayMap.fromArray(["\ufdd0:ecl", ecl, "\ufdd0:version", cljs.core.first.call(null, qrcloj.utils.positions.call(null, function(p__3615) {
-    var vec__3616 = p__3615;
-    var f = cljs.core.nth.call(null, vec__3616, 0, null);
-    var s = cljs.core.nth.call(null, vec__3616, 1, null);
+  return cljs.core.PersistentArrayMap.fromArray(["\ufdd0:ecl", ecl, "\ufdd0:version", cljs.core.first.call(null, qrcloj.utils.positions.call(null, function(p__3624) {
+    var vec__3625 = p__3624;
+    var f = cljs.core.nth.call(null, vec__3625, 0, null);
+    var s = cljs.core.nth.call(null, vec__3625, 1, null);
     if(function() {
       var and__3941__auto__ = num_bits > f;
       if(and__3941__auto__) {
@@ -22622,24 +22622,38 @@ qrcloj.version.best_fit = function best_fit(ecl, num_bits) {
     }
   }, cljs.core.partition.call(null, 2, 1, cljs.core.conj.call(null, cljs.core.seq.call(null, qrcloj.version.bit_capacity_by_ecl.call(null, ecl)), 0)))) + 1], true)
 };
-qrcloj.version.bit_capacity = function bit_capacity(p__3617) {
-  var map__3619 = p__3617;
-  var map__3619__$1 = cljs.core.seq_QMARK_.call(null, map__3619) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3619) : map__3619;
-  var ecl = cljs.core.get.call(null, map__3619__$1, "\ufdd0:ecl");
-  var version = cljs.core.get.call(null, map__3619__$1, "\ufdd0:version");
+qrcloj.version.bit_capacity = function bit_capacity(p__3626) {
+  var map__3628 = p__3626;
+  var map__3628__$1 = cljs.core.seq_QMARK_.call(null, map__3628) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3628) : map__3628;
+  var ecl = cljs.core.get.call(null, map__3628__$1, "\ufdd0:ecl");
+  var version = cljs.core.get.call(null, map__3628__$1, "\ufdd0:version");
   return qrcloj.version.bit_capacity_by_ecl.call(null, ecl).call(null, version - 1)
 };
-qrcloj.version.error_correction_layout = function error_correction_layout(p__3620) {
-  var map__3622 = p__3620;
-  var map__3622__$1 = cljs.core.seq_QMARK_.call(null, map__3622) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3622) : map__3622;
-  var ecl = cljs.core.get.call(null, map__3622__$1, "\ufdd0:ecl");
-  var version = cljs.core.get.call(null, map__3622__$1, "\ufdd0:version");
-  return cljs.core.PersistentArrayMap.fromArray(["\ufdd0:L", cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([19, 7], true)], true), cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([34, 10], true)], true), cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([55, 15], true)], true), cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([80, 20], true)], true), cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([108, 
-  26], true)], true)], true), "\ufdd0:M", cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([16, 10], true)], true), cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([28, 16], true)], true), cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([44, 26], true)], true), cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([32, 36], true), cljs.core.PersistentVector.fromArray([32, 
-  36], true)], true), cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([43, 48], true), cljs.core.PersistentVector.fromArray([43, 48], true)], true)], true), "\ufdd0:Q", cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([13, 13], true)], true), cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([22, 22], true)], true), cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([17, 
-  36], true), cljs.core.PersistentVector.fromArray([17, 36], true)], true), cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([24, 52], true), cljs.core.PersistentVector.fromArray([24, 52], true)], true), cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([15, 72], true), cljs.core.PersistentVector.fromArray([15, 72], true), cljs.core.PersistentVector.fromArray([17, 72], true), cljs.core.PersistentVector.fromArray([17, 72], true)], true)], true), "\ufdd0:H", 
-  cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([9, 17], true)], true), cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([16, 28], true)], true), cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([13, 44], true), cljs.core.PersistentVector.fromArray([13, 44], true)], true), cljs.core.repeat.call(null, 4, cljs.core.PersistentVector.fromArray([9, 64], true)), cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([11, 
-  88], true), cljs.core.PersistentVector.fromArray([11, 88], true), cljs.core.PersistentVector.fromArray([12, 88], true), cljs.core.PersistentVector.fromArray([12, 88], true)], true)], true)], true).call(null, ecl).call(null, version - 1)
+qrcloj.version.raw_error_correction_layouts = function raw_error_correction_layouts(p__3629) {
+  var map__3631 = p__3629;
+  var map__3631__$1 = cljs.core.seq_QMARK_.call(null, map__3631) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3631) : map__3631;
+  var ecl = cljs.core.get.call(null, map__3631__$1, "\ufdd0:ecl");
+  var version = cljs.core.get.call(null, map__3631__$1, "\ufdd0:version");
+  return cljs.core.PersistentArrayMap.fromArray(["\ufdd0:L", cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([26, 19], true)], true), cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([44, 34], true)], true), cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([70, 55], true)], true), cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([100, 80], true)], 
+  true), cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([134, 108], true)], true)], true), "\ufdd0:M", cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([26, 16], true)], true), cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([44, 28], true)], true), cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([70, 44], true)], true), cljs.core.PersistentVector.fromArray([2, 
+  cljs.core.PersistentVector.fromArray([50, 32], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([67, 43], true)], true)], true), "\ufdd0:Q", cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([26, 13], true)], true), cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([44, 22], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([35, 
+  17], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([50, 24], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([33, 15], true), 2, cljs.core.PersistentVector.fromArray([34, 16], true)], true)], true), "\ufdd0:H", cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([26, 9], true)], true), cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([44, 
+  16], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([35, 13], true)], true), cljs.core.PersistentVector.fromArray([4, cljs.core.PersistentVector.fromArray([25, 9], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([33, 11], true), 2, cljs.core.PersistentVector.fromArray([34, 12], true)], true)], true)], true).call(null, ecl).call(null, version - 1)
+};
+qrcloj.version.error_correction_layout = function error_correction_layout(p__3632) {
+  var map__3637 = p__3632;
+  var map__3637__$1 = cljs.core.seq_QMARK_.call(null, map__3637) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3637) : map__3637;
+  var ver = map__3637__$1;
+  var ecl = cljs.core.get.call(null, map__3637__$1, "\ufdd0:ecl");
+  var version = cljs.core.get.call(null, map__3637__$1, "\ufdd0:version");
+  return cljs.core.apply.call(null, cljs.core.concat, cljs.core.map.call(null, function(p__3638) {
+    var vec__3639 = p__3638;
+    var ct = cljs.core.nth.call(null, vec__3639, 0, null);
+    var vec__3640 = cljs.core.nth.call(null, vec__3639, 1, null);
+    var total = cljs.core.nth.call(null, vec__3640, 0, null);
+    var data = cljs.core.nth.call(null, vec__3640, 1, null);
+    return cljs.core.repeat.call(null, ct, cljs.core.PersistentVector.fromArray([data, total - data], true))
+  }, cljs.core.partition.call(null, 2, qrcloj.version.raw_error_correction_layouts.call(null, ver))))
 };
 goog.provide("qrcloj.binary_field");
 goog.require("cljs.core");

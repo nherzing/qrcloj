@@ -28,9 +28,16 @@
 (defn bit-capacity [{:keys [version ecl]}]
   ((bit-capacity-by-ecl ecl) (dec version)))
 
-(defn error-correction-layout [{:keys [version ecl]}] (({
-  :L [[[19  7]] [[34 10]] [[55 15]] [[80 20]] [[108 26]]]
-  :M [[[16 10]] [[28 16]] [[44 26]] [[32 36] [32 36]] [[43 48] [43 48]]]
-  :Q [[[13 13]] [[22 22]] [[17 36] [17 36]] [[24 52] [24 52]] [[15 72] [15 72] [17 72] [17 72]]]
-  :H [[[ 9 17]] [[16 28]] [[13 44] [13 44]] (repeat 4 [9 64]) [[11 88] [11 88] [12 88] [12 88]]]
+
+(defn raw-error-correction-layouts [{:keys [version ecl]}] (({
+  :L [[1 [26 19]] [1 [44 34]] [1 [70 55]] [1 [100 80]] [1 [134 108]]]
+  :M [[1 [26 16]] [1 [44 28]] [1 [70 44]] [2 [50 32]] [2 [67 43]]]
+  :Q [[1 [26 13]] [1 [44 22]] [2 [35 17]] [2 [50 24]] [2 [33 15] 2 [34 16]]]
+  :H [[1 [26 9]] [1 [44 16]] [2 [35 13]] [4 [25 9]] [2 [33 11] 2 [34 12]]]
   } ecl) (dec version)))
+
+(defn error-correction-layout [{:keys [version ecl] :as ver}]
+  (apply concat (map (fn [[ct [total data]]] (repeat ct [data (- total data)]))
+    (partition 2 (raw-error-correction-layouts ver)))))
+
+

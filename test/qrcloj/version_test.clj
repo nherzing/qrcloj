@@ -15,5 +15,5 @@
 
 (deftest error-correction-layout-test
   (is (= [[19 7]] (error-correction-layout {:version 1 :ecl :L})))
-  (is (= [[24 52] [24 52]] (error-correction-layout {:version 4 :ecl :Q})))
+  (is (= [[24 26] [24 26]] (error-correction-layout {:version 4 :ecl :Q})))
   )
