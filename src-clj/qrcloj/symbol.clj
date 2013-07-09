@@ -1,9 +1,10 @@
 (ns qrcloj.symbol
+  (:require [qrcloj.version :as version])
   (:use [clojure.math.combinatorics :only [selections]]
         [qrcloj.utils :only [dec-to-bin]]))
 
 (defn blank [version] 
-  {:version version :dim (+ 17 (* 4 version)) :grid {}})
+  {:version version :dim (version/dim version) :grid {}})
 
 (defn color [c ms]
   (zipmap ms (repeat (count ms) c)))
@@ -72,18 +73,23 @@
     (apply concat (doit [(dec dim) dim] dec))))
 
 (defn format-modules [dim]
-  (let [vert (concat (map (partial conj [8]) (range 0 9))
-                     (map (partial conj [8]) (range (- dim 8) dim)))]
+  (let [vert (concat (for [y (range 0 9)] [8 y])
+                     (for [y (range (- dim 8) dim)] [8 y]))]
     (set (concat vert (map reverse vert)))))
 
+(defn version-modules [version]
+  (let [dim (version/dim version)
+        upper-right (for [x (range (- dim 11) (- dim 8)) y (range 6)] [x y])]
+    (if (< version 7) #{}
+      (set (concat upper-right (map reverse upper-right))))))
+
 (defn add-data [{:keys [version dim grid] :as sym} data]
-  (let [version-modules #{}]
   (assoc sym :grid (merge grid
     (zipmap
       (remove (format-modules dim)
-        (remove version-modules
+        (remove (version-modules version)
           (remove grid (raw-data-path dim))))
-      (map {1 :d 0 :l} (apply concat (map (partial dec-to-bin 8) data))))))))
+      (map {1 :d 0 :l} (apply concat (map (partial dec-to-bin 8) data)))))))
 
 
 

@@ -47,3 +47,10 @@
   (is (= nil ((set (raw-data-path 21)) [6 0])))
   )
 
+(deftest version-modules-test
+  (is (= 0 (count (version-modules 1))))
+  (is (= 36 (count (version-modules 10))))
+  (is (= 36 (count (version-modules 7))))
+  (is (= 0 (count (version-modules 6))))
+  )
+
