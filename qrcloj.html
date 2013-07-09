@@ -8,6 +8,8 @@
         make_symbol('canvas', $('input[name=ecl]:checked').val(), document.getElementById('to-encode').value);
       }
       function onload () {
+        set_size('mask', 500, 500);
+        make_mask('mask', 1);
         set_size('canvas', 500, 500);
         encodeIt();
       }
@@ -22,5 +24,7 @@
     <button onclick="encodeIt()">Make it!</button>
     <br />
     <canvas id="canvas"></canvas>
+
+    <canvas id="mask"></canvas>
   </body>
 </html>

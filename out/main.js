@@ -23055,6 +23055,57 @@ qrcloj.encode.interleave_eccs = function interleave_eccs(p__16332) {
 qrcloj.encode.encode = function encode(ecl, data) {
   return qrcloj.encode.interleave_eccs.call(null, qrcloj.encode.bitstream_to_codewords.call(null, qrcloj.encode.tag_with_version.call(null, ecl, qrcloj.encode.data_to_bitstream.call(null, ecl, data))))
 };
+goog.provide("qrcloj.masking");
+goog.require("cljs.core");
+qrcloj.masking.masks = cljs.core.vec.call(null, cljs.core.map.call(null, function(m) {
+  return function(p1__3658_SHARP_) {
+    if(cljs.core._EQ_.call(null, 0, m.call(null, p1__3658_SHARP_))) {
+      return"\ufdd0:d"
+    }else {
+      return"\ufdd0:l"
+    }
+  }
+}, cljs.core.PersistentVector.fromArray([function(p__3659) {
+  var vec__3660 = p__3659;
+  var x = cljs.core.nth.call(null, vec__3660, 0, null);
+  var y = cljs.core.nth.call(null, vec__3660, 1, null);
+  return cljs.core.mod.call(null, x + y, 2)
+}, function(p__3661) {
+  var vec__3662 = p__3661;
+  var x = cljs.core.nth.call(null, vec__3662, 0, null);
+  var y = cljs.core.nth.call(null, vec__3662, 1, null);
+  return cljs.core.mod.call(null, y, 2)
+}, function(p__3663) {
+  var vec__3664 = p__3663;
+  var x = cljs.core.nth.call(null, vec__3664, 0, null);
+  var y = cljs.core.nth.call(null, vec__3664, 1, null);
+  return cljs.core.mod.call(null, x, 3)
+}, function(p__3665) {
+  var vec__3666 = p__3665;
+  var x = cljs.core.nth.call(null, vec__3666, 0, null);
+  var y = cljs.core.nth.call(null, vec__3666, 1, null);
+  return cljs.core.mod.call(null, x + y, 3)
+}, function(p__3667) {
+  var vec__3668 = p__3667;
+  var x = cljs.core.nth.call(null, vec__3668, 0, null);
+  var y = cljs.core.nth.call(null, vec__3668, 1, null);
+  return cljs.core.mod.call(null, cljs.core.quot.call(null, y, 2) + cljs.core.quot.call(null, x, 3), 2)
+}, function(p__3669) {
+  var vec__3670 = p__3669;
+  var x = cljs.core.nth.call(null, vec__3670, 0, null);
+  var y = cljs.core.nth.call(null, vec__3670, 1, null);
+  return cljs.core.mod.call(null, x * y, 2) + cljs.core.mod.call(null, x * y, 3)
+}, function(p__3671) {
+  var vec__3672 = p__3671;
+  var x = cljs.core.nth.call(null, vec__3672, 0, null);
+  var y = cljs.core.nth.call(null, vec__3672, 1, null);
+  return cljs.core.mod.call(null, cljs.core.mod.call(null, x * y, 2) + cljs.core.mod.call(null, x * y, 3), 2)
+}, function(p__3673) {
+  var vec__3674 = p__3673;
+  var x = cljs.core.nth.call(null, vec__3674, 0, null);
+  var y = cljs.core.nth.call(null, vec__3674, 1, null);
+  return cljs.core.mod.call(null, cljs.core.mod.call(null, x + y, 2) + cljs.core.mod.call(null, x * y, 3), 2)
+}], true)));
 goog.provide("qrcloj.canvas_display");
 goog.require("cljs.core");
 qrcloj.canvas_display.context = function context(canvas_id) {
@@ -23154,9 +23205,11 @@ qrcloj.canvas_display.draw_symbol = function draw_symbol(canvas_id, p__14421) {
 };
 goog.provide("qrcloj.core");
 goog.require("cljs.core");
+goog.require("qrcloj.masking");
 goog.require("qrcloj.canvas_display");
 goog.require("qrcloj.encode");
 goog.require("qrcloj.symbol");
+goog.require("qrcloj.masking");
 goog.require("qrcloj.canvas_display");
 goog.require("qrcloj.symbol");
 goog.require("qrcloj.encode");
@@ -23166,3 +23219,77 @@ qrcloj.core.make_symbol = function make_symbol(canvas_id, ecl, data) {
   return qrcloj.canvas_display.draw_symbol.call(null, canvas_id, qrcloj.symbol.generate.call(null, qrcloj.encode.encode.call(null, cljs.core.keyword.call(null, ecl), data)))
 };
 goog.exportSymbol("make_symbol", qrcloj.core.make_symbol);
+qrcloj.core.make_mask = function make_mask(canvas_id, mask) {
+  return qrcloj.canvas_display.draw_symbol.call(null, canvas_id, cljs.core.PersistentArrayMap.fromArray(["\ufdd0:dim", 21, "\ufdd0:grid", cljs.core.apply.call(null, cljs.core.hash_map, cljs.core.apply.call(null, cljs.core.concat, function() {
+    var iter__3042__auto__ = function iter__4154(s__4155) {
+      return new cljs.core.LazySeq(null, false, function() {
+        var s__4155__$1 = s__4155;
+        while(true) {
+          var temp__4092__auto__ = cljs.core.seq.call(null, s__4155__$1);
+          if(temp__4092__auto__) {
+            var xs__4579__auto__ = temp__4092__auto__;
+            var x = cljs.core.first.call(null, xs__4579__auto__);
+            var iterys__3038__auto__ = function(s__4155__$1, x, xs__4579__auto__, temp__4092__auto__) {
+              return function iter__4156(s__4157) {
+                return new cljs.core.LazySeq(null, false, function(s__4155__$1, x, xs__4579__auto__, temp__4092__auto__) {
+                  return function() {
+                    var s__4157__$1 = s__4157;
+                    while(true) {
+                      var temp__4092__auto____$1 = cljs.core.seq.call(null, s__4157__$1);
+                      if(temp__4092__auto____$1) {
+                        var s__4157__$2 = temp__4092__auto____$1;
+                        if(cljs.core.chunked_seq_QMARK_.call(null, s__4157__$2)) {
+                          var c__3040__auto__ = cljs.core.chunk_first.call(null, s__4157__$2);
+                          var size__3041__auto__ = cljs.core.count.call(null, c__3040__auto__);
+                          var b__4159 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
+                          if(function() {
+                            var i__4158 = 0;
+                            while(true) {
+                              if(i__4158 < size__3041__auto__) {
+                                var y = cljs.core._nth.call(null, c__3040__auto__, i__4158);
+                                cljs.core.chunk_append.call(null, b__4159, cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([x, y], true), qrcloj.masking.masks.call(null, mask).call(null, cljs.core.PersistentVector.fromArray([x, y], true))], true));
+                                var G__4160 = i__4158 + 1;
+                                i__4158 = G__4160;
+                                continue
+                              }else {
+                                return true
+                              }
+                              break
+                            }
+                          }()) {
+                            return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__4159), iter__4156.call(null, cljs.core.chunk_rest.call(null, s__4157__$2)))
+                          }else {
+                            return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__4159), null)
+                          }
+                        }else {
+                          var y = cljs.core.first.call(null, s__4157__$2);
+                          return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([x, y], true), qrcloj.masking.masks.call(null, mask).call(null, cljs.core.PersistentVector.fromArray([x, y], true))], true), iter__4156.call(null, cljs.core.rest.call(null, s__4157__$2)))
+                        }
+                      }else {
+                        return null
+                      }
+                      break
+                    }
+                  }
+                }(s__4155__$1, x, xs__4579__auto__, temp__4092__auto__), null)
+              }
+            }(s__4155__$1, x, xs__4579__auto__, temp__4092__auto__);
+            var fs__3039__auto__ = cljs.core.seq.call(null, iterys__3038__auto__.call(null, cljs.core.range.call(null, 21)));
+            if(fs__3039__auto__) {
+              return cljs.core.concat.call(null, fs__3039__auto__, iter__4154.call(null, cljs.core.rest.call(null, s__4155__$1)))
+            }else {
+              var G__4161 = cljs.core.rest.call(null, s__4155__$1);
+              s__4155__$1 = G__4161;
+              continue
+            }
+          }else {
+            return null
+          }
+          break
+        }
+      }, null)
+    };
+    return iter__3042__auto__.call(null, cljs.core.range.call(null, 21))
+  }()))], true))
+};
+goog.exportSymbol("make_mask", qrcloj.core.make_mask);
