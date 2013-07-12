@@ -84,12 +84,16 @@
       (set (concat upper-right (map reverse upper-right))))))
 
 (defn add-data [{:keys [version dim grid] :as sym} data]
-  (assoc sym :grid (merge grid
-    (zipmap
-      (remove (format-modules dim)
-        (remove (version-modules version)
-          (remove grid (raw-data-path dim))))
-      (map {1 :d 0 :l} (apply concat (map (partial dec-to-bin 8) data)))))))
+  (let [data-modules
+          (remove (format-modules dim)
+            (remove (version-modules version)
+              (remove grid (raw-data-path dim))))
+        binary-data (apply concat (map (partial dec-to-bin 8) data))
+        padded-binary-data (concat binary-data (repeat (- (count data-modules) (count binary-data)) 0))]
+    (assoc sym :grid (merge grid
+      (zipmap
+        data-modules
+        (map {1 :d 0 :l} padded-binary-data))))))
 
 
 
