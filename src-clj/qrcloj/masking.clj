@@ -28,9 +28,8 @@
 
 
 (defn adj-score-vec [v]
-  (let [score-for (fn [count] 
-    (if (< count 5) 0
-      (+ 3 (- count 5))))
+  (let [score-for (fn [count]
+    (if (< count 5) 0 (+ 3 (- count 5))))
     rec (fn [rem count prev score]
       (if (empty? rem) (+ score (score-for count))
         (let [same? (= prev (first rem))]
@@ -41,9 +40,8 @@
     (rec v 0 nil 0)))
 
 
-
 (defn adjacent-score [{:keys [dim grid]}]
-  (let [col-scores (map adj-score-vec (map (partial map #(get grid (vec %) :l)) (col-indices dim)))
-        row-scores (map adj-score-vec (map (partial map #(get grid (vec %) :l)) (row-indices dim)))]
-    (apply + (concat col-scores row-scores))))
+  (let [coord-to-val (partial map #(get grid (vec %) :l))
+        rows-and-cols (map coord-to-val (concat (row-indices dim) (col-indices dim)))]
+    (apply + (map adj-score-vec rows-and-cols))))
 
