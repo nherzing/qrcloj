@@ -24,3 +24,22 @@
   (is (= 0 (block-score {:grid (gen-mask (masks 0) 21)})))
   (is (= 420 (block-score {:grid (gen-mask (masks 2) 21)})))
   )
+
+
+(deftest centers-of-one-one-three-one-one-test
+  (is (= 0 (centers-of-one-one-three-one-one {[0 0] :d [1 0] :d [0 1] :d [1 1] :d} [0 0])))
+  (is (= 1 (centers-of-one-one-three-one-one {[0 0] :l [1 0] :l [2 0] :l [3 0] :d [4 0] :l 
+    [5 0] :d [6 0] :d [7 0] :d [8 0] :l [9 0] :d} [6 0])))
+  (is (= 0 (centers-of-one-one-three-one-one {[0 0] :l [1 0] :l [2 0] :l [3 0] :d [4 0] :l 
+    [5 0] :d [6 0] :d [7 0] :d [8 0] :l [9 0] :d} [7 0])))
+  (is (= 2 (centers-of-one-one-three-one-one {[0 0] :l [1 0] :l [2 0] :l [3 0] :d [4 0] :l 
+    [5 0] :d [6 0] :d [7 0] :d [8 0] :l [9 0] :d
+    [6 -1] :d [6 -2] :l [6 -3] :d [6 1] :d [6 2] :l [6 3] :d [6 4] :l [6 5] :l [6 6] :l} [6 0])))
+  )
+
+(deftest one-one-three-one-one-score-test
+  (is (= 0 (one-one-three-one-one-score {:grid {[0 0] :d [1 0] :d [0 1] :d [1 1] :d}})))
+  (is (= 60 (one-one-three-one-one-score {:grid {[0 0] :l [1 0] :l [2 0] :l [3 0] :d [4 0] :l 
+    [5 0] :d [6 0] :d [7 0] :d [8 0] :l [9 0] :d
+    [6 -1] :d [6 -2] :l [6 -3] :d [6 1] :d [6 2] :l [6 3] :d [6 4] :l [6 5] :l [6 6] :l}})))
+  )
