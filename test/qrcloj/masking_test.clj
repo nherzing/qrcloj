@@ -43,3 +43,10 @@
     [5 0] :d [6 0] :d [7 0] :d [8 0] :l [9 0] :d
     [6 -1] :d [6 -2] :l [6 -3] :d [6 1] :d [6 2] :l [6 3] :d [6 4] :l [6 5] :l [6 6] :l}})))
   )
+
+
+(deftest ratio-score-test
+  (is (= 100 (ratio-score {:dim 1 :grid {}})))
+  (is (= 50 (ratio-score {:dim 2 :grid {1 :d}})))
+  (is (= 0 (ratio-score {:dim 21 :grid (zipmap (range 213) (repeat 213 :d))})))
+  )

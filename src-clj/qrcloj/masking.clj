@@ -1,4 +1,5 @@
-(ns qrcloj.masking)
+(ns qrcloj.masking
+  (:use [clojure.math.numeric-tower :only [abs]]))
 
 (def masks (vec (map (fn [m] #(if (= 0 (m %)) :d :l))
   [(fn [[x y]] (mod (+ x y) 2))
@@ -69,3 +70,9 @@
 
 (defn one-one-three-one-one-score [{:keys [grid]}]
   (* 30 (apply + (map (partial centers-of-one-one-three-one-one grid) (keys grid)))))
+
+
+(defn ratio-score [{:keys [grid dim]}]
+  (let [total (* dim dim)
+        dark (count (filter (partial = :d) (vals grid)))]
+    (* 10 (quot (abs (- 50 (int (* 100 (/ dark total))))) 5))))
