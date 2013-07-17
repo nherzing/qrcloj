@@ -45,3 +45,11 @@
         rows-and-cols (map coord-to-val (concat (row-indices dim) (col-indices dim)))]
     (apply + (map adj-score-vec rows-and-cols))))
 
+(defn upper-left-of-two-by-two? [grid [x y]]
+  (every?
+    (comp (partial = (grid [x y])) grid)
+    [[(inc x) y] [(inc x) (inc y)] [x (inc y)]]))
+
+(defn block-score [{:keys [grid]}]
+  (* 3 (count (filter (partial upper-left-of-two-by-two? grid) (keys grid)))))
+
