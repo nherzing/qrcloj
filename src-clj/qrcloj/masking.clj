@@ -76,3 +76,9 @@
   (let [total (* dim dim)
         dark (count (filter (partial = :d) (vals grid)))]
     (* 10 (quot (abs (- 50 (int (* 100 (/ dark total))))) 5))))
+
+(defn penalty-score [masked]
+  (+ (adjacent-score masked)
+     (block-score masked)
+     (one-one-three-one-one-score masked)
+     (ratio-score masked)))
