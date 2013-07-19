@@ -20,9 +20,10 @@
   )
 
 (deftest block-score-test
-  (is (= 3 (block-score {:grid {[0 0] :d [1 0] :d [0 1] :d [1 1] :d}})))
-  (is (= 0 (block-score {:grid (gen-mask (masks 0) 21)})))
-  (is (= 420 (block-score {:grid (gen-mask (masks 2) 21)})))
+  (is (= 3 (block-score {:dim 2 :grid {[0 0] :d [1 0] :d [0 1] :d [1 1] :d}})))
+  (is (= 0 (block-score {:dim 21 :grid (gen-mask (masks 0) 21)})))
+  (is (= 420 (block-score {:dim 21 :grid (gen-mask (masks 2) 21)})))
+  (is (= 1200 (block-score {:grid {} :dim 21})))
   )
 
 
@@ -32,16 +33,17 @@
     [5 0] :d [6 0] :d [7 0] :d [8 0] :l [9 0] :d} [6 0])))
   (is (= 0 (centers-of-one-one-three-one-one {[0 0] :l [1 0] :l [2 0] :l [3 0] :d [4 0] :l 
     [5 0] :d [6 0] :d [7 0] :d [8 0] :l [9 0] :d} [7 0])))
-  (is (= 2 (centers-of-one-one-three-one-one {[0 0] :l [1 0] :l [2 0] :l [3 0] :d [4 0] :l 
+  (is (= 1 (centers-of-one-one-three-one-one {[0 0] :l [1 0] :l [2 0] :l [3 0] :d [4 0] :l 
     [5 0] :d [6 0] :d [7 0] :d [8 0] :l [9 0] :d
-    [6 -1] :d [6 -2] :l [6 -3] :d [6 1] :d [6 2] :l [6 3] :d [6 4] :l [6 5] :l [6 6] :l} [6 0])))
+    [9 1] :l [9 2] :d [9 3] :d [9 4] :d [9 5] :l [9 6] :d [9 7] :l [9 8] :l [9 9] :l} [6 0])))
   )
 
 (deftest one-one-three-one-one-score-test
-  (is (= 0 (one-one-three-one-one-score {:grid {[0 0] :d [1 0] :d [0 1] :d [1 1] :d}})))
-  (is (= 60 (one-one-three-one-one-score {:grid {[0 0] :l [1 0] :l [2 0] :l [3 0] :d [4 0] :l 
+  (is (= 0 (one-one-three-one-one-score {:dim 5 :grid {[0 0] :d [1 0] :d [0 1] :d [1 1] :d}})))
+  (is (= 60 (one-one-three-one-one-score {:dim 10 :grid {[0 0] :l [1 0] :l [2 0] :l [3 0] :d [4 0] :l 
     [5 0] :d [6 0] :d [7 0] :d [8 0] :l [9 0] :d
-    [6 -1] :d [6 -2] :l [6 -3] :d [6 1] :d [6 2] :l [6 3] :d [6 4] :l [6 5] :l [6 6] :l}})))
+    [9 1] :l [9 2] :d [9 3] :d [9 4] :d [9 5] :l [9 6] :d [9 7] :l [9 8] :l [9 9] :l}})))
+  (is (= 30 (one-one-three-one-one-score {:dim 10 :grid {[3 0] :d [5 0] :d [6 0] :d [7 0] :d [9 0] :d}})))
   )
 
 

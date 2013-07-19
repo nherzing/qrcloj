@@ -40,9 +40,16 @@
             (if same? score (+ score (score-for count)))))))]
     (rec v 0 nil 0)))
 
+(defn keys-for [dim]
+  (for [x (range dim) y (range dim)] [x y]))
+
+(defn coord-to-val [grid dim [x y]]
+  (if (or (< x 0) (< y 0) (>= x dim) (>= y dim)) nil
+    (get grid [x y] :l)))
+
 (defn adjacent-score [{:keys [dim grid]}]
-  (let [coord-to-val (partial map #(get grid (vec %) :l))
-        rows-and-cols (map coord-to-val (concat (row-indices dim) (col-indices dim)))]
+  (let [coords-to-vals (partial map #(coord-to-val grid dim %))
+        rows-and-cols (map coords-to-vals (concat (row-indices dim) (col-indices dim)))]
     (apply + (map adj-score-vec rows-and-cols))))
 
 
@@ -51,8 +58,8 @@
     (comp (partial = (grid [x y])) grid)
     [[(inc x) y] [(inc x) (inc y)] [x (inc y)]]))
 
-(defn block-score [{:keys [grid]}]
-  (* 3 (count (filter (partial upper-left-of-two-by-two? grid) (keys grid)))))
+(defn block-score [{:keys [grid dim]}]
+  (* 3 (count (filter (partial upper-left-of-two-by-two? (partial coord-to-val grid dim)) (keys-for dim)))))
 
 
 (defn centers-of-one-one-three-one-one [grid [x y]]
@@ -68,8 +75,8 @@
           (and (= :l (grid [x (+ y 4)]) (grid [x (+ y 5)]) (grid [x (+ y 6)])))))]
     (+ (if center-of-vert? 1 0) (if center-of-horz? 1 0))))
 
-(defn one-one-three-one-one-score [{:keys [grid]}]
-  (* 30 (apply + (map (partial centers-of-one-one-three-one-one grid) (keys grid)))))
+(defn one-one-three-one-one-score [{:keys [grid dim]}]
+  (* 30 (apply + (map (partial centers-of-one-one-three-one-one (partial coord-to-val grid dim)) (keys-for dim)))))
 
 
 (defn ratio-score [{:keys [grid dim]}]
