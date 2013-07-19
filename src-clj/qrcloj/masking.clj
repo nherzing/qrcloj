@@ -1,5 +1,5 @@
 (ns qrcloj.masking
-  (:use [clojure.math.numeric-tower :only [abs]]))
+  (:use [qrcloj.interop :only [abs]]))
 
 (def masks (vec (map (fn [m] #(if (= 0 (m %)) :d :l))
   [(fn [[x y]] (mod (+ x y) 2))
@@ -89,3 +89,8 @@
      (block-score masked)
      (one-one-three-one-one-score masked)
      (ratio-score masked)))
+
+(defn mask-symbol [{:keys [grid dim] :as sym}]
+  (let [masked (map #(apply-mask % grid) masks)]
+    (apply (partial min-key penalty-score) masked)))
+

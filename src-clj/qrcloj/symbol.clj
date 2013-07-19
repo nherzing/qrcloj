@@ -1,5 +1,6 @@
 (ns qrcloj.symbol
-  (:require [qrcloj.version :as version])
+  (:require [qrcloj.version :as version]
+            [qrcloj.masking :as masking])
   (:use [clojure.math.combinatorics :only [selections]]
         [qrcloj.utils :only [dec-to-bin]]))
 
@@ -95,7 +96,7 @@
       (map {1 :d 0 :l} padded-binary-data))))
 
 (defn add-data [{:keys [version dim grid] :as sym} data]
-  (assoc sym :grid (merge grid (position-data sym data))))
+  (assoc sym :grid (merge grid data)))
 
 
 
@@ -105,12 +106,18 @@
       (print (get grid [x y] :0) " "))
     (prn)))
 
-(defn generate [{:keys [version data]}]
+(defn function-modules [version]
   (-> version
       blank
       add-finders
       add-separators
       add-alignment
-      add-timing
-      (add-data data)))
+      add-timing))
 
+(defn generate-unmasked [{:keys [version data]}]
+  (add-data (function-modules version) (position-data (function-modules version) data)))
+
+(defn generate [{:keys [version data]}]
+  (let [function-sym (function-modules version)
+        masked-data (masking/mask-symbol {:grid (position-data function-sym data) :dim (version/dim version)})]
+    (add-data function-sym masked-data)))
