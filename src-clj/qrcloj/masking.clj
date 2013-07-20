@@ -91,6 +91,7 @@
      (ratio-score masked)))
 
 (defn mask-symbol [{:keys [grid dim] :as sym}]
-  (let [masked (map #(apply-mask % grid) masks)]
-    (apply (partial min-key penalty-score) masked)))
+  (let [masked (map #(apply-mask % grid) masks)
+        with-penalties (map-indexed (fn [i m] {:idx i :masked m :penalty (penalty-score {:dim dim :grid m})}) masked)]
+    (apply (partial min-key :penalty) with-penalties)))
 

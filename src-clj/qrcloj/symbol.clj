@@ -119,5 +119,6 @@
 
 (defn generate [{:keys [version data]}]
   (let [function-sym (function-modules version)
-        masked-data (masking/mask-symbol {:grid (position-data function-sym data) :dim (version/dim version)})]
-    (add-data function-sym masked-data)))
+        {:keys [idx masked]} (masking/mask-symbol 
+          {:grid (position-data function-sym data) :dim (version/dim version)})]
+    (add-data function-sym masked)))
