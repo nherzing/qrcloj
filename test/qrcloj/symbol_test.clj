@@ -8,13 +8,13 @@
   )
 
 (deftest blank-test
-  (is (= 21 (:dim (blank 1))))
-  (is (= 29 (:dim (blank 3))))
-  (is (= 177 (:dim (blank 40))))
+  (is (= 21 (:dim (blank 1 :L))))
+  (is (= 29 (:dim (blank 3 :L))))
+  (is (= 177 (:dim (blank 40 :L))))
   )
 
 (deftest add-finders-test
-  (let [v1 (:grid (add-finders (blank 1)))]
+  (let [v1 (:grid (add-finders (blank 1 :L)))]
     (is (= :d (v1 [0 0])))
     (is (= :l (v1 [1 3])))
     (is (= nil (v1 [20 20])))
@@ -23,7 +23,7 @@
   ))
 
 (deftest add-separators-test
-  (let [v1 (:grid (add-separators (blank 1)))]
+  (let [v1 (:grid (add-separators (blank 1 :L)))]
     (is (= :l (v1 [7 0])))
     (is (= :l (v1 [0 7])))
     (is (= nil (v1 [13 13])))
@@ -31,7 +31,7 @@
   ))
 
 (deftest add-timing-test
-  (let [v1 (:grid (add-timing (blank 1)))]
+  (let [v1 (:grid (add-timing (blank 1 :L)))]
     (is (= :d (v1 [8 6])))
     (is (= :l (v1 [9 6])))
     (is (= :d (v1 [6 12])))

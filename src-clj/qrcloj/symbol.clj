@@ -1,11 +1,12 @@
 (ns qrcloj.symbol
   (:require [qrcloj.version :as version]
-            [qrcloj.masking :as masking])
+            [qrcloj.masking :as masking]
+            [qrcloj.format :as format])
   (:use [clojure.math.combinatorics :only [selections]]
         [qrcloj.utils :only [dec-to-bin]]))
 
-(defn blank [version] 
-  {:version version :dim (version/dim version) :grid {}})
+(defn blank [version ecl]
+  {:version version :ecl ecl :dim (version/dim version) :grid {}})
 
 (defn color [c ms]
   (zipmap ms (repeat (count ms) c)))
@@ -98,7 +99,12 @@
 (defn add-data [{:keys [version dim grid] :as sym} data]
   (assoc sym :grid (merge grid data)))
 
-
+(defn add-format [{:keys [dim grid ecl] :as sym} mask-idx]
+  (let [format-seq (map {1 :d 0 :l} (format/indicator ecl mask-idx))]
+    (assoc sym :grid (merge grid
+      {(format/dark-module dim) :d}
+      (zipmap (format/vert-modules dim) format-seq)
+      (zipmap (format/horz-modules dim) format-seq)))))
 
 (defn disp [{:keys [dim grid]}]
   (doseq [y (range dim)]
@@ -106,19 +112,20 @@
       (print (get grid [x y] :0) " "))
     (prn)))
 
-(defn function-modules [version]
-  (-> version
-      blank
+(defn function-modules [version ecl]
+  (-> (blank version ecl)
       add-finders
       add-separators
       add-alignment
       add-timing))
 
-(defn generate-unmasked [{:keys [version data]}]
-  (add-data (function-modules version) (position-data (function-modules version) data)))
+(defn generate-unmasked [{:keys [ecl version data]}]
+  (add-data (function-modules version ecl) (position-data (function-modules version) data)))
 
-(defn generate [{:keys [version data]}]
-  (let [function-sym (function-modules version)
+
+(defn generate [{:keys [ecl version data]}]
+  (let [function-sym (function-modules version ecl)
         {:keys [idx masked]} (masking/mask-symbol 
-          {:grid (position-data function-sym data) :dim (version/dim version)})]
-    (add-data function-sym masked)))
+          {:grid (position-data function-sym data) :dim (version/dim version)})
+        sym-with-data (add-data function-sym masked)]
+    (add-format sym-with-data idx)))

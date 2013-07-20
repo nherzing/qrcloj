@@ -10,7 +10,7 @@
  :plugins [[lein-cljsbuild "0.3.2"]]
  :cljsbuild {
   :crossovers [qrcloj.encode qrcloj.error-correction qrcloj.utils qrcloj.symbol qrcloj.masking
-               qrcloj.binary-field qrcloj.version clojure.math.combinatorics]
+               qrcloj.binary-field qrcloj.version qrcloj.format clojure.math.combinatorics]
   :builds [{:source-paths ["src-cljs"]
             :compiler {:output-to "out/main.js"
                        :optimizations :whitespace
