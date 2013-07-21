@@ -106,6 +106,14 @@
       (zipmap (format/vert-modules dim) format-seq)
       (zipmap (format/horz-modules dim) format-seq)))))
 
+(defn add-version [{:keys [dim grid version] :as sym}]
+  (let [version-seq (map {1 :d 0 :l} (version/indicator version))]
+    (. js/console (log version))
+    (if (< version 7) sym
+      (assoc sym :grid (merge grid
+        (zipmap (version/upper-right-modules dim) version-seq)
+        (zipmap (version/lower-left-modules dim) version-seq))))))
+
 (defn disp [{:keys [dim grid]}]
   (doseq [y (range dim)]
     (doseq [x (range dim)]
@@ -120,12 +128,13 @@
       add-timing))
 
 (defn generate-unmasked [{:keys [ecl version data]}]
-  (add-data (function-modules version ecl) (position-data (function-modules version) data)))
+  (add-data (function-modules version ecl) (position-data (function-modules version ecl) data)))
 
 
 (defn generate [{:keys [ecl version data]}]
   (let [function-sym (function-modules version ecl)
         {:keys [idx masked]} (masking/mask-symbol 
           {:grid (position-data function-sym data) :dim (version/dim version)})
-        sym-with-data (add-data function-sym masked)]
-    (add-format sym-with-data idx)))
+        sym-with-data (add-data function-sym masked)
+        sym-with-format (add-format sym-with-data idx)]
+    (add-version sym-with-format)))

@@ -1,5 +1,6 @@
 (ns qrcloj.version
-  (:use [qrcloj.utils :only [positions]]))
+  (:use [qrcloj.utils :only [positions dec-to-bin]]
+        [qrcloj.error-correction :only [poly-rem]]))
 
 
 (defn dim [version] (+ 17 (* 4 version)))
@@ -57,5 +58,16 @@
 (defn error-correction-layout [{:keys [version ecl] :as ver}]
   (apply concat (map (fn [[ct [total data]]] (repeat ct [data (- total data)]))
     (partition 2 (raw-error-correction-layouts ver)))))
+
+(defn indicator [version]
+  (let [data (dec-to-bin 6 version)
+        generator [1 1 1 1 1 0 0 1 0 0 1 0 1]]
+    (reverse (concat data (poly-rem data generator)))))
+
+
+(defn upper-right-modules [dim]
+  (for [y (range 6) x (range (- dim 11) (- dim 8)) ] [x y]))
+(defn lower-left-modules [dim]
+  (map reverse (upper-right-modules dim)))
 
 

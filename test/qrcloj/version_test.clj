@@ -17,3 +17,8 @@
   (is (= [[19 7]] (error-correction-layout {:version 1 :ecl :L})))
   (is (= [[24 26] [24 26]] (error-correction-layout {:version 4 :ecl :Q})))
   )
+
+(deftest indicator-test
+  (is (= [0 0 1 0 1 0 0 1 0 0 1 1 1 1 1 0 0 0]
+    (indicator 7)))
+  )
