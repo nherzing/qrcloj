@@ -108,7 +108,6 @@
 
 (defn add-version [{:keys [dim grid version] :as sym}]
   (let [version-seq (map {1 :d 0 :l} (version/indicator version))]
-    (. js/console (log version))
     (if (< version 7) sym
       (assoc sym :grid (merge grid
         (zipmap (version/upper-right-modules dim) version-seq)

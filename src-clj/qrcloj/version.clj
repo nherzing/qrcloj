@@ -5,6 +5,29 @@
 
 (defn dim [version] (+ 17 (* 4 version)))
 
+(def from-data {
+  :numeric {
+    :L [41 77 127 187 255 322 370 461 552 652 772 883 1022 1101 1250 1408 1548]
+    :M [34 63 101 149 202 255 293 365 432 513 604 691 796 871 991 1082 1212]
+    :Q [27 48 77 111 144 178 207 259 312 364 427 489 580 621 703 775 876]
+    :H [17 34 58 82 106 139 154 202 235 288 331 374 427 468 530 602 674]
+  }
+  :alphanumeric {
+    :L [25 47 77 114 154 195 224 279 335 395 468 535 619 667 758 854 938]
+    :M [20 38 61 90 122 154 178 221 262 311 366 419 483 528 600 656 734]
+    :Q [16 29 47 67 87 108 125 157 189 221 259 296 352 376 426 470 531]
+    :H [20 35 50 64 84 93 122 143 174 200 227 259 283 321 365 408]
+  }
+  :byte {
+    :L [17 32 53 78 106 134 154 192 230 271 321 367 425 458 520 586 644 718 792
+        858 929 1003 1091 1171 1273 1367 1475 1528 1628 1732 1840 1952 2068 2188
+        2303 2431 2563 2699 2809 2953]
+    :M [14 26 42 62 84 106 122 152 180 213 251 287 331 362 412 450 504 560 624
+        666 711 779 857 911 997 1059 1125 1190 1264 1370 1452 1538 1628 1722 1809 1911
+        1989 2099 2213 2331]
+    :Q [11 20 32 46 60 74 86 108 130 151 177 203 241 258 292 322 364]
+  }})
+
 (def data-capacity-by-ecl {
   :L [19 34 55 80 108 136 156 194 232 274 324 370 428 461 523 589
       647 721 795 861 932 1006 1094 1174 1276 1370 1468 1531 1631
@@ -20,13 +43,17 @@
       793 845 901 961 986 1054 1096 1142 1222 1276]
   })
 
+
+(defn best-fit [mode ecl data]
+  (let [idx (first (positions (fn [[f s]] (when (and (> (count data) f) (<= (count data) s)) s))
+    (partition 2 1 (conj (seq ((from-data mode) ecl)) 0))))]
+  {:ecl ecl :version (inc idx) :limit (((from-data mode) ecl) idx)}))
+
+
 (def bit-capacity-by-ecl (into {} 
   (for [[ecl versions] data-capacity-by-ecl]
     [ecl (vec (map (partial * 8) versions))])))
 
-(defn best-fit [ecl num-bits]
-  {:ecl ecl :version (inc (first (positions (fn [[f s]] (when (and (> num-bits f) (<= num-bits s)) s)) 
-    (partition 2 1 (conj (seq (bit-capacity-by-ecl ecl)) 0)))))})
 
 (defn bit-capacity [{:keys [version ecl]}]
   ((bit-capacity-by-ecl ecl) (dec version)))

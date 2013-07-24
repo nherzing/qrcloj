@@ -1,5 +1,6 @@
 (ns qrcloj.encode-test
   (:use clojure.test
+        [qrcloj.utils :only [dec-to-bin]]
         qrcloj.encode))
 
 (deftest to-binary-test
@@ -27,15 +28,16 @@
   )
 
 (deftest char-count-test
-  (is (= [0 0 0 0 0 0 1 0 0 0] (char-count {:mode :numeric :data "01234567"})))
-  (is (= [0 0 0 0 0 0 1 0 1] (char-count {:mode :alphanumeric :data "HELLO"})))
-  (is (= [0 0 0 0 0 1 0 1] (char-count {:mode :byte :data "hello"})))
+  (is (= [0 0 0 0 0 0 1 0 0 0] (char-count {:mode :numeric :data "01234567" :version 1})))
+  (is (= [0 0 0 0 0 0 1 0 1] (char-count {:mode :alphanumeric :data "HELLO" :version 1})))
+  (is (= [0 0 0 0 0 1 0 1] (char-count {:mode :byte :data "hello" :version 1})))
+  (is (= [0 0 0 0 0 0 0 0 1 0 0 0] (char-count {:mode :numeric :data "01234567" :version 15})))
   )
 
 (deftest terminator-test
-  (is (= [0 0 0 0] (terminator :L 15)))
-  (is (= [0 0] (terminator :L 270)))
-  (is (= [] (terminator :H 128)))
+  (is (= [0 0 0 0] (terminator {:ecl :L :version 1} 15)))
+  (is (= [0 0] (terminator {:ecl :L :version 2} 270)))
+  (is (= [] (terminator {:ecl :H :version 2} 128)))
   )
 
 (deftest pad-to-test

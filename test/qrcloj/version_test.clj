@@ -3,9 +3,9 @@
         qrcloj.version))
 
 (deftest best-fit-test
-  (is (= 1 (:version (best-fit :L 50))))
-  (is (= 1 (:version (best-fit :L 152))))
-  (is (= 3 (:version (best-fit :Q 177))))
+  (is (= 1 (:version (best-fit :byte :L (repeat 10 "a")))))
+  (is (= 1 (:version (best-fit :numeric :L (repeat 41 "0")))))
+  (is (= 3 (:version (best-fit :alphanumeric :Q (repeat 40 "Z")))))
   )
 
 (deftest bit-capacity-test

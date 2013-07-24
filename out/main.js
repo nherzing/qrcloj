@@ -21718,10 +21718,10 @@ goog.require("cljs.core");
 goog.require("qrcloj.interop");
 goog.require("qrcloj.interop");
 qrcloj.utils.take_many = function take_many(counts, s) {
-  return cljs.core.first.call(null, cljs.core.reduce.call(null, function(p__4699, n) {
-    var vec__4700 = p__4699;
-    var acc = cljs.core.nth.call(null, vec__4700, 0, null);
-    var rem = cljs.core.nth.call(null, vec__4700, 1, null);
+  return cljs.core.first.call(null, cljs.core.reduce.call(null, function(p__3911, n) {
+    var vec__3912 = p__3911;
+    var acc = cljs.core.nth.call(null, vec__3912, 0, null);
+    var rem = cljs.core.nth.call(null, vec__3912, 1, null);
     return cljs.core.PersistentVector.fromArray([cljs.core.conj.call(null, acc, cljs.core.take.call(null, n, rem)), cljs.core.drop.call(null, n, rem)], true)
   }, cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.EMPTY, s], true), counts))
 };
@@ -21731,26 +21731,26 @@ qrcloj.utils.sinterleave = function() {
     return c1
   };
   var sinterleave__3 = function() {
-    var G__4701__delegate = function(c1, c2, colls) {
+    var G__3913__delegate = function(c1, c2, colls) {
       return cljs.core.apply.call(null, cljs.core.interleave, cljs.core.concat.call(null, cljs.core.PersistentVector.fromArray([c1, c2], true), colls))
     };
-    var G__4701 = function(c1, c2, var_args) {
+    var G__3913 = function(c1, c2, var_args) {
       var colls = null;
       if(arguments.length > 2) {
         colls = cljs.core.array_seq(Array.prototype.slice.call(arguments, 2), 0)
       }
-      return G__4701__delegate.call(this, c1, c2, colls)
+      return G__3913__delegate.call(this, c1, c2, colls)
     };
-    G__4701.cljs$lang$maxFixedArity = 2;
-    G__4701.cljs$lang$applyTo = function(arglist__4702) {
-      var c1 = cljs.core.first(arglist__4702);
-      arglist__4702 = cljs.core.next(arglist__4702);
-      var c2 = cljs.core.first(arglist__4702);
-      var colls = cljs.core.rest(arglist__4702);
-      return G__4701__delegate(c1, c2, colls)
+    G__3913.cljs$lang$maxFixedArity = 2;
+    G__3913.cljs$lang$applyTo = function(arglist__3914) {
+      var c1 = cljs.core.first(arglist__3914);
+      arglist__3914 = cljs.core.next(arglist__3914);
+      var c2 = cljs.core.first(arglist__3914);
+      var colls = cljs.core.rest(arglist__3914);
+      return G__3913__delegate(c1, c2, colls)
     };
-    G__4701.cljs$core$IFn$_invoke$arity$variadic = G__4701__delegate;
-    return G__4701
+    G__3913.cljs$core$IFn$_invoke$arity$variadic = G__3913__delegate;
+    return G__3913
   }();
   sinterleave = function(c1, c2, var_args) {
     var colls = var_args;
@@ -21772,32 +21772,32 @@ qrcloj.utils.indexed = function indexed(s) {
   return cljs.core.map.call(null, cljs.core.vector, cljs.core.iterate.call(null, cljs.core.inc, 0), s)
 };
 qrcloj.utils.positions = function positions(pred, coll) {
-  var iter__3042__auto__ = function iter__4711(s__4712) {
+  var iter__3042__auto__ = function iter__3923(s__3924) {
     return new cljs.core.LazySeq(null, false, function() {
-      var s__4712__$1 = s__4712;
+      var s__3924__$1 = s__3924;
       while(true) {
-        var temp__4092__auto__ = cljs.core.seq.call(null, s__4712__$1);
+        var temp__4092__auto__ = cljs.core.seq.call(null, s__3924__$1);
         if(temp__4092__auto__) {
-          var s__4712__$2 = temp__4092__auto__;
-          if(cljs.core.chunked_seq_QMARK_.call(null, s__4712__$2)) {
-            var c__3040__auto__ = cljs.core.chunk_first.call(null, s__4712__$2);
+          var s__3924__$2 = temp__4092__auto__;
+          if(cljs.core.chunked_seq_QMARK_.call(null, s__3924__$2)) {
+            var c__3040__auto__ = cljs.core.chunk_first.call(null, s__3924__$2);
             var size__3041__auto__ = cljs.core.count.call(null, c__3040__auto__);
-            var b__4714 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
+            var b__3926 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
             if(function() {
-              var i__4713 = 0;
+              var i__3925 = 0;
               while(true) {
-                if(i__4713 < size__3041__auto__) {
-                  var vec__4717 = cljs.core._nth.call(null, c__3040__auto__, i__4713);
-                  var idx = cljs.core.nth.call(null, vec__4717, 0, null);
-                  var elt = cljs.core.nth.call(null, vec__4717, 1, null);
+                if(i__3925 < size__3041__auto__) {
+                  var vec__3929 = cljs.core._nth.call(null, c__3040__auto__, i__3925);
+                  var idx = cljs.core.nth.call(null, vec__3929, 0, null);
+                  var elt = cljs.core.nth.call(null, vec__3929, 1, null);
                   if(cljs.core.truth_(pred.call(null, elt))) {
-                    cljs.core.chunk_append.call(null, b__4714, idx);
-                    var G__4719 = i__4713 + 1;
-                    i__4713 = G__4719;
+                    cljs.core.chunk_append.call(null, b__3926, idx);
+                    var G__3931 = i__3925 + 1;
+                    i__3925 = G__3931;
                     continue
                   }else {
-                    var G__4720 = i__4713 + 1;
-                    i__4713 = G__4720;
+                    var G__3932 = i__3925 + 1;
+                    i__3925 = G__3932;
                     continue
                   }
                 }else {
@@ -21806,19 +21806,19 @@ qrcloj.utils.positions = function positions(pred, coll) {
                 break
               }
             }()) {
-              return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__4714), iter__4711.call(null, cljs.core.chunk_rest.call(null, s__4712__$2)))
+              return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3926), iter__3923.call(null, cljs.core.chunk_rest.call(null, s__3924__$2)))
             }else {
-              return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__4714), null)
+              return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3926), null)
             }
           }else {
-            var vec__4718 = cljs.core.first.call(null, s__4712__$2);
-            var idx = cljs.core.nth.call(null, vec__4718, 0, null);
-            var elt = cljs.core.nth.call(null, vec__4718, 1, null);
+            var vec__3930 = cljs.core.first.call(null, s__3924__$2);
+            var idx = cljs.core.nth.call(null, vec__3930, 0, null);
+            var elt = cljs.core.nth.call(null, vec__3930, 1, null);
             if(cljs.core.truth_(pred.call(null, elt))) {
-              return cljs.core.cons.call(null, idx, iter__4711.call(null, cljs.core.rest.call(null, s__4712__$2)))
+              return cljs.core.cons.call(null, idx, iter__3923.call(null, cljs.core.rest.call(null, s__3924__$2)))
             }else {
-              var G__4721 = cljs.core.rest.call(null, s__4712__$2);
-              s__4712__$1 = G__4721;
+              var G__3933 = cljs.core.rest.call(null, s__3924__$2);
+              s__3924__$1 = G__3933;
               continue
             }
           }
@@ -21837,11 +21837,11 @@ qrcloj.utils.dec_to_bin = function dec_to_bin(len, n) {
 };
 goog.provide("qrcloj.binary_field");
 goog.require("cljs.core");
-qrcloj.binary_field.antilog = function antilog(p__4659) {
-  var map__4661 = p__4659;
-  var map__4661__$1 = cljs.core.seq_QMARK_.call(null, map__4661) ? cljs.core.apply.call(null, cljs.core.hash_map, map__4661) : map__4661;
-  var prim_poly = cljs.core.get.call(null, map__4661__$1, "\ufdd0:prim-poly");
-  var order = cljs.core.get.call(null, map__4661__$1, "\ufdd0:order");
+qrcloj.binary_field.antilog = function antilog(p__3857) {
+  var map__3859 = p__3857;
+  var map__3859__$1 = cljs.core.seq_QMARK_.call(null, map__3859) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3859) : map__3859;
+  var prim_poly = cljs.core.get.call(null, map__3859__$1, "\ufdd0:prim-poly");
+  var order = cljs.core.get.call(null, map__3859__$1, "\ufdd0:order");
   return cljs.core.vec.call(null, cljs.core.take.call(null, order - 1, cljs.core.iterate.call(null, function(prev) {
     var next = prev * 2;
     if(next < order) {
@@ -21851,20 +21851,20 @@ qrcloj.binary_field.antilog = function antilog(p__4659) {
     }
   }, 1)))
 };
-qrcloj.binary_field.log = function log(p__4662) {
-  var map__4664 = p__4662;
-  var map__4664__$1 = cljs.core.seq_QMARK_.call(null, map__4664) ? cljs.core.apply.call(null, cljs.core.hash_map, map__4664) : map__4664;
-  var f = map__4664__$1;
-  var order = cljs.core.get.call(null, map__4664__$1, "\ufdd0:order");
+qrcloj.binary_field.log = function log(p__3860) {
+  var map__3862 = p__3860;
+  var map__3862__$1 = cljs.core.seq_QMARK_.call(null, map__3862) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3862) : map__3862;
+  var f = map__3862__$1;
+  var order = cljs.core.get.call(null, map__3862__$1, "\ufdd0:order");
   return cljs.core.zipmap.call(null, qrcloj.binary_field.antilog.call(null, f), cljs.core.range.call(null, 0, order - 1))
 };
 qrcloj.binary_field.add = cljs.core.bit_xor;
 qrcloj.binary_field.sub = qrcloj.binary_field.add;
-qrcloj.binary_field.mult = function mult(p__4665) {
-  var map__4667 = p__4665;
-  var map__4667__$1 = cljs.core.seq_QMARK_.call(null, map__4667) ? cljs.core.apply.call(null, cljs.core.hash_map, map__4667) : map__4667;
-  var f = map__4667__$1;
-  var order = cljs.core.get.call(null, map__4667__$1, "\ufdd0:order");
+qrcloj.binary_field.mult = function mult(p__3863) {
+  var map__3865 = p__3863;
+  var map__3865__$1 = cljs.core.seq_QMARK_.call(null, map__3865) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3865) : map__3865;
+  var f = map__3865__$1;
+  var order = cljs.core.get.call(null, map__3865__$1, "\ufdd0:order");
   var antilog = qrcloj.binary_field.antilog.call(null, f);
   var log = qrcloj.binary_field.log.call(null, f);
   return function(x, y) {
@@ -21899,8 +21899,8 @@ qrcloj.binary_field.poly_rem = function poly_rem(f) {
       if(order_delta < 0) {
         return d
       }else {
-        var G__4668 = cljs.core.rest.call(null, cljs.core.map.call(null, qrcloj.binary_field.add, d, cljs.core.map.call(null, cljs.core.partial.call(null, mult, cljs.core.first.call(null, d)), cljs.core.concat.call(null, divisor, cljs.core.repeat.call(null, order_delta, 0)))));
-        d = G__4668;
+        var G__3866 = cljs.core.rest.call(null, cljs.core.map.call(null, qrcloj.binary_field.add, d, cljs.core.map.call(null, cljs.core.partial.call(null, mult, cljs.core.first.call(null, d)), cljs.core.concat.call(null, divisor, cljs.core.repeat.call(null, order_delta, 0)))));
+        d = G__3866;
         continue
       }
       break
@@ -21920,8 +21920,8 @@ qrcloj.error_correction.error_correction_codewords = function error_correction_c
 };
 qrcloj.error_correction.attach_error_correction_codewords = function attach_error_correction_codewords(data_codewords, layout) {
   var grouped_codewords = qrcloj.utils.take_many.call(null, cljs.core.map.call(null, cljs.core.first, layout), data_codewords);
-  return cljs.core.map.call(null, cljs.core.vector, grouped_codewords, cljs.core.map.call(null, function(p1__4657_SHARP_, p2__4658_SHARP_) {
-    return qrcloj.error_correction.error_correction_codewords.call(null, p1__4657_SHARP_, p2__4658_SHARP_)
+  return cljs.core.map.call(null, cljs.core.vector, grouped_codewords, cljs.core.map.call(null, function(p1__3855_SHARP_, p2__3856_SHARP_) {
+    return qrcloj.error_correction.error_correction_codewords.call(null, p1__3855_SHARP_, p2__3856_SHARP_)
   }, cljs.core.map.call(null, cljs.core.second, layout), grouped_codewords))
 };
 goog.provide("qrcloj.format");
@@ -21940,25 +21940,25 @@ qrcloj.format.indicator = function indicator(ecl, mask_idx) {
 };
 qrcloj.format.vert_modules = function vert_modules(dim) {
   return cljs.core.concat.call(null, cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([8, 0], true), cljs.core.PersistentVector.fromArray([8, 1], true), cljs.core.PersistentVector.fromArray([8, 2], true), cljs.core.PersistentVector.fromArray([8, 3], true), cljs.core.PersistentVector.fromArray([8, 4], true), cljs.core.PersistentVector.fromArray([8, 5], true), cljs.core.PersistentVector.fromArray([8, 7], true), cljs.core.PersistentVector.fromArray([8, 8], true)], true), function() {
-    var iter__3042__auto__ = function iter__4023(s__4024) {
+    var iter__3042__auto__ = function iter__4243(s__4244) {
       return new cljs.core.LazySeq(null, false, function() {
-        var s__4024__$1 = s__4024;
+        var s__4244__$1 = s__4244;
         while(true) {
-          var temp__4092__auto__ = cljs.core.seq.call(null, s__4024__$1);
+          var temp__4092__auto__ = cljs.core.seq.call(null, s__4244__$1);
           if(temp__4092__auto__) {
-            var s__4024__$2 = temp__4092__auto__;
-            if(cljs.core.chunked_seq_QMARK_.call(null, s__4024__$2)) {
-              var c__3040__auto__ = cljs.core.chunk_first.call(null, s__4024__$2);
+            var s__4244__$2 = temp__4092__auto__;
+            if(cljs.core.chunked_seq_QMARK_.call(null, s__4244__$2)) {
+              var c__3040__auto__ = cljs.core.chunk_first.call(null, s__4244__$2);
               var size__3041__auto__ = cljs.core.count.call(null, c__3040__auto__);
-              var b__4026 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
+              var b__4246 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
               if(function() {
-                var i__4025 = 0;
+                var i__4245 = 0;
                 while(true) {
-                  if(i__4025 < size__3041__auto__) {
-                    var y = cljs.core._nth.call(null, c__3040__auto__, i__4025);
-                    cljs.core.chunk_append.call(null, b__4026, cljs.core.PersistentVector.fromArray([8, y], true));
-                    var G__4027 = i__4025 + 1;
-                    i__4025 = G__4027;
+                  if(i__4245 < size__3041__auto__) {
+                    var y = cljs.core._nth.call(null, c__3040__auto__, i__4245);
+                    cljs.core.chunk_append.call(null, b__4246, cljs.core.PersistentVector.fromArray([8, y], true));
+                    var G__4247 = i__4245 + 1;
+                    i__4245 = G__4247;
                     continue
                   }else {
                     return true
@@ -21966,13 +21966,13 @@ qrcloj.format.vert_modules = function vert_modules(dim) {
                   break
                 }
               }()) {
-                return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__4026), iter__4023.call(null, cljs.core.chunk_rest.call(null, s__4024__$2)))
+                return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__4246), iter__4243.call(null, cljs.core.chunk_rest.call(null, s__4244__$2)))
               }else {
-                return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__4026), null)
+                return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__4246), null)
               }
             }else {
-              var y = cljs.core.first.call(null, s__4024__$2);
-              return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([8, y], true), iter__4023.call(null, cljs.core.rest.call(null, s__4024__$2)))
+              var y = cljs.core.first.call(null, s__4244__$2);
+              return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([8, y], true), iter__4243.call(null, cljs.core.rest.call(null, s__4244__$2)))
             }
           }else {
             return null
@@ -21986,25 +21986,25 @@ qrcloj.format.vert_modules = function vert_modules(dim) {
 };
 qrcloj.format.horz_modules = function horz_modules(dim) {
   return cljs.core.concat.call(null, function() {
-    var iter__3042__auto__ = function iter__4032(s__4033) {
+    var iter__3042__auto__ = function iter__4252(s__4253) {
       return new cljs.core.LazySeq(null, false, function() {
-        var s__4033__$1 = s__4033;
+        var s__4253__$1 = s__4253;
         while(true) {
-          var temp__4092__auto__ = cljs.core.seq.call(null, s__4033__$1);
+          var temp__4092__auto__ = cljs.core.seq.call(null, s__4253__$1);
           if(temp__4092__auto__) {
-            var s__4033__$2 = temp__4092__auto__;
-            if(cljs.core.chunked_seq_QMARK_.call(null, s__4033__$2)) {
-              var c__3040__auto__ = cljs.core.chunk_first.call(null, s__4033__$2);
+            var s__4253__$2 = temp__4092__auto__;
+            if(cljs.core.chunked_seq_QMARK_.call(null, s__4253__$2)) {
+              var c__3040__auto__ = cljs.core.chunk_first.call(null, s__4253__$2);
               var size__3041__auto__ = cljs.core.count.call(null, c__3040__auto__);
-              var b__4035 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
+              var b__4255 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
               if(function() {
-                var i__4034 = 0;
+                var i__4254 = 0;
                 while(true) {
-                  if(i__4034 < size__3041__auto__) {
-                    var x = cljs.core._nth.call(null, c__3040__auto__, i__4034);
-                    cljs.core.chunk_append.call(null, b__4035, cljs.core.PersistentVector.fromArray([x, 8], true));
-                    var G__4036 = i__4034 + 1;
-                    i__4034 = G__4036;
+                  if(i__4254 < size__3041__auto__) {
+                    var x = cljs.core._nth.call(null, c__3040__auto__, i__4254);
+                    cljs.core.chunk_append.call(null, b__4255, cljs.core.PersistentVector.fromArray([x, 8], true));
+                    var G__4256 = i__4254 + 1;
+                    i__4254 = G__4256;
                     continue
                   }else {
                     return true
@@ -22012,13 +22012,13 @@ qrcloj.format.horz_modules = function horz_modules(dim) {
                   break
                 }
               }()) {
-                return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__4035), iter__4032.call(null, cljs.core.chunk_rest.call(null, s__4033__$2)))
+                return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__4255), iter__4252.call(null, cljs.core.chunk_rest.call(null, s__4253__$2)))
               }else {
-                return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__4035), null)
+                return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__4255), null)
               }
             }else {
-              var x = cljs.core.first.call(null, s__4033__$2);
-              return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([x, 8], true), iter__4032.call(null, cljs.core.rest.call(null, s__4033__$2)))
+              var x = cljs.core.first.call(null, s__4253__$2);
+              return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([x, 8], true), iter__4252.call(null, cljs.core.rest.call(null, s__4253__$2)))
             }
           }else {
             return null
@@ -22381,52 +22381,52 @@ goog.require("cljs.core");
 goog.require("qrcloj.interop");
 goog.require("qrcloj.interop");
 qrcloj.masking.masks = cljs.core.vec.call(null, cljs.core.map.call(null, function(m) {
-  return function(p1__3775_SHARP_) {
-    if(cljs.core._EQ_.call(null, 0, m.call(null, p1__3775_SHARP_))) {
+  return function(p1__3934_SHARP_) {
+    if(cljs.core._EQ_.call(null, 0, m.call(null, p1__3934_SHARP_))) {
       return"\ufdd0:d"
     }else {
       return"\ufdd0:l"
     }
   }
-}, cljs.core.PersistentVector.fromArray([function(p__3776) {
-  var vec__3777 = p__3776;
-  var x = cljs.core.nth.call(null, vec__3777, 0, null);
-  var y = cljs.core.nth.call(null, vec__3777, 1, null);
+}, cljs.core.PersistentVector.fromArray([function(p__3935) {
+  var vec__3936 = p__3935;
+  var x = cljs.core.nth.call(null, vec__3936, 0, null);
+  var y = cljs.core.nth.call(null, vec__3936, 1, null);
   return cljs.core.mod.call(null, x + y, 2)
-}, function(p__3778) {
-  var vec__3779 = p__3778;
-  var x = cljs.core.nth.call(null, vec__3779, 0, null);
-  var y = cljs.core.nth.call(null, vec__3779, 1, null);
+}, function(p__3937) {
+  var vec__3938 = p__3937;
+  var x = cljs.core.nth.call(null, vec__3938, 0, null);
+  var y = cljs.core.nth.call(null, vec__3938, 1, null);
   return cljs.core.mod.call(null, y, 2)
-}, function(p__3780) {
-  var vec__3781 = p__3780;
-  var x = cljs.core.nth.call(null, vec__3781, 0, null);
-  var y = cljs.core.nth.call(null, vec__3781, 1, null);
+}, function(p__3939) {
+  var vec__3940 = p__3939;
+  var x = cljs.core.nth.call(null, vec__3940, 0, null);
+  var y = cljs.core.nth.call(null, vec__3940, 1, null);
   return cljs.core.mod.call(null, x, 3)
-}, function(p__3782) {
-  var vec__3783 = p__3782;
-  var x = cljs.core.nth.call(null, vec__3783, 0, null);
-  var y = cljs.core.nth.call(null, vec__3783, 1, null);
+}, function(p__3941) {
+  var vec__3942 = p__3941;
+  var x = cljs.core.nth.call(null, vec__3942, 0, null);
+  var y = cljs.core.nth.call(null, vec__3942, 1, null);
   return cljs.core.mod.call(null, x + y, 3)
-}, function(p__3784) {
-  var vec__3785 = p__3784;
-  var x = cljs.core.nth.call(null, vec__3785, 0, null);
-  var y = cljs.core.nth.call(null, vec__3785, 1, null);
+}, function(p__3943) {
+  var vec__3944 = p__3943;
+  var x = cljs.core.nth.call(null, vec__3944, 0, null);
+  var y = cljs.core.nth.call(null, vec__3944, 1, null);
   return cljs.core.mod.call(null, cljs.core.quot.call(null, y, 2) + cljs.core.quot.call(null, x, 3), 2)
-}, function(p__3786) {
-  var vec__3787 = p__3786;
-  var x = cljs.core.nth.call(null, vec__3787, 0, null);
-  var y = cljs.core.nth.call(null, vec__3787, 1, null);
+}, function(p__3945) {
+  var vec__3946 = p__3945;
+  var x = cljs.core.nth.call(null, vec__3946, 0, null);
+  var y = cljs.core.nth.call(null, vec__3946, 1, null);
   return cljs.core.mod.call(null, x * y, 2) + cljs.core.mod.call(null, x * y, 3)
-}, function(p__3788) {
-  var vec__3789 = p__3788;
-  var x = cljs.core.nth.call(null, vec__3789, 0, null);
-  var y = cljs.core.nth.call(null, vec__3789, 1, null);
+}, function(p__3947) {
+  var vec__3948 = p__3947;
+  var x = cljs.core.nth.call(null, vec__3948, 0, null);
+  var y = cljs.core.nth.call(null, vec__3948, 1, null);
   return cljs.core.mod.call(null, cljs.core.mod.call(null, x * y, 2) + cljs.core.mod.call(null, x * y, 3), 2)
-}, function(p__3790) {
-  var vec__3791 = p__3790;
-  var x = cljs.core.nth.call(null, vec__3791, 0, null);
-  var y = cljs.core.nth.call(null, vec__3791, 1, null);
+}, function(p__3949) {
+  var vec__3950 = p__3949;
+  var x = cljs.core.nth.call(null, vec__3950, 0, null);
+  var y = cljs.core.nth.call(null, vec__3950, 1, null);
   return cljs.core.mod.call(null, cljs.core.mod.call(null, x + y, 2) + cljs.core.mod.call(null, x * y, 3), 2)
 }], true)));
 qrcloj.masking.xor = function xor(a, b) {
@@ -22434,35 +22434,35 @@ qrcloj.masking.xor = function xor(a, b) {
 };
 qrcloj.masking.gen_mask = function gen_mask(mask, dim) {
   return cljs.core.apply.call(null, cljs.core.hash_map, cljs.core.apply.call(null, cljs.core.concat, function() {
-    var iter__3042__auto__ = function iter__3798(s__3799) {
+    var iter__3042__auto__ = function iter__3957(s__3958) {
       return new cljs.core.LazySeq(null, false, function() {
-        var s__3799__$1 = s__3799;
+        var s__3958__$1 = s__3958;
         while(true) {
-          var temp__4092__auto__ = cljs.core.seq.call(null, s__3799__$1);
+          var temp__4092__auto__ = cljs.core.seq.call(null, s__3958__$1);
           if(temp__4092__auto__) {
             var xs__4579__auto__ = temp__4092__auto__;
             var x = cljs.core.first.call(null, xs__4579__auto__);
-            var iterys__3038__auto__ = function(s__3799__$1, x, xs__4579__auto__, temp__4092__auto__) {
-              return function iter__3800(s__3801) {
-                return new cljs.core.LazySeq(null, false, function(s__3799__$1, x, xs__4579__auto__, temp__4092__auto__) {
+            var iterys__3038__auto__ = function(s__3958__$1, x, xs__4579__auto__, temp__4092__auto__) {
+              return function iter__3959(s__3960) {
+                return new cljs.core.LazySeq(null, false, function(s__3958__$1, x, xs__4579__auto__, temp__4092__auto__) {
                   return function() {
-                    var s__3801__$1 = s__3801;
+                    var s__3960__$1 = s__3960;
                     while(true) {
-                      var temp__4092__auto____$1 = cljs.core.seq.call(null, s__3801__$1);
+                      var temp__4092__auto____$1 = cljs.core.seq.call(null, s__3960__$1);
                       if(temp__4092__auto____$1) {
-                        var s__3801__$2 = temp__4092__auto____$1;
-                        if(cljs.core.chunked_seq_QMARK_.call(null, s__3801__$2)) {
-                          var c__3040__auto__ = cljs.core.chunk_first.call(null, s__3801__$2);
+                        var s__3960__$2 = temp__4092__auto____$1;
+                        if(cljs.core.chunked_seq_QMARK_.call(null, s__3960__$2)) {
+                          var c__3040__auto__ = cljs.core.chunk_first.call(null, s__3960__$2);
                           var size__3041__auto__ = cljs.core.count.call(null, c__3040__auto__);
-                          var b__3803 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
+                          var b__3962 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
                           if(function() {
-                            var i__3802 = 0;
+                            var i__3961 = 0;
                             while(true) {
-                              if(i__3802 < size__3041__auto__) {
-                                var y = cljs.core._nth.call(null, c__3040__auto__, i__3802);
-                                cljs.core.chunk_append.call(null, b__3803, cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([x, y], true), mask.call(null, cljs.core.PersistentVector.fromArray([x, y], true))], true));
-                                var G__3804 = i__3802 + 1;
-                                i__3802 = G__3804;
+                              if(i__3961 < size__3041__auto__) {
+                                var y = cljs.core._nth.call(null, c__3040__auto__, i__3961);
+                                cljs.core.chunk_append.call(null, b__3962, cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([x, y], true), mask.call(null, cljs.core.PersistentVector.fromArray([x, y], true))], true));
+                                var G__3963 = i__3961 + 1;
+                                i__3961 = G__3963;
                                 continue
                               }else {
                                 return true
@@ -22470,13 +22470,13 @@ qrcloj.masking.gen_mask = function gen_mask(mask, dim) {
                               break
                             }
                           }()) {
-                            return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3803), iter__3800.call(null, cljs.core.chunk_rest.call(null, s__3801__$2)))
+                            return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3962), iter__3959.call(null, cljs.core.chunk_rest.call(null, s__3960__$2)))
                           }else {
-                            return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3803), null)
+                            return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3962), null)
                           }
                         }else {
-                          var y = cljs.core.first.call(null, s__3801__$2);
-                          return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([x, y], true), mask.call(null, cljs.core.PersistentVector.fromArray([x, y], true))], true), iter__3800.call(null, cljs.core.rest.call(null, s__3801__$2)))
+                          var y = cljs.core.first.call(null, s__3960__$2);
+                          return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([x, y], true), mask.call(null, cljs.core.PersistentVector.fromArray([x, y], true))], true), iter__3959.call(null, cljs.core.rest.call(null, s__3960__$2)))
                         }
                       }else {
                         return null
@@ -22484,15 +22484,15 @@ qrcloj.masking.gen_mask = function gen_mask(mask, dim) {
                       break
                     }
                   }
-                }(s__3799__$1, x, xs__4579__auto__, temp__4092__auto__), null)
+                }(s__3958__$1, x, xs__4579__auto__, temp__4092__auto__), null)
               }
-            }(s__3799__$1, x, xs__4579__auto__, temp__4092__auto__);
+            }(s__3958__$1, x, xs__4579__auto__, temp__4092__auto__);
             var fs__3039__auto__ = cljs.core.seq.call(null, iterys__3038__auto__.call(null, cljs.core.range.call(null, dim)));
             if(fs__3039__auto__) {
-              return cljs.core.concat.call(null, fs__3039__auto__, iter__3798.call(null, cljs.core.rest.call(null, s__3799__$1)))
+              return cljs.core.concat.call(null, fs__3039__auto__, iter__3957.call(null, cljs.core.rest.call(null, s__3958__$1)))
             }else {
-              var G__3805 = cljs.core.rest.call(null, s__3799__$1);
-              s__3799__$1 = G__3805;
+              var G__3964 = cljs.core.rest.call(null, s__3958__$1);
+              s__3958__$1 = G__3964;
               continue
             }
           }else {
@@ -22507,27 +22507,27 @@ qrcloj.masking.gen_mask = function gen_mask(mask, dim) {
 };
 qrcloj.masking.apply_mask = function apply_mask(mask, data) {
   return cljs.core.into.call(null, cljs.core.ObjMap.EMPTY, function() {
-    var iter__3042__auto__ = function iter__3814(s__3815) {
+    var iter__3042__auto__ = function iter__3973(s__3974) {
       return new cljs.core.LazySeq(null, false, function() {
-        var s__3815__$1 = s__3815;
+        var s__3974__$1 = s__3974;
         while(true) {
-          var temp__4092__auto__ = cljs.core.seq.call(null, s__3815__$1);
+          var temp__4092__auto__ = cljs.core.seq.call(null, s__3974__$1);
           if(temp__4092__auto__) {
-            var s__3815__$2 = temp__4092__auto__;
-            if(cljs.core.chunked_seq_QMARK_.call(null, s__3815__$2)) {
-              var c__3040__auto__ = cljs.core.chunk_first.call(null, s__3815__$2);
+            var s__3974__$2 = temp__4092__auto__;
+            if(cljs.core.chunked_seq_QMARK_.call(null, s__3974__$2)) {
+              var c__3040__auto__ = cljs.core.chunk_first.call(null, s__3974__$2);
               var size__3041__auto__ = cljs.core.count.call(null, c__3040__auto__);
-              var b__3817 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
+              var b__3976 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
               if(function() {
-                var i__3816 = 0;
+                var i__3975 = 0;
                 while(true) {
-                  if(i__3816 < size__3041__auto__) {
-                    var vec__3820 = cljs.core._nth.call(null, c__3040__auto__, i__3816);
-                    var xy = cljs.core.nth.call(null, vec__3820, 0, null);
-                    var m = cljs.core.nth.call(null, vec__3820, 1, null);
-                    cljs.core.chunk_append.call(null, b__3817, cljs.core.PersistentVector.fromArray([xy, qrcloj.masking.xor.call(null, mask.call(null, xy), m)], true));
-                    var G__3822 = i__3816 + 1;
-                    i__3816 = G__3822;
+                  if(i__3975 < size__3041__auto__) {
+                    var vec__3979 = cljs.core._nth.call(null, c__3040__auto__, i__3975);
+                    var xy = cljs.core.nth.call(null, vec__3979, 0, null);
+                    var m = cljs.core.nth.call(null, vec__3979, 1, null);
+                    cljs.core.chunk_append.call(null, b__3976, cljs.core.PersistentVector.fromArray([xy, qrcloj.masking.xor.call(null, mask.call(null, xy), m)], true));
+                    var G__3981 = i__3975 + 1;
+                    i__3975 = G__3981;
                     continue
                   }else {
                     return true
@@ -22535,15 +22535,15 @@ qrcloj.masking.apply_mask = function apply_mask(mask, data) {
                   break
                 }
               }()) {
-                return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3817), iter__3814.call(null, cljs.core.chunk_rest.call(null, s__3815__$2)))
+                return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3976), iter__3973.call(null, cljs.core.chunk_rest.call(null, s__3974__$2)))
               }else {
-                return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3817), null)
+                return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3976), null)
               }
             }else {
-              var vec__3821 = cljs.core.first.call(null, s__3815__$2);
-              var xy = cljs.core.nth.call(null, vec__3821, 0, null);
-              var m = cljs.core.nth.call(null, vec__3821, 1, null);
-              return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([xy, qrcloj.masking.xor.call(null, mask.call(null, xy), m)], true), iter__3814.call(null, cljs.core.rest.call(null, s__3815__$2)))
+              var vec__3980 = cljs.core.first.call(null, s__3974__$2);
+              var xy = cljs.core.nth.call(null, vec__3980, 0, null);
+              var m = cljs.core.nth.call(null, vec__3980, 1, null);
+              return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([xy, qrcloj.masking.xor.call(null, mask.call(null, xy), m)], true), iter__3973.call(null, cljs.core.rest.call(null, s__3974__$2)))
             }
           }else {
             return null
@@ -22556,44 +22556,44 @@ qrcloj.masking.apply_mask = function apply_mask(mask, data) {
   }())
 };
 qrcloj.masking.col_indices = function col_indices(dim) {
-  var iter__3042__auto__ = function iter__3843(s__3844) {
+  var iter__3042__auto__ = function iter__4002(s__4003) {
     return new cljs.core.LazySeq(null, false, function() {
-      var s__3844__$1 = s__3844;
+      var s__4003__$1 = s__4003;
       while(true) {
-        var temp__4092__auto__ = cljs.core.seq.call(null, s__3844__$1);
+        var temp__4092__auto__ = cljs.core.seq.call(null, s__4003__$1);
         if(temp__4092__auto__) {
-          var s__3844__$2 = temp__4092__auto__;
-          if(cljs.core.chunked_seq_QMARK_.call(null, s__3844__$2)) {
-            var c__3040__auto__ = cljs.core.chunk_first.call(null, s__3844__$2);
+          var s__4003__$2 = temp__4092__auto__;
+          if(cljs.core.chunked_seq_QMARK_.call(null, s__4003__$2)) {
+            var c__3040__auto__ = cljs.core.chunk_first.call(null, s__4003__$2);
             var size__3041__auto__ = cljs.core.count.call(null, c__3040__auto__);
-            var b__3846 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
+            var b__4005 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
             if(function() {
-              var i__3845 = 0;
+              var i__4004 = 0;
               while(true) {
-                if(i__3845 < size__3041__auto__) {
-                  var x = cljs.core._nth.call(null, c__3040__auto__, i__3845);
-                  cljs.core.chunk_append.call(null, b__3846, function() {
-                    var iter__3042__auto__ = function(i__3845, x, c__3040__auto__, size__3041__auto__, b__3846, s__3844__$2, temp__4092__auto__) {
-                      return function iter__3855(s__3856) {
-                        return new cljs.core.LazySeq(null, false, function(i__3845, x, c__3040__auto__, size__3041__auto__, b__3846, s__3844__$2, temp__4092__auto__) {
+                if(i__4004 < size__3041__auto__) {
+                  var x = cljs.core._nth.call(null, c__3040__auto__, i__4004);
+                  cljs.core.chunk_append.call(null, b__4005, function() {
+                    var iter__3042__auto__ = function(i__4004, x, c__3040__auto__, size__3041__auto__, b__4005, s__4003__$2, temp__4092__auto__) {
+                      return function iter__4014(s__4015) {
+                        return new cljs.core.LazySeq(null, false, function(i__4004, x, c__3040__auto__, size__3041__auto__, b__4005, s__4003__$2, temp__4092__auto__) {
                           return function() {
-                            var s__3856__$1 = s__3856;
+                            var s__4015__$1 = s__4015;
                             while(true) {
-                              var temp__4092__auto____$1 = cljs.core.seq.call(null, s__3856__$1);
+                              var temp__4092__auto____$1 = cljs.core.seq.call(null, s__4015__$1);
                               if(temp__4092__auto____$1) {
-                                var s__3856__$2 = temp__4092__auto____$1;
-                                if(cljs.core.chunked_seq_QMARK_.call(null, s__3856__$2)) {
-                                  var c__3040__auto____$1 = cljs.core.chunk_first.call(null, s__3856__$2);
+                                var s__4015__$2 = temp__4092__auto____$1;
+                                if(cljs.core.chunked_seq_QMARK_.call(null, s__4015__$2)) {
+                                  var c__3040__auto____$1 = cljs.core.chunk_first.call(null, s__4015__$2);
                                   var size__3041__auto____$1 = cljs.core.count.call(null, c__3040__auto____$1);
-                                  var b__3858 = cljs.core.chunk_buffer.call(null, size__3041__auto____$1);
+                                  var b__4017 = cljs.core.chunk_buffer.call(null, size__3041__auto____$1);
                                   if(function() {
-                                    var i__3857 = 0;
+                                    var i__4016 = 0;
                                     while(true) {
-                                      if(i__3857 < size__3041__auto____$1) {
-                                        var y = cljs.core._nth.call(null, c__3040__auto____$1, i__3857);
-                                        cljs.core.chunk_append.call(null, b__3858, cljs.core.PersistentVector.fromArray([x, y], true));
-                                        var G__3863 = i__3857 + 1;
-                                        i__3857 = G__3863;
+                                      if(i__4016 < size__3041__auto____$1) {
+                                        var y = cljs.core._nth.call(null, c__3040__auto____$1, i__4016);
+                                        cljs.core.chunk_append.call(null, b__4017, cljs.core.PersistentVector.fromArray([x, y], true));
+                                        var G__4022 = i__4016 + 1;
+                                        i__4016 = G__4022;
                                         continue
                                       }else {
                                         return true
@@ -22601,13 +22601,13 @@ qrcloj.masking.col_indices = function col_indices(dim) {
                                       break
                                     }
                                   }()) {
-                                    return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3858), iter__3855.call(null, cljs.core.chunk_rest.call(null, s__3856__$2)))
+                                    return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__4017), iter__4014.call(null, cljs.core.chunk_rest.call(null, s__4015__$2)))
                                   }else {
-                                    return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3858), null)
+                                    return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__4017), null)
                                   }
                                 }else {
-                                  var y = cljs.core.first.call(null, s__3856__$2);
-                                  return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([x, y], true), iter__3855.call(null, cljs.core.rest.call(null, s__3856__$2)))
+                                  var y = cljs.core.first.call(null, s__4015__$2);
+                                  return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([x, y], true), iter__4014.call(null, cljs.core.rest.call(null, s__4015__$2)))
                                 }
                               }else {
                                 return null
@@ -22615,13 +22615,13 @@ qrcloj.masking.col_indices = function col_indices(dim) {
                               break
                             }
                           }
-                        }(i__3845, x, c__3040__auto__, size__3041__auto__, b__3846, s__3844__$2, temp__4092__auto__), null)
+                        }(i__4004, x, c__3040__auto__, size__3041__auto__, b__4005, s__4003__$2, temp__4092__auto__), null)
                       }
-                    }(i__3845, x, c__3040__auto__, size__3041__auto__, b__3846, s__3844__$2, temp__4092__auto__);
+                    }(i__4004, x, c__3040__auto__, size__3041__auto__, b__4005, s__4003__$2, temp__4092__auto__);
                     return iter__3042__auto__.call(null, cljs.core.range.call(null, dim))
                   }());
-                  var G__3864 = i__3845 + 1;
-                  i__3845 = G__3864;
+                  var G__4023 = i__4004 + 1;
+                  i__4004 = G__4023;
                   continue
                 }else {
                   return true
@@ -22629,34 +22629,34 @@ qrcloj.masking.col_indices = function col_indices(dim) {
                 break
               }
             }()) {
-              return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3846), iter__3843.call(null, cljs.core.chunk_rest.call(null, s__3844__$2)))
+              return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__4005), iter__4002.call(null, cljs.core.chunk_rest.call(null, s__4003__$2)))
             }else {
-              return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3846), null)
+              return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__4005), null)
             }
           }else {
-            var x = cljs.core.first.call(null, s__3844__$2);
+            var x = cljs.core.first.call(null, s__4003__$2);
             return cljs.core.cons.call(null, function() {
-              var iter__3042__auto__ = function(x, s__3844__$2, temp__4092__auto__) {
-                return function iter__3859(s__3860) {
-                  return new cljs.core.LazySeq(null, false, function(x, s__3844__$2, temp__4092__auto__) {
+              var iter__3042__auto__ = function(x, s__4003__$2, temp__4092__auto__) {
+                return function iter__4018(s__4019) {
+                  return new cljs.core.LazySeq(null, false, function(x, s__4003__$2, temp__4092__auto__) {
                     return function() {
-                      var s__3860__$1 = s__3860;
+                      var s__4019__$1 = s__4019;
                       while(true) {
-                        var temp__4092__auto____$1 = cljs.core.seq.call(null, s__3860__$1);
+                        var temp__4092__auto____$1 = cljs.core.seq.call(null, s__4019__$1);
                         if(temp__4092__auto____$1) {
-                          var s__3860__$2 = temp__4092__auto____$1;
-                          if(cljs.core.chunked_seq_QMARK_.call(null, s__3860__$2)) {
-                            var c__3040__auto__ = cljs.core.chunk_first.call(null, s__3860__$2);
+                          var s__4019__$2 = temp__4092__auto____$1;
+                          if(cljs.core.chunked_seq_QMARK_.call(null, s__4019__$2)) {
+                            var c__3040__auto__ = cljs.core.chunk_first.call(null, s__4019__$2);
                             var size__3041__auto__ = cljs.core.count.call(null, c__3040__auto__);
-                            var b__3862 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
+                            var b__4021 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
                             if(function() {
-                              var i__3861 = 0;
+                              var i__4020 = 0;
                               while(true) {
-                                if(i__3861 < size__3041__auto__) {
-                                  var y = cljs.core._nth.call(null, c__3040__auto__, i__3861);
-                                  cljs.core.chunk_append.call(null, b__3862, cljs.core.PersistentVector.fromArray([x, y], true));
-                                  var G__3865 = i__3861 + 1;
-                                  i__3861 = G__3865;
+                                if(i__4020 < size__3041__auto__) {
+                                  var y = cljs.core._nth.call(null, c__3040__auto__, i__4020);
+                                  cljs.core.chunk_append.call(null, b__4021, cljs.core.PersistentVector.fromArray([x, y], true));
+                                  var G__4024 = i__4020 + 1;
+                                  i__4020 = G__4024;
                                   continue
                                 }else {
                                   return true
@@ -22664,13 +22664,13 @@ qrcloj.masking.col_indices = function col_indices(dim) {
                                 break
                               }
                             }()) {
-                              return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3862), iter__3859.call(null, cljs.core.chunk_rest.call(null, s__3860__$2)))
+                              return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__4021), iter__4018.call(null, cljs.core.chunk_rest.call(null, s__4019__$2)))
                             }else {
-                              return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3862), null)
+                              return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__4021), null)
                             }
                           }else {
-                            var y = cljs.core.first.call(null, s__3860__$2);
-                            return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([x, y], true), iter__3859.call(null, cljs.core.rest.call(null, s__3860__$2)))
+                            var y = cljs.core.first.call(null, s__4019__$2);
+                            return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([x, y], true), iter__4018.call(null, cljs.core.rest.call(null, s__4019__$2)))
                           }
                         }else {
                           return null
@@ -22678,11 +22678,11 @@ qrcloj.masking.col_indices = function col_indices(dim) {
                         break
                       }
                     }
-                  }(x, s__3844__$2, temp__4092__auto__), null)
+                  }(x, s__4003__$2, temp__4092__auto__), null)
                 }
-              }(x, s__3844__$2, temp__4092__auto__);
+              }(x, s__4003__$2, temp__4092__auto__);
               return iter__3042__auto__.call(null, cljs.core.range.call(null, dim))
-            }(), iter__3843.call(null, cljs.core.rest.call(null, s__3844__$2)))
+            }(), iter__4002.call(null, cljs.core.rest.call(null, s__4003__$2)))
           }
         }else {
           return null
@@ -22711,14 +22711,14 @@ qrcloj.masking.adj_score_vec = function adj_score_vec(v) {
           return score + score_for.call(null, count)
         }else {
           var same_QMARK_ = cljs.core._EQ_.call(null, prev, cljs.core.first.call(null, rem));
-          var G__3866 = cljs.core.rest.call(null, rem);
-          var G__3867 = same_QMARK_ ? count + 1 : 1;
-          var G__3868 = cljs.core.first.call(null, rem);
-          var G__3869 = same_QMARK_ ? score : score + score_for.call(null, count);
-          rem = G__3866;
-          count = G__3867;
-          prev = G__3868;
-          score = G__3869;
+          var G__4025 = cljs.core.rest.call(null, rem);
+          var G__4026 = same_QMARK_ ? count + 1 : 1;
+          var G__4027 = cljs.core.first.call(null, rem);
+          var G__4028 = same_QMARK_ ? score : score + score_for.call(null, count);
+          rem = G__4025;
+          count = G__4026;
+          prev = G__4027;
+          score = G__4028;
           continue
         }
         break
@@ -22728,35 +22728,35 @@ qrcloj.masking.adj_score_vec = function adj_score_vec(v) {
   return rec.call(null, v, 0, null, 0)
 };
 qrcloj.masking.keys_for = function keys_for(dim) {
-  var iter__3042__auto__ = function iter__3876(s__3877) {
+  var iter__3042__auto__ = function iter__4035(s__4036) {
     return new cljs.core.LazySeq(null, false, function() {
-      var s__3877__$1 = s__3877;
+      var s__4036__$1 = s__4036;
       while(true) {
-        var temp__4092__auto__ = cljs.core.seq.call(null, s__3877__$1);
+        var temp__4092__auto__ = cljs.core.seq.call(null, s__4036__$1);
         if(temp__4092__auto__) {
           var xs__4579__auto__ = temp__4092__auto__;
           var x = cljs.core.first.call(null, xs__4579__auto__);
-          var iterys__3038__auto__ = function(s__3877__$1, x, xs__4579__auto__, temp__4092__auto__) {
-            return function iter__3878(s__3879) {
-              return new cljs.core.LazySeq(null, false, function(s__3877__$1, x, xs__4579__auto__, temp__4092__auto__) {
+          var iterys__3038__auto__ = function(s__4036__$1, x, xs__4579__auto__, temp__4092__auto__) {
+            return function iter__4037(s__4038) {
+              return new cljs.core.LazySeq(null, false, function(s__4036__$1, x, xs__4579__auto__, temp__4092__auto__) {
                 return function() {
-                  var s__3879__$1 = s__3879;
+                  var s__4038__$1 = s__4038;
                   while(true) {
-                    var temp__4092__auto____$1 = cljs.core.seq.call(null, s__3879__$1);
+                    var temp__4092__auto____$1 = cljs.core.seq.call(null, s__4038__$1);
                     if(temp__4092__auto____$1) {
-                      var s__3879__$2 = temp__4092__auto____$1;
-                      if(cljs.core.chunked_seq_QMARK_.call(null, s__3879__$2)) {
-                        var c__3040__auto__ = cljs.core.chunk_first.call(null, s__3879__$2);
+                      var s__4038__$2 = temp__4092__auto____$1;
+                      if(cljs.core.chunked_seq_QMARK_.call(null, s__4038__$2)) {
+                        var c__3040__auto__ = cljs.core.chunk_first.call(null, s__4038__$2);
                         var size__3041__auto__ = cljs.core.count.call(null, c__3040__auto__);
-                        var b__3881 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
+                        var b__4040 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
                         if(function() {
-                          var i__3880 = 0;
+                          var i__4039 = 0;
                           while(true) {
-                            if(i__3880 < size__3041__auto__) {
-                              var y = cljs.core._nth.call(null, c__3040__auto__, i__3880);
-                              cljs.core.chunk_append.call(null, b__3881, cljs.core.PersistentVector.fromArray([x, y], true));
-                              var G__3882 = i__3880 + 1;
-                              i__3880 = G__3882;
+                            if(i__4039 < size__3041__auto__) {
+                              var y = cljs.core._nth.call(null, c__3040__auto__, i__4039);
+                              cljs.core.chunk_append.call(null, b__4040, cljs.core.PersistentVector.fromArray([x, y], true));
+                              var G__4041 = i__4039 + 1;
+                              i__4039 = G__4041;
                               continue
                             }else {
                               return true
@@ -22764,13 +22764,13 @@ qrcloj.masking.keys_for = function keys_for(dim) {
                             break
                           }
                         }()) {
-                          return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3881), iter__3878.call(null, cljs.core.chunk_rest.call(null, s__3879__$2)))
+                          return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__4040), iter__4037.call(null, cljs.core.chunk_rest.call(null, s__4038__$2)))
                         }else {
-                          return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3881), null)
+                          return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__4040), null)
                         }
                       }else {
-                        var y = cljs.core.first.call(null, s__3879__$2);
-                        return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([x, y], true), iter__3878.call(null, cljs.core.rest.call(null, s__3879__$2)))
+                        var y = cljs.core.first.call(null, s__4038__$2);
+                        return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([x, y], true), iter__4037.call(null, cljs.core.rest.call(null, s__4038__$2)))
                       }
                     }else {
                       return null
@@ -22778,15 +22778,15 @@ qrcloj.masking.keys_for = function keys_for(dim) {
                     break
                   }
                 }
-              }(s__3877__$1, x, xs__4579__auto__, temp__4092__auto__), null)
+              }(s__4036__$1, x, xs__4579__auto__, temp__4092__auto__), null)
             }
-          }(s__3877__$1, x, xs__4579__auto__, temp__4092__auto__);
+          }(s__4036__$1, x, xs__4579__auto__, temp__4092__auto__);
           var fs__3039__auto__ = cljs.core.seq.call(null, iterys__3038__auto__.call(null, cljs.core.range.call(null, dim)));
           if(fs__3039__auto__) {
-            return cljs.core.concat.call(null, fs__3039__auto__, iter__3876.call(null, cljs.core.rest.call(null, s__3877__$1)))
+            return cljs.core.concat.call(null, fs__3039__auto__, iter__4035.call(null, cljs.core.rest.call(null, s__4036__$1)))
           }else {
-            var G__3883 = cljs.core.rest.call(null, s__3877__$1);
-            s__3877__$1 = G__3883;
+            var G__4042 = cljs.core.rest.call(null, s__4036__$1);
+            s__4036__$1 = G__4042;
             continue
           }
         }else {
@@ -22798,10 +22798,10 @@ qrcloj.masking.keys_for = function keys_for(dim) {
   };
   return iter__3042__auto__.call(null, cljs.core.range.call(null, dim))
 };
-qrcloj.masking.coord_to_val = function coord_to_val(grid, dim, p__3885) {
-  var vec__3887 = p__3885;
-  var x = cljs.core.nth.call(null, vec__3887, 0, null);
-  var y = cljs.core.nth.call(null, vec__3887, 1, null);
+qrcloj.masking.coord_to_val = function coord_to_val(grid, dim, p__4044) {
+  var vec__4046 = p__4044;
+  var x = cljs.core.nth.call(null, vec__4046, 0, null);
+  var y = cljs.core.nth.call(null, vec__4046, 1, null);
   if(function() {
     var or__3943__auto__ = x < 0;
     if(or__3943__auto__) {
@@ -22825,34 +22825,34 @@ qrcloj.masking.coord_to_val = function coord_to_val(grid, dim, p__3885) {
     return cljs.core.get.call(null, grid, cljs.core.PersistentVector.fromArray([x, y], true), "\ufdd0:l")
   }
 };
-qrcloj.masking.adjacent_score = function adjacent_score(p__3888) {
-  var map__3890 = p__3888;
-  var map__3890__$1 = cljs.core.seq_QMARK_.call(null, map__3890) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3890) : map__3890;
-  var grid = cljs.core.get.call(null, map__3890__$1, "\ufdd0:grid");
-  var dim = cljs.core.get.call(null, map__3890__$1, "\ufdd0:dim");
-  var coords_to_vals = cljs.core.partial.call(null, cljs.core.map, function(p1__3884_SHARP_) {
-    return qrcloj.masking.coord_to_val.call(null, grid, dim, p1__3884_SHARP_)
+qrcloj.masking.adjacent_score = function adjacent_score(p__4047) {
+  var map__4049 = p__4047;
+  var map__4049__$1 = cljs.core.seq_QMARK_.call(null, map__4049) ? cljs.core.apply.call(null, cljs.core.hash_map, map__4049) : map__4049;
+  var grid = cljs.core.get.call(null, map__4049__$1, "\ufdd0:grid");
+  var dim = cljs.core.get.call(null, map__4049__$1, "\ufdd0:dim");
+  var coords_to_vals = cljs.core.partial.call(null, cljs.core.map, function(p1__4043_SHARP_) {
+    return qrcloj.masking.coord_to_val.call(null, grid, dim, p1__4043_SHARP_)
   });
   var rows_and_cols = cljs.core.map.call(null, coords_to_vals, cljs.core.concat.call(null, qrcloj.masking.row_indices.call(null, dim), qrcloj.masking.col_indices.call(null, dim)));
   return cljs.core.apply.call(null, cljs.core._PLUS_, cljs.core.map.call(null, qrcloj.masking.adj_score_vec, rows_and_cols))
 };
-qrcloj.masking.upper_left_of_two_by_two_QMARK_ = function upper_left_of_two_by_two_QMARK_(grid, p__3891) {
-  var vec__3893 = p__3891;
-  var x = cljs.core.nth.call(null, vec__3893, 0, null);
-  var y = cljs.core.nth.call(null, vec__3893, 1, null);
+qrcloj.masking.upper_left_of_two_by_two_QMARK_ = function upper_left_of_two_by_two_QMARK_(grid, p__4050) {
+  var vec__4052 = p__4050;
+  var x = cljs.core.nth.call(null, vec__4052, 0, null);
+  var y = cljs.core.nth.call(null, vec__4052, 1, null);
   return cljs.core.every_QMARK_.call(null, cljs.core.comp.call(null, cljs.core.partial.call(null, cljs.core._EQ_, grid.call(null, cljs.core.PersistentVector.fromArray([x, y], true))), grid), cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([x + 1, y], true), cljs.core.PersistentVector.fromArray([x + 1, y + 1], true), cljs.core.PersistentVector.fromArray([x, y + 1], true)], true))
 };
-qrcloj.masking.block_score = function block_score(p__3894) {
-  var map__3896 = p__3894;
-  var map__3896__$1 = cljs.core.seq_QMARK_.call(null, map__3896) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3896) : map__3896;
-  var dim = cljs.core.get.call(null, map__3896__$1, "\ufdd0:dim");
-  var grid = cljs.core.get.call(null, map__3896__$1, "\ufdd0:grid");
+qrcloj.masking.block_score = function block_score(p__4053) {
+  var map__4055 = p__4053;
+  var map__4055__$1 = cljs.core.seq_QMARK_.call(null, map__4055) ? cljs.core.apply.call(null, cljs.core.hash_map, map__4055) : map__4055;
+  var dim = cljs.core.get.call(null, map__4055__$1, "\ufdd0:dim");
+  var grid = cljs.core.get.call(null, map__4055__$1, "\ufdd0:grid");
   return 3 * cljs.core.count.call(null, cljs.core.filter.call(null, cljs.core.partial.call(null, qrcloj.masking.upper_left_of_two_by_two_QMARK_, cljs.core.partial.call(null, qrcloj.masking.coord_to_val, grid, dim)), qrcloj.masking.keys_for.call(null, dim)))
 };
-qrcloj.masking.centers_of_one_one_three_one_one = function centers_of_one_one_three_one_one(grid, p__3897) {
-  var vec__3899 = p__3897;
-  var x = cljs.core.nth.call(null, vec__3899, 0, null);
-  var y = cljs.core.nth.call(null, vec__3899, 1, null);
+qrcloj.masking.centers_of_one_one_three_one_one = function centers_of_one_one_three_one_one(grid, p__4056) {
+  var vec__4058 = p__4056;
+  var x = cljs.core.nth.call(null, vec__4058, 0, null);
+  var y = cljs.core.nth.call(null, vec__4058, 1, null);
   var center_of_vert_QMARK_ = function() {
     var and__3941__auto__ = cljs.core._EQ_.call(null, "\ufdd0:d", grid.call(null, cljs.core.PersistentVector.fromArray([x, y], true)), grid.call(null, cljs.core.PersistentVector.fromArray([x - 1, y], true)), grid.call(null, cljs.core.PersistentVector.fromArray([x + 1, y], true)), grid.call(null, cljs.core.PersistentVector.fromArray([x - 3, y], true)), grid.call(null, cljs.core.PersistentVector.fromArray([x + 3, y], true)));
     if(and__3941__auto__) {
@@ -22891,18 +22891,18 @@ qrcloj.masking.centers_of_one_one_three_one_one = function centers_of_one_one_th
   }();
   return(cljs.core.truth_(center_of_vert_QMARK_) ? 1 : 0) + (cljs.core.truth_(center_of_horz_QMARK_) ? 1 : 0)
 };
-qrcloj.masking.one_one_three_one_one_score = function one_one_three_one_one_score(p__3900) {
-  var map__3902 = p__3900;
-  var map__3902__$1 = cljs.core.seq_QMARK_.call(null, map__3902) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3902) : map__3902;
-  var dim = cljs.core.get.call(null, map__3902__$1, "\ufdd0:dim");
-  var grid = cljs.core.get.call(null, map__3902__$1, "\ufdd0:grid");
+qrcloj.masking.one_one_three_one_one_score = function one_one_three_one_one_score(p__4059) {
+  var map__4061 = p__4059;
+  var map__4061__$1 = cljs.core.seq_QMARK_.call(null, map__4061) ? cljs.core.apply.call(null, cljs.core.hash_map, map__4061) : map__4061;
+  var dim = cljs.core.get.call(null, map__4061__$1, "\ufdd0:dim");
+  var grid = cljs.core.get.call(null, map__4061__$1, "\ufdd0:grid");
   return 30 * cljs.core.apply.call(null, cljs.core._PLUS_, cljs.core.map.call(null, cljs.core.partial.call(null, qrcloj.masking.centers_of_one_one_three_one_one, cljs.core.partial.call(null, qrcloj.masking.coord_to_val, grid, dim)), qrcloj.masking.keys_for.call(null, dim)))
 };
-qrcloj.masking.ratio_score = function ratio_score(p__3903) {
-  var map__3905 = p__3903;
-  var map__3905__$1 = cljs.core.seq_QMARK_.call(null, map__3905) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3905) : map__3905;
-  var dim = cljs.core.get.call(null, map__3905__$1, "\ufdd0:dim");
-  var grid = cljs.core.get.call(null, map__3905__$1, "\ufdd0:grid");
+qrcloj.masking.ratio_score = function ratio_score(p__4062) {
+  var map__4064 = p__4062;
+  var map__4064__$1 = cljs.core.seq_QMARK_.call(null, map__4064) ? cljs.core.apply.call(null, cljs.core.hash_map, map__4064) : map__4064;
+  var dim = cljs.core.get.call(null, map__4064__$1, "\ufdd0:dim");
+  var grid = cljs.core.get.call(null, map__4064__$1, "\ufdd0:grid");
   var total = dim * dim;
   var dark = cljs.core.count.call(null, cljs.core.filter.call(null, cljs.core.partial.call(null, cljs.core._EQ_, "\ufdd0:d"), cljs.core.vals.call(null, grid)));
   return 10 * cljs.core.quot.call(null, qrcloj.interop.abs.call(null, 50 - (100 * (dark / total) | 0)), 5)
@@ -22910,14 +22910,14 @@ qrcloj.masking.ratio_score = function ratio_score(p__3903) {
 qrcloj.masking.penalty_score = function penalty_score(masked) {
   return qrcloj.masking.adjacent_score.call(null, masked) + qrcloj.masking.block_score.call(null, masked) + qrcloj.masking.one_one_three_one_one_score.call(null, masked) + qrcloj.masking.ratio_score.call(null, masked)
 };
-qrcloj.masking.mask_symbol = function mask_symbol(p__3907) {
-  var map__3909 = p__3907;
-  var map__3909__$1 = cljs.core.seq_QMARK_.call(null, map__3909) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3909) : map__3909;
-  var sym = map__3909__$1;
-  var dim = cljs.core.get.call(null, map__3909__$1, "\ufdd0:dim");
-  var grid = cljs.core.get.call(null, map__3909__$1, "\ufdd0:grid");
-  var masked = cljs.core.map.call(null, function(p1__3906_SHARP_) {
-    return qrcloj.masking.apply_mask.call(null, p1__3906_SHARP_, grid)
+qrcloj.masking.mask_symbol = function mask_symbol(p__4066) {
+  var map__4068 = p__4066;
+  var map__4068__$1 = cljs.core.seq_QMARK_.call(null, map__4068) ? cljs.core.apply.call(null, cljs.core.hash_map, map__4068) : map__4068;
+  var sym = map__4068__$1;
+  var dim = cljs.core.get.call(null, map__4068__$1, "\ufdd0:dim");
+  var grid = cljs.core.get.call(null, map__4068__$1, "\ufdd0:grid");
+  var masked = cljs.core.map.call(null, function(p1__4065_SHARP_) {
+    return qrcloj.masking.apply_mask.call(null, p1__4065_SHARP_, grid)
   }, qrcloj.masking.masks);
   var with_penalties = cljs.core.map_indexed.call(null, function(masked) {
     return function(i, m) {
@@ -22935,31 +22935,56 @@ goog.require("qrcloj.utils");
 qrcloj.version.dim = function dim(version) {
   return 17 + 4 * version
 };
+qrcloj.version.from_data = cljs.core.PersistentArrayMap.fromArray(["\ufdd0:numeric", cljs.core.PersistentArrayMap.fromArray(["\ufdd0:L", cljs.core.PersistentVector.fromArray([41, 77, 127, 187, 255, 322, 370, 461, 552, 652, 772, 883, 1022, 1101, 1250, 1408, 1548], true), "\ufdd0:M", cljs.core.PersistentVector.fromArray([34, 63, 101, 149, 202, 255, 293, 365, 432, 513, 604, 691, 796, 871, 991, 1082, 1212], true), "\ufdd0:Q", cljs.core.PersistentVector.fromArray([27, 48, 77, 111, 144, 178, 207, 259, 
+312, 364, 427, 489, 580, 621, 703, 775, 876], true), "\ufdd0:H", cljs.core.PersistentVector.fromArray([17, 34, 58, 82, 106, 139, 154, 202, 235, 288, 331, 374, 427, 468, 530, 602, 674], true)], true), "\ufdd0:alphanumeric", cljs.core.PersistentArrayMap.fromArray(["\ufdd0:L", cljs.core.PersistentVector.fromArray([25, 47, 77, 114, 154, 195, 224, 279, 335, 395, 468, 535, 619, 667, 758, 854, 938], true), "\ufdd0:M", cljs.core.PersistentVector.fromArray([20, 38, 61, 90, 122, 154, 178, 221, 262, 311, 366, 
+419, 483, 528, 600, 656, 734], true), "\ufdd0:Q", cljs.core.PersistentVector.fromArray([16, 29, 47, 67, 87, 108, 125, 157, 189, 221, 259, 296, 352, 376, 426, 470, 531], true), "\ufdd0:H", cljs.core.PersistentVector.fromArray([20, 35, 50, 64, 84, 93, 122, 143, 174, 200, 227, 259, 283, 321, 365, 408], true)], true), "\ufdd0:byte", cljs.core.PersistentArrayMap.fromArray(["\ufdd0:L", cljs.core.PersistentVector.fromArray([17, 32, 53, 78, 106, 134, 154, 192, 230, 271, 321, 367, 425, 458, 520, 586, 644, 
+718, 792, 858, 929, 1003, 1091, 1171, 1273, 1367, 1475, 1528, 1628, 1732, 1840, 1952, 2068, 2188, 2303, 2431, 2563, 2699, 2809, 2953], true), "\ufdd0:M", cljs.core.PersistentVector.fromArray([14, 26, 42, 62, 84, 106, 122, 152, 180, 213, 251, 287, 331, 362, 412, 450, 504, 560, 624, 666, 711, 779, 857, 911, 997, 1059, 1125, 1190, 1264, 1370, 1452, 1538, 1628, 1722, 1809, 1911, 1989, 2099, 2213, 2331], true), "\ufdd0:Q", cljs.core.PersistentVector.fromArray([11, 20, 32, 46, 60, 74, 86, 108, 130, 151, 
+177, 203, 241, 258, 292, 322, 364], true)], true)], true);
 qrcloj.version.data_capacity_by_ecl = cljs.core.PersistentArrayMap.fromArray(["\ufdd0:L", cljs.core.PersistentVector.fromArray([19, 34, 55, 80, 108, 136, 156, 194, 232, 274, 324, 370, 428, 461, 523, 589, 647, 721, 795, 861, 932, 1006, 1094, 1174, 1276, 1370, 1468, 1531, 1631, 1735, 1843, 1955, 2071, 2191, 2306, 2434, 2566, 2702, 2812, 2956], true), "\ufdd0:M", cljs.core.PersistentVector.fromArray([16, 28, 44, 64, 86, 108, 124, 154, 182, 216, 254, 290, 334, 365, 415, 453, 507, 563, 627, 669, 714, 
 782, 860, 914, 1E3, 1062, 1128, 1193, 1267, 1373, 1455, 1541, 1631, 1725, 1812, 1914, 1992, 2102, 2216, 2334], true), "\ufdd0:Q", cljs.core.PersistentVector.fromArray([13, 22, 34, 48, 62, 76, 88, 110, 132, 154, 180, 206, 244, 261, 295, 325, 367, 397, 445, 485, 512, 568, 614, 664, 718, 754, 808, 871, 911, 985, 1033, 1115, 1171, 1231, 1286, 1354, 1426, 1502, 1582, 1666], true), "\ufdd0:H", cljs.core.PersistentVector.fromArray([9, 16, 26, 36, 46, 60, 66, 86, 100, 122, 140, 158, 180, 197, 223, 253, 283, 
 313, 341, 385, 406, 442, 464, 514, 538, 596, 628, 661, 701, 745, 793, 845, 901, 961, 986, 1054, 1096, 1142, 1222, 1276], true)], true);
+qrcloj.version.best_fit = function best_fit(mode, ecl, data) {
+  var idx = cljs.core.first.call(null, qrcloj.utils.positions.call(null, function(p__3808) {
+    var vec__3809 = p__3808;
+    var f = cljs.core.nth.call(null, vec__3809, 0, null);
+    var s = cljs.core.nth.call(null, vec__3809, 1, null);
+    if(function() {
+      var and__3941__auto__ = cljs.core.count.call(null, data) > f;
+      if(and__3941__auto__) {
+        return cljs.core.count.call(null, data) <= s
+      }else {
+        return and__3941__auto__
+      }
+    }()) {
+      return s
+    }else {
+      return null
+    }
+  }, cljs.core.partition.call(null, 2, 1, cljs.core.conj.call(null, cljs.core.seq.call(null, qrcloj.version.from_data.call(null, mode).call(null, ecl)), 0))));
+  return cljs.core.PersistentArrayMap.fromArray(["\ufdd0:ecl", ecl, "\ufdd0:version", idx + 1, "\ufdd0:limit", qrcloj.version.from_data.call(null, mode).call(null, ecl).call(null, idx)], true)
+};
 qrcloj.version.bit_capacity_by_ecl = cljs.core.into.call(null, cljs.core.ObjMap.EMPTY, function() {
-  var iter__3042__auto__ = function iter__7034(s__7035) {
+  var iter__3042__auto__ = function iter__3810(s__3811) {
     return new cljs.core.LazySeq(null, false, function() {
-      var s__7035__$1 = s__7035;
+      var s__3811__$1 = s__3811;
       while(true) {
-        var temp__4092__auto__ = cljs.core.seq.call(null, s__7035__$1);
+        var temp__4092__auto__ = cljs.core.seq.call(null, s__3811__$1);
         if(temp__4092__auto__) {
-          var s__7035__$2 = temp__4092__auto__;
-          if(cljs.core.chunked_seq_QMARK_.call(null, s__7035__$2)) {
-            var c__3040__auto__ = cljs.core.chunk_first.call(null, s__7035__$2);
+          var s__3811__$2 = temp__4092__auto__;
+          if(cljs.core.chunked_seq_QMARK_.call(null, s__3811__$2)) {
+            var c__3040__auto__ = cljs.core.chunk_first.call(null, s__3811__$2);
             var size__3041__auto__ = cljs.core.count.call(null, c__3040__auto__);
-            var b__7037 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
+            var b__3813 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
             if(function() {
-              var i__7036 = 0;
+              var i__3812 = 0;
               while(true) {
-                if(i__7036 < size__3041__auto__) {
-                  var vec__7040 = cljs.core._nth.call(null, c__3040__auto__, i__7036);
-                  var ecl = cljs.core.nth.call(null, vec__7040, 0, null);
-                  var versions = cljs.core.nth.call(null, vec__7040, 1, null);
-                  cljs.core.chunk_append.call(null, b__7037, cljs.core.PersistentVector.fromArray([ecl, cljs.core.vec.call(null, cljs.core.map.call(null, cljs.core.partial.call(null, cljs.core._STAR_, 8), versions))], true));
-                  var G__7042 = i__7036 + 1;
-                  i__7036 = G__7042;
+                if(i__3812 < size__3041__auto__) {
+                  var vec__3816 = cljs.core._nth.call(null, c__3040__auto__, i__3812);
+                  var ecl = cljs.core.nth.call(null, vec__3816, 0, null);
+                  var versions = cljs.core.nth.call(null, vec__3816, 1, null);
+                  cljs.core.chunk_append.call(null, b__3813, cljs.core.PersistentVector.fromArray([ecl, cljs.core.vec.call(null, cljs.core.map.call(null, cljs.core.partial.call(null, cljs.core._STAR_, 8), versions))], true));
+                  var G__3818 = i__3812 + 1;
+                  i__3812 = G__3818;
                   continue
                 }else {
                   return true
@@ -22967,15 +22992,15 @@ qrcloj.version.bit_capacity_by_ecl = cljs.core.into.call(null, cljs.core.ObjMap.
                 break
               }
             }()) {
-              return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__7037), iter__7034.call(null, cljs.core.chunk_rest.call(null, s__7035__$2)))
+              return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3813), iter__3810.call(null, cljs.core.chunk_rest.call(null, s__3811__$2)))
             }else {
-              return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__7037), null)
+              return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3813), null)
             }
           }else {
-            var vec__7041 = cljs.core.first.call(null, s__7035__$2);
-            var ecl = cljs.core.nth.call(null, vec__7041, 0, null);
-            var versions = cljs.core.nth.call(null, vec__7041, 1, null);
-            return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([ecl, cljs.core.vec.call(null, cljs.core.map.call(null, cljs.core.partial.call(null, cljs.core._STAR_, 8), versions))], true), iter__7034.call(null, cljs.core.rest.call(null, s__7035__$2)))
+            var vec__3817 = cljs.core.first.call(null, s__3811__$2);
+            var ecl = cljs.core.nth.call(null, vec__3817, 0, null);
+            var versions = cljs.core.nth.call(null, vec__3817, 1, null);
+            return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([ecl, cljs.core.vec.call(null, cljs.core.map.call(null, cljs.core.partial.call(null, cljs.core._STAR_, 8), versions))], true), iter__3810.call(null, cljs.core.rest.call(null, s__3811__$2)))
           }
         }else {
           return null
@@ -22986,37 +23011,18 @@ qrcloj.version.bit_capacity_by_ecl = cljs.core.into.call(null, cljs.core.ObjMap.
   };
   return iter__3042__auto__.call(null, qrcloj.version.data_capacity_by_ecl)
 }());
-qrcloj.version.best_fit = function best_fit(ecl, num_bits) {
-  return cljs.core.PersistentArrayMap.fromArray(["\ufdd0:ecl", ecl, "\ufdd0:version", cljs.core.first.call(null, qrcloj.utils.positions.call(null, function(p__7045) {
-    var vec__7046 = p__7045;
-    var f = cljs.core.nth.call(null, vec__7046, 0, null);
-    var s = cljs.core.nth.call(null, vec__7046, 1, null);
-    if(function() {
-      var and__3941__auto__ = num_bits > f;
-      if(and__3941__auto__) {
-        return num_bits <= s
-      }else {
-        return and__3941__auto__
-      }
-    }()) {
-      return s
-    }else {
-      return null
-    }
-  }, cljs.core.partition.call(null, 2, 1, cljs.core.conj.call(null, cljs.core.seq.call(null, qrcloj.version.bit_capacity_by_ecl.call(null, ecl)), 0)))) + 1], true)
-};
-qrcloj.version.bit_capacity = function bit_capacity(p__7047) {
-  var map__7049 = p__7047;
-  var map__7049__$1 = cljs.core.seq_QMARK_.call(null, map__7049) ? cljs.core.apply.call(null, cljs.core.hash_map, map__7049) : map__7049;
-  var ecl = cljs.core.get.call(null, map__7049__$1, "\ufdd0:ecl");
-  var version = cljs.core.get.call(null, map__7049__$1, "\ufdd0:version");
+qrcloj.version.bit_capacity = function bit_capacity(p__3819) {
+  var map__3821 = p__3819;
+  var map__3821__$1 = cljs.core.seq_QMARK_.call(null, map__3821) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3821) : map__3821;
+  var ecl = cljs.core.get.call(null, map__3821__$1, "\ufdd0:ecl");
+  var version = cljs.core.get.call(null, map__3821__$1, "\ufdd0:version");
   return qrcloj.version.bit_capacity_by_ecl.call(null, ecl).call(null, version - 1)
 };
-qrcloj.version.raw_error_correction_layouts = function raw_error_correction_layouts(p__7050) {
-  var map__7052 = p__7050;
-  var map__7052__$1 = cljs.core.seq_QMARK_.call(null, map__7052) ? cljs.core.apply.call(null, cljs.core.hash_map, map__7052) : map__7052;
-  var ecl = cljs.core.get.call(null, map__7052__$1, "\ufdd0:ecl");
-  var version = cljs.core.get.call(null, map__7052__$1, "\ufdd0:version");
+qrcloj.version.raw_error_correction_layouts = function raw_error_correction_layouts(p__3822) {
+  var map__3824 = p__3822;
+  var map__3824__$1 = cljs.core.seq_QMARK_.call(null, map__3824) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3824) : map__3824;
+  var ecl = cljs.core.get.call(null, map__3824__$1, "\ufdd0:ecl");
+  var version = cljs.core.get.call(null, map__3824__$1, "\ufdd0:version");
   return cljs.core.PersistentArrayMap.fromArray(["\ufdd0:L", cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([26, 19], true)], true), cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([44, 34], true)], true), cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([70, 55], true)], true), cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([100, 80], true)], 
   true), cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([134, 108], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([86, 68], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([98, 78], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([121, 97], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([146, 
   116], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([86, 68], true), 2, cljs.core.PersistentVector.fromArray([87, 69], true)], true), cljs.core.PersistentVector.fromArray([4, cljs.core.PersistentVector.fromArray([101, 81], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([116, 92], true), 2, cljs.core.PersistentVector.fromArray([117, 93], true)], true), cljs.core.PersistentVector.fromArray([4, cljs.core.PersistentVector.fromArray([133, 
@@ -23041,18 +23047,18 @@ qrcloj.version.raw_error_correction_layouts = function raw_error_correction_layo
   cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([42, 14], true), 17, cljs.core.PersistentVector.fromArray([43, 15], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([42, 14], true), 19, cljs.core.PersistentVector.fromArray([43, 15], true)], true), cljs.core.PersistentVector.fromArray([9, cljs.core.PersistentVector.fromArray([39, 13], true), 16, cljs.core.PersistentVector.fromArray([40, 14], true)], true), cljs.core.PersistentVector.fromArray([15, 
   cljs.core.PersistentVector.fromArray([42, 15], true), 10, cljs.core.PersistentVector.fromArray([44, 16], true)], true)], true)], true).call(null, ecl).call(null, version - 1)
 };
-qrcloj.version.error_correction_layout = function error_correction_layout(p__7053) {
-  var map__7058 = p__7053;
-  var map__7058__$1 = cljs.core.seq_QMARK_.call(null, map__7058) ? cljs.core.apply.call(null, cljs.core.hash_map, map__7058) : map__7058;
-  var ver = map__7058__$1;
-  var ecl = cljs.core.get.call(null, map__7058__$1, "\ufdd0:ecl");
-  var version = cljs.core.get.call(null, map__7058__$1, "\ufdd0:version");
-  return cljs.core.apply.call(null, cljs.core.concat, cljs.core.map.call(null, function(p__7059) {
-    var vec__7060 = p__7059;
-    var ct = cljs.core.nth.call(null, vec__7060, 0, null);
-    var vec__7061 = cljs.core.nth.call(null, vec__7060, 1, null);
-    var total = cljs.core.nth.call(null, vec__7061, 0, null);
-    var data = cljs.core.nth.call(null, vec__7061, 1, null);
+qrcloj.version.error_correction_layout = function error_correction_layout(p__3825) {
+  var map__3830 = p__3825;
+  var map__3830__$1 = cljs.core.seq_QMARK_.call(null, map__3830) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3830) : map__3830;
+  var ver = map__3830__$1;
+  var ecl = cljs.core.get.call(null, map__3830__$1, "\ufdd0:ecl");
+  var version = cljs.core.get.call(null, map__3830__$1, "\ufdd0:version");
+  return cljs.core.apply.call(null, cljs.core.concat, cljs.core.map.call(null, function(p__3831) {
+    var vec__3832 = p__3831;
+    var ct = cljs.core.nth.call(null, vec__3832, 0, null);
+    var vec__3833 = cljs.core.nth.call(null, vec__3832, 1, null);
+    var total = cljs.core.nth.call(null, vec__3833, 0, null);
+    var data = cljs.core.nth.call(null, vec__3833, 1, null);
     return cljs.core.repeat.call(null, ct, cljs.core.PersistentVector.fromArray([data, total - data], true))
   }, cljs.core.partition.call(null, 2, qrcloj.version.raw_error_correction_layouts.call(null, ver))))
 };
@@ -23062,35 +23068,35 @@ qrcloj.version.indicator = function indicator(version) {
   return cljs.core.reverse.call(null, cljs.core.concat.call(null, data, qrcloj.error_correction.poly_rem.call(null, data, generator)))
 };
 qrcloj.version.upper_right_modules = function upper_right_modules(dim) {
-  var iter__3042__auto__ = function iter__7068(s__7069) {
+  var iter__3042__auto__ = function iter__3840(s__3841) {
     return new cljs.core.LazySeq(null, false, function() {
-      var s__7069__$1 = s__7069;
+      var s__3841__$1 = s__3841;
       while(true) {
-        var temp__4092__auto__ = cljs.core.seq.call(null, s__7069__$1);
+        var temp__4092__auto__ = cljs.core.seq.call(null, s__3841__$1);
         if(temp__4092__auto__) {
           var xs__4579__auto__ = temp__4092__auto__;
           var y = cljs.core.first.call(null, xs__4579__auto__);
-          var iterys__3038__auto__ = function(s__7069__$1, y, xs__4579__auto__, temp__4092__auto__) {
-            return function iter__7070(s__7071) {
-              return new cljs.core.LazySeq(null, false, function(s__7069__$1, y, xs__4579__auto__, temp__4092__auto__) {
+          var iterys__3038__auto__ = function(s__3841__$1, y, xs__4579__auto__, temp__4092__auto__) {
+            return function iter__3842(s__3843) {
+              return new cljs.core.LazySeq(null, false, function(s__3841__$1, y, xs__4579__auto__, temp__4092__auto__) {
                 return function() {
-                  var s__7071__$1 = s__7071;
+                  var s__3843__$1 = s__3843;
                   while(true) {
-                    var temp__4092__auto____$1 = cljs.core.seq.call(null, s__7071__$1);
+                    var temp__4092__auto____$1 = cljs.core.seq.call(null, s__3843__$1);
                     if(temp__4092__auto____$1) {
-                      var s__7071__$2 = temp__4092__auto____$1;
-                      if(cljs.core.chunked_seq_QMARK_.call(null, s__7071__$2)) {
-                        var c__3040__auto__ = cljs.core.chunk_first.call(null, s__7071__$2);
+                      var s__3843__$2 = temp__4092__auto____$1;
+                      if(cljs.core.chunked_seq_QMARK_.call(null, s__3843__$2)) {
+                        var c__3040__auto__ = cljs.core.chunk_first.call(null, s__3843__$2);
                         var size__3041__auto__ = cljs.core.count.call(null, c__3040__auto__);
-                        var b__7073 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
+                        var b__3845 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
                         if(function() {
-                          var i__7072 = 0;
+                          var i__3844 = 0;
                           while(true) {
-                            if(i__7072 < size__3041__auto__) {
-                              var x = cljs.core._nth.call(null, c__3040__auto__, i__7072);
-                              cljs.core.chunk_append.call(null, b__7073, cljs.core.PersistentVector.fromArray([x, y], true));
-                              var G__7074 = i__7072 + 1;
-                              i__7072 = G__7074;
+                            if(i__3844 < size__3041__auto__) {
+                              var x = cljs.core._nth.call(null, c__3040__auto__, i__3844);
+                              cljs.core.chunk_append.call(null, b__3845, cljs.core.PersistentVector.fromArray([x, y], true));
+                              var G__3846 = i__3844 + 1;
+                              i__3844 = G__3846;
                               continue
                             }else {
                               return true
@@ -23098,13 +23104,13 @@ qrcloj.version.upper_right_modules = function upper_right_modules(dim) {
                             break
                           }
                         }()) {
-                          return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__7073), iter__7070.call(null, cljs.core.chunk_rest.call(null, s__7071__$2)))
+                          return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3845), iter__3842.call(null, cljs.core.chunk_rest.call(null, s__3843__$2)))
                         }else {
-                          return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__7073), null)
+                          return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3845), null)
                         }
                       }else {
-                        var x = cljs.core.first.call(null, s__7071__$2);
-                        return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([x, y], true), iter__7070.call(null, cljs.core.rest.call(null, s__7071__$2)))
+                        var x = cljs.core.first.call(null, s__3843__$2);
+                        return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([x, y], true), iter__3842.call(null, cljs.core.rest.call(null, s__3843__$2)))
                       }
                     }else {
                       return null
@@ -23112,15 +23118,15 @@ qrcloj.version.upper_right_modules = function upper_right_modules(dim) {
                     break
                   }
                 }
-              }(s__7069__$1, y, xs__4579__auto__, temp__4092__auto__), null)
+              }(s__3841__$1, y, xs__4579__auto__, temp__4092__auto__), null)
             }
-          }(s__7069__$1, y, xs__4579__auto__, temp__4092__auto__);
+          }(s__3841__$1, y, xs__4579__auto__, temp__4092__auto__);
           var fs__3039__auto__ = cljs.core.seq.call(null, iterys__3038__auto__.call(null, cljs.core.range.call(null, dim - 11, dim - 8)));
           if(fs__3039__auto__) {
-            return cljs.core.concat.call(null, fs__3039__auto__, iter__7068.call(null, cljs.core.rest.call(null, s__7069__$1)))
+            return cljs.core.concat.call(null, fs__3039__auto__, iter__3840.call(null, cljs.core.rest.call(null, s__3841__$1)))
           }else {
-            var G__7075 = cljs.core.rest.call(null, s__7069__$1);
-            s__7069__$1 = G__7075;
+            var G__3847 = cljs.core.rest.call(null, s__3841__$1);
+            s__3841__$1 = G__3847;
             continue
           }
         }else {
@@ -23160,25 +23166,25 @@ qrcloj.symbol.square = function square(on, dim) {
   var low = -ext;
   var high = ext;
   return cljs.core.map.call(null, cljs.core.partial.call(null, cljs.core.map, cljs.core._PLUS_, on), cljs.core.distinct.call(null, cljs.core.apply.call(null, cljs.core.concat, function() {
-    var iter__3042__auto__ = function iter__7703(s__7704) {
+    var iter__3042__auto__ = function iter__3829(s__3830) {
       return new cljs.core.LazySeq(null, false, function() {
-        var s__7704__$1 = s__7704;
+        var s__3830__$1 = s__3830;
         while(true) {
-          var temp__4092__auto__ = cljs.core.seq.call(null, s__7704__$1);
+          var temp__4092__auto__ = cljs.core.seq.call(null, s__3830__$1);
           if(temp__4092__auto__) {
-            var s__7704__$2 = temp__4092__auto__;
-            if(cljs.core.chunked_seq_QMARK_.call(null, s__7704__$2)) {
-              var c__3040__auto__ = cljs.core.chunk_first.call(null, s__7704__$2);
+            var s__3830__$2 = temp__4092__auto__;
+            if(cljs.core.chunked_seq_QMARK_.call(null, s__3830__$2)) {
+              var c__3040__auto__ = cljs.core.chunk_first.call(null, s__3830__$2);
               var size__3041__auto__ = cljs.core.count.call(null, c__3040__auto__);
-              var b__7706 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
+              var b__3832 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
               if(function() {
-                var i__7705 = 0;
+                var i__3831 = 0;
                 while(true) {
-                  if(i__7705 < size__3041__auto__) {
-                    var x = cljs.core._nth.call(null, c__3040__auto__, i__7705);
-                    cljs.core.chunk_append.call(null, b__7706, cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([x, low], true), cljs.core.PersistentVector.fromArray([x, high], true), cljs.core.PersistentVector.fromArray([low, x], true), cljs.core.PersistentVector.fromArray([high, x], true)], true));
-                    var G__7707 = i__7705 + 1;
-                    i__7705 = G__7707;
+                  if(i__3831 < size__3041__auto__) {
+                    var x = cljs.core._nth.call(null, c__3040__auto__, i__3831);
+                    cljs.core.chunk_append.call(null, b__3832, cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([x, low], true), cljs.core.PersistentVector.fromArray([x, high], true), cljs.core.PersistentVector.fromArray([low, x], true), cljs.core.PersistentVector.fromArray([high, x], true)], true));
+                    var G__3833 = i__3831 + 1;
+                    i__3831 = G__3833;
                     continue
                   }else {
                     return true
@@ -23186,13 +23192,13 @@ qrcloj.symbol.square = function square(on, dim) {
                   break
                 }
               }()) {
-                return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__7706), iter__7703.call(null, cljs.core.chunk_rest.call(null, s__7704__$2)))
+                return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3832), iter__3829.call(null, cljs.core.chunk_rest.call(null, s__3830__$2)))
               }else {
-                return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__7706), null)
+                return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3832), null)
               }
             }else {
-              var x = cljs.core.first.call(null, s__7704__$2);
-              return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([x, low], true), cljs.core.PersistentVector.fromArray([x, high], true), cljs.core.PersistentVector.fromArray([low, x], true), cljs.core.PersistentVector.fromArray([high, x], true)], true), iter__7703.call(null, cljs.core.rest.call(null, s__7704__$2)))
+              var x = cljs.core.first.call(null, s__3830__$2);
+              return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([x, low], true), cljs.core.PersistentVector.fromArray([x, high], true), cljs.core.PersistentVector.fromArray([low, x], true), cljs.core.PersistentVector.fromArray([high, x], true)], true), iter__3829.call(null, cljs.core.rest.call(null, s__3830__$2)))
             }
           }else {
             return null
@@ -23204,22 +23210,22 @@ qrcloj.symbol.square = function square(on, dim) {
     return iter__3042__auto__.call(null, cljs.core.range.call(null, low, high + 1))
   }())))
 };
-qrcloj.symbol.add_finders = function add_finders(p__7708) {
-  var map__7710 = p__7708;
-  var map__7710__$1 = cljs.core.seq_QMARK_.call(null, map__7710) ? cljs.core.apply.call(null, cljs.core.hash_map, map__7710) : map__7710;
-  var sym = map__7710__$1;
-  var grid = cljs.core.get.call(null, map__7710__$1, "\ufdd0:grid");
-  var dim = cljs.core.get.call(null, map__7710__$1, "\ufdd0:dim");
+qrcloj.symbol.add_finders = function add_finders(p__3834) {
+  var map__3836 = p__3834;
+  var map__3836__$1 = cljs.core.seq_QMARK_.call(null, map__3836) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3836) : map__3836;
+  var sym = map__3836__$1;
+  var grid = cljs.core.get.call(null, map__3836__$1, "\ufdd0:grid");
+  var dim = cljs.core.get.call(null, map__3836__$1, "\ufdd0:dim");
   var finder = cljs.core.merge.call(null, qrcloj.symbol.darken.call(null, qrcloj.symbol.square.call(null, cljs.core.PersistentVector.fromArray([3, 3], true), 7)), qrcloj.symbol.lighten.call(null, qrcloj.symbol.square.call(null, cljs.core.PersistentVector.fromArray([3, 3], true), 5)), qrcloj.symbol.darken.call(null, qrcloj.symbol.square.call(null, cljs.core.PersistentVector.fromArray([3, 3], true), 3)), qrcloj.symbol.darken.call(null, qrcloj.symbol.square.call(null, cljs.core.PersistentVector.fromArray([3, 
   3], true), 1)));
   return cljs.core.assoc.call(null, sym, "\ufdd0:grid", cljs.core.merge.call(null, grid, finder, qrcloj.symbol.shift.call(null, cljs.core.PersistentVector.fromArray([dim - 7, 0], true), finder), qrcloj.symbol.shift.call(null, cljs.core.PersistentVector.fromArray([0, dim - 7], true), finder)))
 };
-qrcloj.symbol.add_separators = function add_separators(p__7711) {
-  var map__7713 = p__7711;
-  var map__7713__$1 = cljs.core.seq_QMARK_.call(null, map__7713) ? cljs.core.apply.call(null, cljs.core.hash_map, map__7713) : map__7713;
-  var sym = map__7713__$1;
-  var grid = cljs.core.get.call(null, map__7713__$1, "\ufdd0:grid");
-  var dim = cljs.core.get.call(null, map__7713__$1, "\ufdd0:dim");
+qrcloj.symbol.add_separators = function add_separators(p__3837) {
+  var map__3839 = p__3837;
+  var map__3839__$1 = cljs.core.seq_QMARK_.call(null, map__3839) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3839) : map__3839;
+  var sym = map__3839__$1;
+  var grid = cljs.core.get.call(null, map__3839__$1, "\ufdd0:grid");
+  var dim = cljs.core.get.call(null, map__3839__$1, "\ufdd0:dim");
   var vert = qrcloj.symbol.lighten.call(null, cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([0, 0], true), cljs.core.PersistentVector.fromArray([0, 1], true), cljs.core.PersistentVector.fromArray([0, 2], true), cljs.core.PersistentVector.fromArray([0, 3], true), cljs.core.PersistentVector.fromArray([0, 4], true), cljs.core.PersistentVector.fromArray([0, 5], true), cljs.core.PersistentVector.fromArray([0, 6], true), cljs.core.PersistentVector.fromArray([0, 7], true)], 
   true));
   var horz = qrcloj.symbol.lighten.call(null, cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([0, 0], true), cljs.core.PersistentVector.fromArray([1, 0], true), cljs.core.PersistentVector.fromArray([2, 0], true), cljs.core.PersistentVector.fromArray([3, 0], true), cljs.core.PersistentVector.fromArray([4, 0], true), cljs.core.PersistentVector.fromArray([5, 0], true), cljs.core.PersistentVector.fromArray([6, 0], true), cljs.core.PersistentVector.fromArray([7, 0], true)], 
@@ -23227,35 +23233,35 @@ qrcloj.symbol.add_separators = function add_separators(p__7711) {
   return cljs.core.assoc.call(null, sym, "\ufdd0:grid", cljs.core.merge.call(null, grid, qrcloj.symbol.shift.call(null, cljs.core.PersistentVector.fromArray([7, 0], true), vert), qrcloj.symbol.shift.call(null, cljs.core.PersistentVector.fromArray([0, 7], true), horz), qrcloj.symbol.shift.call(null, cljs.core.PersistentVector.fromArray([dim - 8, 0], true), vert), qrcloj.symbol.shift.call(null, cljs.core.PersistentVector.fromArray([dim - 8, 7], true), horz), qrcloj.symbol.shift.call(null, cljs.core.PersistentVector.fromArray([7, 
   dim - 8], true), vert), qrcloj.symbol.shift.call(null, cljs.core.PersistentVector.fromArray([0, dim - 8], true), horz)))
 };
-qrcloj.symbol.add_timing = function add_timing(p__7714) {
-  var map__7720 = p__7714;
-  var map__7720__$1 = cljs.core.seq_QMARK_.call(null, map__7720) ? cljs.core.apply.call(null, cljs.core.hash_map, map__7720) : map__7720;
-  var sym = map__7720__$1;
-  var grid = cljs.core.get.call(null, map__7720__$1, "\ufdd0:grid");
-  var dim = cljs.core.get.call(null, map__7720__$1, "\ufdd0:dim");
+qrcloj.symbol.add_timing = function add_timing(p__3840) {
+  var map__3846 = p__3840;
+  var map__3846__$1 = cljs.core.seq_QMARK_.call(null, map__3846) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3846) : map__3846;
+  var sym = map__3846__$1;
+  var grid = cljs.core.get.call(null, map__3846__$1, "\ufdd0:grid");
+  var dim = cljs.core.get.call(null, map__3846__$1, "\ufdd0:dim");
   var len = dim - 8 - 8;
   var horz = cljs.core.zipmap.call(null, function() {
     var iter__3042__auto__ = function(len) {
-      return function iter__7721(s__7722) {
+      return function iter__3847(s__3848) {
         return new cljs.core.LazySeq(null, false, function(len) {
           return function() {
-            var s__7722__$1 = s__7722;
+            var s__3848__$1 = s__3848;
             while(true) {
-              var temp__4092__auto__ = cljs.core.seq.call(null, s__7722__$1);
+              var temp__4092__auto__ = cljs.core.seq.call(null, s__3848__$1);
               if(temp__4092__auto__) {
-                var s__7722__$2 = temp__4092__auto__;
-                if(cljs.core.chunked_seq_QMARK_.call(null, s__7722__$2)) {
-                  var c__3040__auto__ = cljs.core.chunk_first.call(null, s__7722__$2);
+                var s__3848__$2 = temp__4092__auto__;
+                if(cljs.core.chunked_seq_QMARK_.call(null, s__3848__$2)) {
+                  var c__3040__auto__ = cljs.core.chunk_first.call(null, s__3848__$2);
                   var size__3041__auto__ = cljs.core.count.call(null, c__3040__auto__);
-                  var b__7724 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
+                  var b__3850 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
                   if(function() {
-                    var i__7723 = 0;
+                    var i__3849 = 0;
                     while(true) {
-                      if(i__7723 < size__3041__auto__) {
-                        var x = cljs.core._nth.call(null, c__3040__auto__, i__7723);
-                        cljs.core.chunk_append.call(null, b__7724, cljs.core.PersistentVector.fromArray([x, 6], true));
-                        var G__7725 = i__7723 + 1;
-                        i__7723 = G__7725;
+                      if(i__3849 < size__3041__auto__) {
+                        var x = cljs.core._nth.call(null, c__3040__auto__, i__3849);
+                        cljs.core.chunk_append.call(null, b__3850, cljs.core.PersistentVector.fromArray([x, 6], true));
+                        var G__3851 = i__3849 + 1;
+                        i__3849 = G__3851;
                         continue
                       }else {
                         return true
@@ -23263,13 +23269,13 @@ qrcloj.symbol.add_timing = function add_timing(p__7714) {
                       break
                     }
                   }()) {
-                    return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__7724), iter__7721.call(null, cljs.core.chunk_rest.call(null, s__7722__$2)))
+                    return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3850), iter__3847.call(null, cljs.core.chunk_rest.call(null, s__3848__$2)))
                   }else {
-                    return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__7724), null)
+                    return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3850), null)
                   }
                 }else {
-                  var x = cljs.core.first.call(null, s__7722__$2);
-                  return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([x, 6], true), iter__7721.call(null, cljs.core.rest.call(null, s__7722__$2)))
+                  var x = cljs.core.first.call(null, s__3848__$2);
+                  return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([x, 6], true), iter__3847.call(null, cljs.core.rest.call(null, s__3848__$2)))
                 }
               }else {
                 return null
@@ -23291,16 +23297,16 @@ qrcloj.symbol.alignment_coords = cljs.core.PersistentVector.fromArray([null, clj
 30, 58, 86, 114], true), cljs.core.PersistentVector.fromArray([6, 34, 62, 90, 118], true), cljs.core.PersistentVector.fromArray([6, 26, 50, 74, 98, 122], true), cljs.core.PersistentVector.fromArray([6, 30, 54, 78, 102, 126], true), cljs.core.PersistentVector.fromArray([6, 26, 52, 78, 104, 130], true), cljs.core.PersistentVector.fromArray([6, 30, 56, 82, 108, 134], true), cljs.core.PersistentVector.fromArray([6, 34, 60, 86, 112, 138], true), cljs.core.PersistentVector.fromArray([6, 30, 58, 86, 114, 
 142], true), cljs.core.PersistentVector.fromArray([6, 34, 62, 90, 118, 146], true), cljs.core.PersistentVector.fromArray([6, 30, 54, 78, 102, 126, 150], true), cljs.core.PersistentVector.fromArray([6, 24, 50, 76, 102, 128, 154], true), cljs.core.PersistentVector.fromArray([6, 28, 54, 80, 106, 132, 158], true), cljs.core.PersistentVector.fromArray([6, 32, 58, 84, 110, 136, 162], true), cljs.core.PersistentVector.fromArray([6, 26, 54, 82, 110, 138, 166], true), cljs.core.PersistentVector.fromArray([6, 
 30, 58, 86, 114, 142, 170], true)], true);
-qrcloj.symbol.add_alignment = function add_alignment(p__7727) {
-  var map__7729 = p__7727;
-  var map__7729__$1 = cljs.core.seq_QMARK_.call(null, map__7729) ? cljs.core.apply.call(null, cljs.core.hash_map, map__7729) : map__7729;
-  var sym = map__7729__$1;
-  var grid = cljs.core.get.call(null, map__7729__$1, "\ufdd0:grid");
-  var dim = cljs.core.get.call(null, map__7729__$1, "\ufdd0:dim");
-  var version = cljs.core.get.call(null, map__7729__$1, "\ufdd0:version");
+qrcloj.symbol.add_alignment = function add_alignment(p__3853) {
+  var map__3855 = p__3853;
+  var map__3855__$1 = cljs.core.seq_QMARK_.call(null, map__3855) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3855) : map__3855;
+  var sym = map__3855__$1;
+  var grid = cljs.core.get.call(null, map__3855__$1, "\ufdd0:grid");
+  var dim = cljs.core.get.call(null, map__3855__$1, "\ufdd0:dim");
+  var version = cljs.core.get.call(null, map__3855__$1, "\ufdd0:version");
   var pattern = cljs.core.merge.call(null, qrcloj.symbol.darken.call(null, qrcloj.symbol.square.call(null, cljs.core.PersistentVector.fromArray([0, 0], true), 5)), qrcloj.symbol.lighten.call(null, qrcloj.symbol.square.call(null, cljs.core.PersistentVector.fromArray([0, 0], true), 3)), qrcloj.symbol.darken.call(null, qrcloj.symbol.square.call(null, cljs.core.PersistentVector.fromArray([0, 0], true), 1)));
-  return cljs.core.assoc.call(null, sym, "\ufdd0:grid", cljs.core.merge.call(null, grid, cljs.core.apply.call(null, cljs.core.merge, cljs.core.map.call(null, function(p1__7726_SHARP_) {
-    return qrcloj.symbol.shift.call(null, p1__7726_SHARP_, pattern)
+  return cljs.core.assoc.call(null, sym, "\ufdd0:grid", cljs.core.merge.call(null, grid, cljs.core.apply.call(null, cljs.core.merge, cljs.core.map.call(null, function(p1__3852_SHARP_) {
+    return qrcloj.symbol.shift.call(null, p1__3852_SHARP_, pattern)
   }, cljs.core.remove.call(null, grid, clojure.math.combinatorics.selections.call(null, qrcloj.symbol.alignment_coords.call(null, version), 2))))))
 };
 qrcloj.symbol.raw_data_path = function raw_data_path(dim) {
@@ -23313,10 +23319,10 @@ qrcloj.symbol.raw_data_path = function raw_data_path(dim) {
     }
   };
   var doit = function(on_sym_QMARK_) {
-    return function doit(p__7733, direction) {
-      var vec__7735 = p__7733;
-      var prev_x = cljs.core.nth.call(null, vec__7735, 0, null);
-      var prev_y = cljs.core.nth.call(null, vec__7735, 1, null);
+    return function doit(p__3859, direction) {
+      var vec__3861 = p__3859;
+      var prev_x = cljs.core.nth.call(null, vec__3861, 0, null);
+      var prev_y = cljs.core.nth.call(null, vec__3861, 1, null);
       var new_y = direction.call(null, prev_y);
       var new_x = cljs.core._EQ_.call(null, prev_x, 8) ? 5 : prev_x - 2;
       if(cljs.core.truth_(on_sym_QMARK_.call(null, new_y))) {
@@ -23334,25 +23340,25 @@ qrcloj.symbol.raw_data_path = function raw_data_path(dim) {
 };
 qrcloj.symbol.format_modules = function format_modules(dim) {
   var vert = cljs.core.concat.call(null, function() {
-    var iter__3042__auto__ = function iter__7744(s__7745) {
+    var iter__3042__auto__ = function iter__3870(s__3871) {
       return new cljs.core.LazySeq(null, false, function() {
-        var s__7745__$1 = s__7745;
+        var s__3871__$1 = s__3871;
         while(true) {
-          var temp__4092__auto__ = cljs.core.seq.call(null, s__7745__$1);
+          var temp__4092__auto__ = cljs.core.seq.call(null, s__3871__$1);
           if(temp__4092__auto__) {
-            var s__7745__$2 = temp__4092__auto__;
-            if(cljs.core.chunked_seq_QMARK_.call(null, s__7745__$2)) {
-              var c__3040__auto__ = cljs.core.chunk_first.call(null, s__7745__$2);
+            var s__3871__$2 = temp__4092__auto__;
+            if(cljs.core.chunked_seq_QMARK_.call(null, s__3871__$2)) {
+              var c__3040__auto__ = cljs.core.chunk_first.call(null, s__3871__$2);
               var size__3041__auto__ = cljs.core.count.call(null, c__3040__auto__);
-              var b__7747 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
+              var b__3873 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
               if(function() {
-                var i__7746 = 0;
+                var i__3872 = 0;
                 while(true) {
-                  if(i__7746 < size__3041__auto__) {
-                    var y = cljs.core._nth.call(null, c__3040__auto__, i__7746);
-                    cljs.core.chunk_append.call(null, b__7747, cljs.core.PersistentVector.fromArray([8, y], true));
-                    var G__7752 = i__7746 + 1;
-                    i__7746 = G__7752;
+                  if(i__3872 < size__3041__auto__) {
+                    var y = cljs.core._nth.call(null, c__3040__auto__, i__3872);
+                    cljs.core.chunk_append.call(null, b__3873, cljs.core.PersistentVector.fromArray([8, y], true));
+                    var G__3878 = i__3872 + 1;
+                    i__3872 = G__3878;
                     continue
                   }else {
                     return true
@@ -23360,13 +23366,13 @@ qrcloj.symbol.format_modules = function format_modules(dim) {
                   break
                 }
               }()) {
-                return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__7747), iter__7744.call(null, cljs.core.chunk_rest.call(null, s__7745__$2)))
+                return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3873), iter__3870.call(null, cljs.core.chunk_rest.call(null, s__3871__$2)))
               }else {
-                return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__7747), null)
+                return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3873), null)
               }
             }else {
-              var y = cljs.core.first.call(null, s__7745__$2);
-              return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([8, y], true), iter__7744.call(null, cljs.core.rest.call(null, s__7745__$2)))
+              var y = cljs.core.first.call(null, s__3871__$2);
+              return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([8, y], true), iter__3870.call(null, cljs.core.rest.call(null, s__3871__$2)))
             }
           }else {
             return null
@@ -23377,25 +23383,25 @@ qrcloj.symbol.format_modules = function format_modules(dim) {
     };
     return iter__3042__auto__.call(null, cljs.core.range.call(null, 0, 9))
   }(), function() {
-    var iter__3042__auto__ = function iter__7748(s__7749) {
+    var iter__3042__auto__ = function iter__3874(s__3875) {
       return new cljs.core.LazySeq(null, false, function() {
-        var s__7749__$1 = s__7749;
+        var s__3875__$1 = s__3875;
         while(true) {
-          var temp__4092__auto__ = cljs.core.seq.call(null, s__7749__$1);
+          var temp__4092__auto__ = cljs.core.seq.call(null, s__3875__$1);
           if(temp__4092__auto__) {
-            var s__7749__$2 = temp__4092__auto__;
-            if(cljs.core.chunked_seq_QMARK_.call(null, s__7749__$2)) {
-              var c__3040__auto__ = cljs.core.chunk_first.call(null, s__7749__$2);
+            var s__3875__$2 = temp__4092__auto__;
+            if(cljs.core.chunked_seq_QMARK_.call(null, s__3875__$2)) {
+              var c__3040__auto__ = cljs.core.chunk_first.call(null, s__3875__$2);
               var size__3041__auto__ = cljs.core.count.call(null, c__3040__auto__);
-              var b__7751 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
+              var b__3877 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
               if(function() {
-                var i__7750 = 0;
+                var i__3876 = 0;
                 while(true) {
-                  if(i__7750 < size__3041__auto__) {
-                    var y = cljs.core._nth.call(null, c__3040__auto__, i__7750);
-                    cljs.core.chunk_append.call(null, b__7751, cljs.core.PersistentVector.fromArray([8, y], true));
-                    var G__7753 = i__7750 + 1;
-                    i__7750 = G__7753;
+                  if(i__3876 < size__3041__auto__) {
+                    var y = cljs.core._nth.call(null, c__3040__auto__, i__3876);
+                    cljs.core.chunk_append.call(null, b__3877, cljs.core.PersistentVector.fromArray([8, y], true));
+                    var G__3879 = i__3876 + 1;
+                    i__3876 = G__3879;
                     continue
                   }else {
                     return true
@@ -23403,13 +23409,13 @@ qrcloj.symbol.format_modules = function format_modules(dim) {
                   break
                 }
               }()) {
-                return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__7751), iter__7748.call(null, cljs.core.chunk_rest.call(null, s__7749__$2)))
+                return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3877), iter__3874.call(null, cljs.core.chunk_rest.call(null, s__3875__$2)))
               }else {
-                return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__7751), null)
+                return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3877), null)
               }
             }else {
-              var y = cljs.core.first.call(null, s__7749__$2);
-              return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([8, y], true), iter__7748.call(null, cljs.core.rest.call(null, s__7749__$2)))
+              var y = cljs.core.first.call(null, s__3875__$2);
+              return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([8, y], true), iter__3874.call(null, cljs.core.rest.call(null, s__3875__$2)))
             }
           }else {
             return null
@@ -23426,36 +23432,36 @@ qrcloj.symbol.version_modules = function version_modules(version) {
   var dim = qrcloj.version.dim.call(null, version);
   var upper_right = function() {
     var iter__3042__auto__ = function(dim) {
-      return function iter__7760(s__7761) {
+      return function iter__3886(s__3887) {
         return new cljs.core.LazySeq(null, false, function(dim) {
           return function() {
-            var s__7761__$1 = s__7761;
+            var s__3887__$1 = s__3887;
             while(true) {
-              var temp__4092__auto__ = cljs.core.seq.call(null, s__7761__$1);
+              var temp__4092__auto__ = cljs.core.seq.call(null, s__3887__$1);
               if(temp__4092__auto__) {
                 var xs__4579__auto__ = temp__4092__auto__;
                 var x = cljs.core.first.call(null, xs__4579__auto__);
-                var iterys__3038__auto__ = function(s__7761__$1, x, xs__4579__auto__, temp__4092__auto__, dim) {
-                  return function iter__7762(s__7763) {
-                    return new cljs.core.LazySeq(null, false, function(s__7761__$1, x, xs__4579__auto__, temp__4092__auto__, dim) {
+                var iterys__3038__auto__ = function(s__3887__$1, x, xs__4579__auto__, temp__4092__auto__, dim) {
+                  return function iter__3888(s__3889) {
+                    return new cljs.core.LazySeq(null, false, function(s__3887__$1, x, xs__4579__auto__, temp__4092__auto__, dim) {
                       return function() {
-                        var s__7763__$1 = s__7763;
+                        var s__3889__$1 = s__3889;
                         while(true) {
-                          var temp__4092__auto____$1 = cljs.core.seq.call(null, s__7763__$1);
+                          var temp__4092__auto____$1 = cljs.core.seq.call(null, s__3889__$1);
                           if(temp__4092__auto____$1) {
-                            var s__7763__$2 = temp__4092__auto____$1;
-                            if(cljs.core.chunked_seq_QMARK_.call(null, s__7763__$2)) {
-                              var c__3040__auto__ = cljs.core.chunk_first.call(null, s__7763__$2);
+                            var s__3889__$2 = temp__4092__auto____$1;
+                            if(cljs.core.chunked_seq_QMARK_.call(null, s__3889__$2)) {
+                              var c__3040__auto__ = cljs.core.chunk_first.call(null, s__3889__$2);
                               var size__3041__auto__ = cljs.core.count.call(null, c__3040__auto__);
-                              var b__7765 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
+                              var b__3891 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
                               if(function() {
-                                var i__7764 = 0;
+                                var i__3890 = 0;
                                 while(true) {
-                                  if(i__7764 < size__3041__auto__) {
-                                    var y = cljs.core._nth.call(null, c__3040__auto__, i__7764);
-                                    cljs.core.chunk_append.call(null, b__7765, cljs.core.PersistentVector.fromArray([x, y], true));
-                                    var G__7766 = i__7764 + 1;
-                                    i__7764 = G__7766;
+                                  if(i__3890 < size__3041__auto__) {
+                                    var y = cljs.core._nth.call(null, c__3040__auto__, i__3890);
+                                    cljs.core.chunk_append.call(null, b__3891, cljs.core.PersistentVector.fromArray([x, y], true));
+                                    var G__3892 = i__3890 + 1;
+                                    i__3890 = G__3892;
                                     continue
                                   }else {
                                     return true
@@ -23463,13 +23469,13 @@ qrcloj.symbol.version_modules = function version_modules(version) {
                                   break
                                 }
                               }()) {
-                                return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__7765), iter__7762.call(null, cljs.core.chunk_rest.call(null, s__7763__$2)))
+                                return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3891), iter__3888.call(null, cljs.core.chunk_rest.call(null, s__3889__$2)))
                               }else {
-                                return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__7765), null)
+                                return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3891), null)
                               }
                             }else {
-                              var y = cljs.core.first.call(null, s__7763__$2);
-                              return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([x, y], true), iter__7762.call(null, cljs.core.rest.call(null, s__7763__$2)))
+                              var y = cljs.core.first.call(null, s__3889__$2);
+                              return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([x, y], true), iter__3888.call(null, cljs.core.rest.call(null, s__3889__$2)))
                             }
                           }else {
                             return null
@@ -23477,15 +23483,15 @@ qrcloj.symbol.version_modules = function version_modules(version) {
                           break
                         }
                       }
-                    }(s__7761__$1, x, xs__4579__auto__, temp__4092__auto__, dim), null)
+                    }(s__3887__$1, x, xs__4579__auto__, temp__4092__auto__, dim), null)
                   }
-                }(s__7761__$1, x, xs__4579__auto__, temp__4092__auto__, dim);
+                }(s__3887__$1, x, xs__4579__auto__, temp__4092__auto__, dim);
                 var fs__3039__auto__ = cljs.core.seq.call(null, iterys__3038__auto__.call(null, cljs.core.range.call(null, 6)));
                 if(fs__3039__auto__) {
-                  return cljs.core.concat.call(null, fs__3039__auto__, iter__7760.call(null, cljs.core.rest.call(null, s__7761__$1)))
+                  return cljs.core.concat.call(null, fs__3039__auto__, iter__3886.call(null, cljs.core.rest.call(null, s__3887__$1)))
                 }else {
-                  var G__7767 = cljs.core.rest.call(null, s__7761__$1);
-                  s__7761__$1 = G__7767;
+                  var G__3893 = cljs.core.rest.call(null, s__3887__$1);
+                  s__3887__$1 = G__3893;
                   continue
                 }
               }else {
@@ -23505,106 +23511,105 @@ qrcloj.symbol.version_modules = function version_modules(version) {
     return cljs.core.set.call(null, cljs.core.concat.call(null, upper_right, cljs.core.map.call(null, cljs.core.reverse, upper_right)))
   }
 };
-qrcloj.symbol.position_data = function position_data(p__7768, data) {
-  var map__7770 = p__7768;
-  var map__7770__$1 = cljs.core.seq_QMARK_.call(null, map__7770) ? cljs.core.apply.call(null, cljs.core.hash_map, map__7770) : map__7770;
-  var grid = cljs.core.get.call(null, map__7770__$1, "\ufdd0:grid");
-  var dim = cljs.core.get.call(null, map__7770__$1, "\ufdd0:dim");
-  var version = cljs.core.get.call(null, map__7770__$1, "\ufdd0:version");
+qrcloj.symbol.position_data = function position_data(p__3894, data) {
+  var map__3896 = p__3894;
+  var map__3896__$1 = cljs.core.seq_QMARK_.call(null, map__3896) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3896) : map__3896;
+  var grid = cljs.core.get.call(null, map__3896__$1, "\ufdd0:grid");
+  var dim = cljs.core.get.call(null, map__3896__$1, "\ufdd0:dim");
+  var version = cljs.core.get.call(null, map__3896__$1, "\ufdd0:version");
   var data_modules = cljs.core.remove.call(null, qrcloj.symbol.format_modules.call(null, dim), cljs.core.remove.call(null, qrcloj.symbol.version_modules.call(null, version), cljs.core.remove.call(null, grid, qrcloj.symbol.raw_data_path.call(null, dim))));
   var binary_data = cljs.core.apply.call(null, cljs.core.concat, cljs.core.map.call(null, cljs.core.partial.call(null, qrcloj.utils.dec_to_bin, 8), data));
   var padded_binary_data = cljs.core.concat.call(null, binary_data, cljs.core.repeat.call(null, cljs.core.count.call(null, data_modules) - cljs.core.count.call(null, binary_data), 0));
   return cljs.core.zipmap.call(null, data_modules, cljs.core.map.call(null, cljs.core.PersistentArrayMap.fromArray([1, "\ufdd0:d", 0, "\ufdd0:l"], true), padded_binary_data))
 };
-qrcloj.symbol.add_data = function add_data(p__7771, data) {
-  var map__7773 = p__7771;
-  var map__7773__$1 = cljs.core.seq_QMARK_.call(null, map__7773) ? cljs.core.apply.call(null, cljs.core.hash_map, map__7773) : map__7773;
-  var sym = map__7773__$1;
-  var grid = cljs.core.get.call(null, map__7773__$1, "\ufdd0:grid");
-  var dim = cljs.core.get.call(null, map__7773__$1, "\ufdd0:dim");
-  var version = cljs.core.get.call(null, map__7773__$1, "\ufdd0:version");
+qrcloj.symbol.add_data = function add_data(p__3897, data) {
+  var map__3899 = p__3897;
+  var map__3899__$1 = cljs.core.seq_QMARK_.call(null, map__3899) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3899) : map__3899;
+  var sym = map__3899__$1;
+  var grid = cljs.core.get.call(null, map__3899__$1, "\ufdd0:grid");
+  var dim = cljs.core.get.call(null, map__3899__$1, "\ufdd0:dim");
+  var version = cljs.core.get.call(null, map__3899__$1, "\ufdd0:version");
   return cljs.core.assoc.call(null, sym, "\ufdd0:grid", cljs.core.merge.call(null, grid, data))
 };
-qrcloj.symbol.add_format = function add_format(p__7774, mask_idx) {
-  var map__7776 = p__7774;
-  var map__7776__$1 = cljs.core.seq_QMARK_.call(null, map__7776) ? cljs.core.apply.call(null, cljs.core.hash_map, map__7776) : map__7776;
-  var sym = map__7776__$1;
-  var ecl = cljs.core.get.call(null, map__7776__$1, "\ufdd0:ecl");
-  var grid = cljs.core.get.call(null, map__7776__$1, "\ufdd0:grid");
-  var dim = cljs.core.get.call(null, map__7776__$1, "\ufdd0:dim");
+qrcloj.symbol.add_format = function add_format(p__3900, mask_idx) {
+  var map__3902 = p__3900;
+  var map__3902__$1 = cljs.core.seq_QMARK_.call(null, map__3902) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3902) : map__3902;
+  var sym = map__3902__$1;
+  var ecl = cljs.core.get.call(null, map__3902__$1, "\ufdd0:ecl");
+  var grid = cljs.core.get.call(null, map__3902__$1, "\ufdd0:grid");
+  var dim = cljs.core.get.call(null, map__3902__$1, "\ufdd0:dim");
   var format_seq = cljs.core.map.call(null, cljs.core.PersistentArrayMap.fromArray([1, "\ufdd0:d", 0, "\ufdd0:l"], true), qrcloj.format.indicator.call(null, ecl, mask_idx));
   return cljs.core.assoc.call(null, sym, "\ufdd0:grid", cljs.core.merge.call(null, grid, cljs.core.PersistentArrayMap.fromArray([qrcloj.format.dark_module.call(null, dim), "\ufdd0:d"], true), cljs.core.zipmap.call(null, qrcloj.format.vert_modules.call(null, dim), format_seq), cljs.core.zipmap.call(null, qrcloj.format.horz_modules.call(null, dim), format_seq)))
 };
-qrcloj.symbol.add_version = function add_version(p__7777) {
-  var map__7779 = p__7777;
-  var map__7779__$1 = cljs.core.seq_QMARK_.call(null, map__7779) ? cljs.core.apply.call(null, cljs.core.hash_map, map__7779) : map__7779;
-  var sym = map__7779__$1;
-  var version = cljs.core.get.call(null, map__7779__$1, "\ufdd0:version");
-  var grid = cljs.core.get.call(null, map__7779__$1, "\ufdd0:grid");
-  var dim = cljs.core.get.call(null, map__7779__$1, "\ufdd0:dim");
+qrcloj.symbol.add_version = function add_version(p__3903) {
+  var map__3905 = p__3903;
+  var map__3905__$1 = cljs.core.seq_QMARK_.call(null, map__3905) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3905) : map__3905;
+  var sym = map__3905__$1;
+  var version = cljs.core.get.call(null, map__3905__$1, "\ufdd0:version");
+  var grid = cljs.core.get.call(null, map__3905__$1, "\ufdd0:grid");
+  var dim = cljs.core.get.call(null, map__3905__$1, "\ufdd0:dim");
   var version_seq = cljs.core.map.call(null, cljs.core.PersistentArrayMap.fromArray([1, "\ufdd0:d", 0, "\ufdd0:l"], true), qrcloj.version.indicator.call(null, version));
-  console.log(version);
   if(version < 7) {
     return sym
   }else {
     return cljs.core.assoc.call(null, sym, "\ufdd0:grid", cljs.core.merge.call(null, grid, cljs.core.zipmap.call(null, qrcloj.version.upper_right_modules.call(null, dim), version_seq), cljs.core.zipmap.call(null, qrcloj.version.lower_left_modules.call(null, dim), version_seq)))
   }
 };
-qrcloj.symbol.disp = function disp(p__7780) {
-  var map__7794 = p__7780;
-  var map__7794__$1 = cljs.core.seq_QMARK_.call(null, map__7794) ? cljs.core.apply.call(null, cljs.core.hash_map, map__7794) : map__7794;
-  var grid = cljs.core.get.call(null, map__7794__$1, "\ufdd0:grid");
-  var dim = cljs.core.get.call(null, map__7794__$1, "\ufdd0:dim");
-  var seq__7795 = cljs.core.seq.call(null, cljs.core.range.call(null, dim));
-  var chunk__7796 = null;
-  var count__7797 = 0;
-  var i__7798 = 0;
+qrcloj.symbol.disp = function disp(p__3906) {
+  var map__3920 = p__3906;
+  var map__3920__$1 = cljs.core.seq_QMARK_.call(null, map__3920) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3920) : map__3920;
+  var grid = cljs.core.get.call(null, map__3920__$1, "\ufdd0:grid");
+  var dim = cljs.core.get.call(null, map__3920__$1, "\ufdd0:dim");
+  var seq__3921 = cljs.core.seq.call(null, cljs.core.range.call(null, dim));
+  var chunk__3922 = null;
+  var count__3923 = 0;
+  var i__3924 = 0;
   while(true) {
-    if(i__7798 < count__7797) {
-      var y = cljs.core._nth.call(null, chunk__7796, i__7798);
-      var seq__7799_7807 = cljs.core.seq.call(null, cljs.core.range.call(null, dim));
-      var chunk__7800_7808 = null;
-      var count__7801_7809 = 0;
-      var i__7802_7810 = 0;
+    if(i__3924 < count__3923) {
+      var y = cljs.core._nth.call(null, chunk__3922, i__3924);
+      var seq__3925_3933 = cljs.core.seq.call(null, cljs.core.range.call(null, dim));
+      var chunk__3926_3934 = null;
+      var count__3927_3935 = 0;
+      var i__3928_3936 = 0;
       while(true) {
-        if(i__7802_7810 < count__7801_7809) {
-          var x_7811 = cljs.core._nth.call(null, chunk__7800_7808, i__7802_7810);
-          cljs.core.print.call(null, cljs.core.get.call(null, grid, cljs.core.PersistentVector.fromArray([x_7811, y], true), "\ufdd0:0"), " ");
-          var G__7812 = seq__7799_7807;
-          var G__7813 = chunk__7800_7808;
-          var G__7814 = count__7801_7809;
-          var G__7815 = i__7802_7810 + 1;
-          seq__7799_7807 = G__7812;
-          chunk__7800_7808 = G__7813;
-          count__7801_7809 = G__7814;
-          i__7802_7810 = G__7815;
+        if(i__3928_3936 < count__3927_3935) {
+          var x_3937 = cljs.core._nth.call(null, chunk__3926_3934, i__3928_3936);
+          cljs.core.print.call(null, cljs.core.get.call(null, grid, cljs.core.PersistentVector.fromArray([x_3937, y], true), "\ufdd0:0"), " ");
+          var G__3938 = seq__3925_3933;
+          var G__3939 = chunk__3926_3934;
+          var G__3940 = count__3927_3935;
+          var G__3941 = i__3928_3936 + 1;
+          seq__3925_3933 = G__3938;
+          chunk__3926_3934 = G__3939;
+          count__3927_3935 = G__3940;
+          i__3928_3936 = G__3941;
           continue
         }else {
-          var temp__4092__auto___7816 = cljs.core.seq.call(null, seq__7799_7807);
-          if(temp__4092__auto___7816) {
-            var seq__7799_7817__$1 = temp__4092__auto___7816;
-            if(cljs.core.chunked_seq_QMARK_.call(null, seq__7799_7817__$1)) {
-              var c__3073__auto___7818 = cljs.core.chunk_first.call(null, seq__7799_7817__$1);
-              var G__7819 = cljs.core.chunk_rest.call(null, seq__7799_7817__$1);
-              var G__7820 = c__3073__auto___7818;
-              var G__7821 = cljs.core.count.call(null, c__3073__auto___7818);
-              var G__7822 = 0;
-              seq__7799_7807 = G__7819;
-              chunk__7800_7808 = G__7820;
-              count__7801_7809 = G__7821;
-              i__7802_7810 = G__7822;
+          var temp__4092__auto___3942 = cljs.core.seq.call(null, seq__3925_3933);
+          if(temp__4092__auto___3942) {
+            var seq__3925_3943__$1 = temp__4092__auto___3942;
+            if(cljs.core.chunked_seq_QMARK_.call(null, seq__3925_3943__$1)) {
+              var c__3073__auto___3944 = cljs.core.chunk_first.call(null, seq__3925_3943__$1);
+              var G__3945 = cljs.core.chunk_rest.call(null, seq__3925_3943__$1);
+              var G__3946 = c__3073__auto___3944;
+              var G__3947 = cljs.core.count.call(null, c__3073__auto___3944);
+              var G__3948 = 0;
+              seq__3925_3933 = G__3945;
+              chunk__3926_3934 = G__3946;
+              count__3927_3935 = G__3947;
+              i__3928_3936 = G__3948;
               continue
             }else {
-              var x_7823 = cljs.core.first.call(null, seq__7799_7817__$1);
-              cljs.core.print.call(null, cljs.core.get.call(null, grid, cljs.core.PersistentVector.fromArray([x_7823, y], true), "\ufdd0:0"), " ");
-              var G__7824 = cljs.core.next.call(null, seq__7799_7817__$1);
-              var G__7825 = null;
-              var G__7826 = 0;
-              var G__7827 = 0;
-              seq__7799_7807 = G__7824;
-              chunk__7800_7808 = G__7825;
-              count__7801_7809 = G__7826;
-              i__7802_7810 = G__7827;
+              var x_3949 = cljs.core.first.call(null, seq__3925_3943__$1);
+              cljs.core.print.call(null, cljs.core.get.call(null, grid, cljs.core.PersistentVector.fromArray([x_3949, y], true), "\ufdd0:0"), " ");
+              var G__3950 = cljs.core.next.call(null, seq__3925_3943__$1);
+              var G__3951 = null;
+              var G__3952 = 0;
+              var G__3953 = 0;
+              seq__3925_3933 = G__3950;
+              chunk__3926_3934 = G__3951;
+              count__3927_3935 = G__3952;
+              i__3928_3936 = G__3953;
               continue
             }
           }else {
@@ -23613,75 +23618,75 @@ qrcloj.symbol.disp = function disp(p__7780) {
         break
       }
       cljs.core.prn.call(null);
-      var G__7828 = seq__7795;
-      var G__7829 = chunk__7796;
-      var G__7830 = count__7797;
-      var G__7831 = i__7798 + 1;
-      seq__7795 = G__7828;
-      chunk__7796 = G__7829;
-      count__7797 = G__7830;
-      i__7798 = G__7831;
+      var G__3954 = seq__3921;
+      var G__3955 = chunk__3922;
+      var G__3956 = count__3923;
+      var G__3957 = i__3924 + 1;
+      seq__3921 = G__3954;
+      chunk__3922 = G__3955;
+      count__3923 = G__3956;
+      i__3924 = G__3957;
       continue
     }else {
-      var temp__4092__auto__ = cljs.core.seq.call(null, seq__7795);
+      var temp__4092__auto__ = cljs.core.seq.call(null, seq__3921);
       if(temp__4092__auto__) {
-        var seq__7795__$1 = temp__4092__auto__;
-        if(cljs.core.chunked_seq_QMARK_.call(null, seq__7795__$1)) {
-          var c__3073__auto__ = cljs.core.chunk_first.call(null, seq__7795__$1);
-          var G__7832 = cljs.core.chunk_rest.call(null, seq__7795__$1);
-          var G__7833 = c__3073__auto__;
-          var G__7834 = cljs.core.count.call(null, c__3073__auto__);
-          var G__7835 = 0;
-          seq__7795 = G__7832;
-          chunk__7796 = G__7833;
-          count__7797 = G__7834;
-          i__7798 = G__7835;
+        var seq__3921__$1 = temp__4092__auto__;
+        if(cljs.core.chunked_seq_QMARK_.call(null, seq__3921__$1)) {
+          var c__3073__auto__ = cljs.core.chunk_first.call(null, seq__3921__$1);
+          var G__3958 = cljs.core.chunk_rest.call(null, seq__3921__$1);
+          var G__3959 = c__3073__auto__;
+          var G__3960 = cljs.core.count.call(null, c__3073__auto__);
+          var G__3961 = 0;
+          seq__3921 = G__3958;
+          chunk__3922 = G__3959;
+          count__3923 = G__3960;
+          i__3924 = G__3961;
           continue
         }else {
-          var y = cljs.core.first.call(null, seq__7795__$1);
-          var seq__7803_7836 = cljs.core.seq.call(null, cljs.core.range.call(null, dim));
-          var chunk__7804_7837 = null;
-          var count__7805_7838 = 0;
-          var i__7806_7839 = 0;
+          var y = cljs.core.first.call(null, seq__3921__$1);
+          var seq__3929_3962 = cljs.core.seq.call(null, cljs.core.range.call(null, dim));
+          var chunk__3930_3963 = null;
+          var count__3931_3964 = 0;
+          var i__3932_3965 = 0;
           while(true) {
-            if(i__7806_7839 < count__7805_7838) {
-              var x_7840 = cljs.core._nth.call(null, chunk__7804_7837, i__7806_7839);
-              cljs.core.print.call(null, cljs.core.get.call(null, grid, cljs.core.PersistentVector.fromArray([x_7840, y], true), "\ufdd0:0"), " ");
-              var G__7841 = seq__7803_7836;
-              var G__7842 = chunk__7804_7837;
-              var G__7843 = count__7805_7838;
-              var G__7844 = i__7806_7839 + 1;
-              seq__7803_7836 = G__7841;
-              chunk__7804_7837 = G__7842;
-              count__7805_7838 = G__7843;
-              i__7806_7839 = G__7844;
+            if(i__3932_3965 < count__3931_3964) {
+              var x_3966 = cljs.core._nth.call(null, chunk__3930_3963, i__3932_3965);
+              cljs.core.print.call(null, cljs.core.get.call(null, grid, cljs.core.PersistentVector.fromArray([x_3966, y], true), "\ufdd0:0"), " ");
+              var G__3967 = seq__3929_3962;
+              var G__3968 = chunk__3930_3963;
+              var G__3969 = count__3931_3964;
+              var G__3970 = i__3932_3965 + 1;
+              seq__3929_3962 = G__3967;
+              chunk__3930_3963 = G__3968;
+              count__3931_3964 = G__3969;
+              i__3932_3965 = G__3970;
               continue
             }else {
-              var temp__4092__auto___7845__$1 = cljs.core.seq.call(null, seq__7803_7836);
-              if(temp__4092__auto___7845__$1) {
-                var seq__7803_7846__$1 = temp__4092__auto___7845__$1;
-                if(cljs.core.chunked_seq_QMARK_.call(null, seq__7803_7846__$1)) {
-                  var c__3073__auto___7847 = cljs.core.chunk_first.call(null, seq__7803_7846__$1);
-                  var G__7848 = cljs.core.chunk_rest.call(null, seq__7803_7846__$1);
-                  var G__7849 = c__3073__auto___7847;
-                  var G__7850 = cljs.core.count.call(null, c__3073__auto___7847);
-                  var G__7851 = 0;
-                  seq__7803_7836 = G__7848;
-                  chunk__7804_7837 = G__7849;
-                  count__7805_7838 = G__7850;
-                  i__7806_7839 = G__7851;
+              var temp__4092__auto___3971__$1 = cljs.core.seq.call(null, seq__3929_3962);
+              if(temp__4092__auto___3971__$1) {
+                var seq__3929_3972__$1 = temp__4092__auto___3971__$1;
+                if(cljs.core.chunked_seq_QMARK_.call(null, seq__3929_3972__$1)) {
+                  var c__3073__auto___3973 = cljs.core.chunk_first.call(null, seq__3929_3972__$1);
+                  var G__3974 = cljs.core.chunk_rest.call(null, seq__3929_3972__$1);
+                  var G__3975 = c__3073__auto___3973;
+                  var G__3976 = cljs.core.count.call(null, c__3073__auto___3973);
+                  var G__3977 = 0;
+                  seq__3929_3962 = G__3974;
+                  chunk__3930_3963 = G__3975;
+                  count__3931_3964 = G__3976;
+                  i__3932_3965 = G__3977;
                   continue
                 }else {
-                  var x_7852 = cljs.core.first.call(null, seq__7803_7846__$1);
-                  cljs.core.print.call(null, cljs.core.get.call(null, grid, cljs.core.PersistentVector.fromArray([x_7852, y], true), "\ufdd0:0"), " ");
-                  var G__7853 = cljs.core.next.call(null, seq__7803_7846__$1);
-                  var G__7854 = null;
-                  var G__7855 = 0;
-                  var G__7856 = 0;
-                  seq__7803_7836 = G__7853;
-                  chunk__7804_7837 = G__7854;
-                  count__7805_7838 = G__7855;
-                  i__7806_7839 = G__7856;
+                  var x_3978 = cljs.core.first.call(null, seq__3929_3972__$1);
+                  cljs.core.print.call(null, cljs.core.get.call(null, grid, cljs.core.PersistentVector.fromArray([x_3978, y], true), "\ufdd0:0"), " ");
+                  var G__3979 = cljs.core.next.call(null, seq__3929_3972__$1);
+                  var G__3980 = null;
+                  var G__3981 = 0;
+                  var G__3982 = 0;
+                  seq__3929_3962 = G__3979;
+                  chunk__3930_3963 = G__3980;
+                  count__3931_3964 = G__3981;
+                  i__3932_3965 = G__3982;
                   continue
                 }
               }else {
@@ -23690,14 +23695,14 @@ qrcloj.symbol.disp = function disp(p__7780) {
             break
           }
           cljs.core.prn.call(null);
-          var G__7857 = cljs.core.next.call(null, seq__7795__$1);
-          var G__7858 = null;
-          var G__7859 = 0;
-          var G__7860 = 0;
-          seq__7795 = G__7857;
-          chunk__7796 = G__7858;
-          count__7797 = G__7859;
-          i__7798 = G__7860;
+          var G__3983 = cljs.core.next.call(null, seq__3921__$1);
+          var G__3984 = null;
+          var G__3985 = 0;
+          var G__3986 = 0;
+          seq__3921 = G__3983;
+          chunk__3922 = G__3984;
+          count__3923 = G__3985;
+          i__3924 = G__3986;
           continue
         }
       }else {
@@ -23710,25 +23715,25 @@ qrcloj.symbol.disp = function disp(p__7780) {
 qrcloj.symbol.function_modules = function function_modules(version, ecl) {
   return qrcloj.symbol.add_timing.call(null, qrcloj.symbol.add_alignment.call(null, qrcloj.symbol.add_separators.call(null, qrcloj.symbol.add_finders.call(null, qrcloj.symbol.blank.call(null, version, ecl)))))
 };
-qrcloj.symbol.generate_unmasked = function generate_unmasked(p__7861) {
-  var map__7863 = p__7861;
-  var map__7863__$1 = cljs.core.seq_QMARK_.call(null, map__7863) ? cljs.core.apply.call(null, cljs.core.hash_map, map__7863) : map__7863;
-  var data = cljs.core.get.call(null, map__7863__$1, "\ufdd0:data");
-  var version = cljs.core.get.call(null, map__7863__$1, "\ufdd0:version");
-  var ecl = cljs.core.get.call(null, map__7863__$1, "\ufdd0:ecl");
+qrcloj.symbol.generate_unmasked = function generate_unmasked(p__3987) {
+  var map__3989 = p__3987;
+  var map__3989__$1 = cljs.core.seq_QMARK_.call(null, map__3989) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3989) : map__3989;
+  var data = cljs.core.get.call(null, map__3989__$1, "\ufdd0:data");
+  var version = cljs.core.get.call(null, map__3989__$1, "\ufdd0:version");
+  var ecl = cljs.core.get.call(null, map__3989__$1, "\ufdd0:ecl");
   return qrcloj.symbol.add_data.call(null, qrcloj.symbol.function_modules.call(null, version, ecl), qrcloj.symbol.position_data.call(null, qrcloj.symbol.function_modules.call(null, version, ecl), data))
 };
-qrcloj.symbol.generate = function generate(p__7864) {
-  var map__7867 = p__7864;
-  var map__7867__$1 = cljs.core.seq_QMARK_.call(null, map__7867) ? cljs.core.apply.call(null, cljs.core.hash_map, map__7867) : map__7867;
-  var data = cljs.core.get.call(null, map__7867__$1, "\ufdd0:data");
-  var version = cljs.core.get.call(null, map__7867__$1, "\ufdd0:version");
-  var ecl = cljs.core.get.call(null, map__7867__$1, "\ufdd0:ecl");
+qrcloj.symbol.generate = function generate(p__3990) {
+  var map__3993 = p__3990;
+  var map__3993__$1 = cljs.core.seq_QMARK_.call(null, map__3993) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3993) : map__3993;
+  var data = cljs.core.get.call(null, map__3993__$1, "\ufdd0:data");
+  var version = cljs.core.get.call(null, map__3993__$1, "\ufdd0:version");
+  var ecl = cljs.core.get.call(null, map__3993__$1, "\ufdd0:ecl");
   var function_sym = qrcloj.symbol.function_modules.call(null, version, ecl);
-  var map__7868 = qrcloj.masking.mask_symbol.call(null, cljs.core.PersistentArrayMap.fromArray(["\ufdd0:grid", qrcloj.symbol.position_data.call(null, function_sym, data), "\ufdd0:dim", qrcloj.version.dim.call(null, version)], true));
-  var map__7868__$1 = cljs.core.seq_QMARK_.call(null, map__7868) ? cljs.core.apply.call(null, cljs.core.hash_map, map__7868) : map__7868;
-  var masked = cljs.core.get.call(null, map__7868__$1, "\ufdd0:masked");
-  var idx = cljs.core.get.call(null, map__7868__$1, "\ufdd0:idx");
+  var map__3994 = qrcloj.masking.mask_symbol.call(null, cljs.core.PersistentArrayMap.fromArray(["\ufdd0:grid", qrcloj.symbol.position_data.call(null, function_sym, data), "\ufdd0:dim", qrcloj.version.dim.call(null, version)], true));
+  var map__3994__$1 = cljs.core.seq_QMARK_.call(null, map__3994) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3994) : map__3994;
+  var masked = cljs.core.get.call(null, map__3994__$1, "\ufdd0:masked");
+  var idx = cljs.core.get.call(null, map__3994__$1, "\ufdd0:idx");
   var sym_with_data = qrcloj.symbol.add_data.call(null, function_sym, masked);
   var sym_with_format = qrcloj.symbol.add_format.call(null, sym_with_data, idx);
   return qrcloj.symbol.add_version.call(null, sym_with_format)
@@ -23742,21 +23747,20 @@ goog.require("qrcloj.interop");
 goog.require("qrcloj.error_correction");
 goog.require("qrcloj.utils");
 goog.require("qrcloj.version");
-qrcloj.encode.dec_to_bin = function dec_to_bin(len, n) {
-  var bin = qrcloj.interop.int_to_str.call(null, n, 2);
-  return cljs.core.map.call(null, cljs.core.PersistentArrayMap.fromArray(["0", 0, "1", 1], true), cljs.core.concat.call(null, cljs.core.repeat.call(null, len - cljs.core.count.call(null, bin), "0"), bin))
-};
 qrcloj.encode.mode_indicator = cljs.core.PersistentArrayMap.fromArray(["\ufdd0:numeric", cljs.core.PersistentVector.fromArray([0, 0, 0, 1], true), "\ufdd0:alphanumeric", cljs.core.PersistentVector.fromArray([0, 0, 1, 0], true), "\ufdd0:byte", cljs.core.PersistentVector.fromArray([0, 1, 0, 0], true)], true);
-qrcloj.encode.bits_in_count = cljs.core.PersistentArrayMap.fromArray(["\ufdd0:numeric", 10, "\ufdd0:alphanumeric", 9, "\ufdd0:byte", 8], true);
-qrcloj.encode.char_count = function char_count(p__4639) {
-  var map__4641 = p__4639;
-  var map__4641__$1 = cljs.core.seq_QMARK_.call(null, map__4641) ? cljs.core.apply.call(null, cljs.core.hash_map, map__4641) : map__4641;
-  var data = cljs.core.get.call(null, map__4641__$1, "\ufdd0:data");
-  var mode = cljs.core.get.call(null, map__4641__$1, "\ufdd0:mode");
-  return qrcloj.encode.dec_to_bin.call(null, qrcloj.encode.bits_in_count.call(null, mode), cljs.core.count.call(null, data))
+qrcloj.encode.bits_in_count = function bits_in_count(mode, version) {
+  return cljs.core.PersistentArrayMap.fromArray(["\ufdd0:numeric", cljs.core.PersistentVector.fromArray([10, 12, 14], true), "\ufdd0:alphanumeric", cljs.core.PersistentVector.fromArray([9, 11, 13], true), "\ufdd0:byte", cljs.core.PersistentVector.fromArray([8, 16, 16], true)], true).call(null, mode).call(null, version < 10 ? 0 : version < 27 ? 1 : "\ufdd0:else" ? 2 : null)
 };
-qrcloj.encode.terminator = function terminator(ecl, num_bits) {
-  return cljs.core.take.call(null, qrcloj.version.bit_capacity.call(null, qrcloj.version.best_fit.call(null, ecl, num_bits)) - num_bits, cljs.core.PersistentVector.fromArray([0, 0, 0, 0], true))
+qrcloj.encode.char_count = function char_count(p__3806) {
+  var map__3808 = p__3806;
+  var map__3808__$1 = cljs.core.seq_QMARK_.call(null, map__3808) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3808) : map__3808;
+  var version = cljs.core.get.call(null, map__3808__$1, "\ufdd0:version");
+  var data = cljs.core.get.call(null, map__3808__$1, "\ufdd0:data");
+  var mode = cljs.core.get.call(null, map__3808__$1, "\ufdd0:mode");
+  return qrcloj.utils.dec_to_bin.call(null, qrcloj.encode.bits_in_count.call(null, mode, version), cljs.core.count.call(null, data))
+};
+qrcloj.encode.terminator = function terminator(version, num_bits) {
+  return cljs.core.take.call(null, qrcloj.version.bit_capacity.call(null, version) - num_bits, cljs.core.PersistentVector.fromArray([0, 0, 0, 0], true))
 };
 qrcloj.encode.general_encode = function general_encode(val_map, group_size, group_fn, data) {
   return cljs.core.flatten.call(null, cljs.core.map.call(null, group_fn, cljs.core.partition.call(null, group_size, group_size, cljs.core.PersistentVector.EMPTY, cljs.core.map.call(null, val_map, data))))
@@ -23770,30 +23774,30 @@ qrcloj.encode.encode_data = function() {
   return new cljs.core.MultiFn("encode-data", "\ufdd0:mode", "\ufdd0:default", hierarchy__3134__auto__, method_table__3130__auto__, prefer_table__3131__auto__, method_cache__3132__auto__, cached_hierarchy__3133__auto__)
 }();
 qrcloj.encode.numeric_values = cljs.core.zipmap.call(null, cljs.core.seq.call(null, "0123456789"), cljs.core.range.call(null, 0, 10));
-cljs.core._add_method.call(null, qrcloj.encode.encode_data, "\ufdd0:numeric", function(p__4643) {
-  var map__4644 = p__4643;
-  var map__4644__$1 = cljs.core.seq_QMARK_.call(null, map__4644) ? cljs.core.apply.call(null, cljs.core.hash_map, map__4644) : map__4644;
-  var data = cljs.core.get.call(null, map__4644__$1, "\ufdd0:data");
-  var group_to_bin = function(p1__4642_SHARP_) {
-    return qrcloj.encode.dec_to_bin.call(null, cljs.core.PersistentArrayMap.fromArray([1, 4, 2, 7, 3, 10], true).call(null, cljs.core.count.call(null, p1__4642_SHARP_)), qrcloj.interop.str_to_int.call(null, cljs.core.apply.call(null, cljs.core.str, p1__4642_SHARP_)))
+cljs.core._add_method.call(null, qrcloj.encode.encode_data, "\ufdd0:numeric", function(p__3810) {
+  var map__3811 = p__3810;
+  var map__3811__$1 = cljs.core.seq_QMARK_.call(null, map__3811) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3811) : map__3811;
+  var data = cljs.core.get.call(null, map__3811__$1, "\ufdd0:data");
+  var group_to_bin = function(p1__3809_SHARP_) {
+    return qrcloj.utils.dec_to_bin.call(null, cljs.core.PersistentArrayMap.fromArray([1, 4, 2, 7, 3, 10], true).call(null, cljs.core.count.call(null, p1__3809_SHARP_)), qrcloj.interop.str_to_int.call(null, cljs.core.apply.call(null, cljs.core.str, p1__3809_SHARP_)))
   };
   return qrcloj.encode.general_encode.call(null, qrcloj.encode.numeric_values, 3, group_to_bin, data)
 });
 qrcloj.encode.alphanumeric_values = cljs.core.zipmap.call(null, cljs.core.seq.call(null, "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ $%*+-./:"), cljs.core.range.call(null, 0, 45));
-cljs.core._add_method.call(null, qrcloj.encode.encode_data, "\ufdd0:alphanumeric", function(p__4645) {
-  var map__4646 = p__4645;
-  var map__4646__$1 = cljs.core.seq_QMARK_.call(null, map__4646) ? cljs.core.apply.call(null, cljs.core.hash_map, map__4646) : map__4646;
-  var data = cljs.core.get.call(null, map__4646__$1, "\ufdd0:data");
+cljs.core._add_method.call(null, qrcloj.encode.encode_data, "\ufdd0:alphanumeric", function(p__3812) {
+  var map__3813 = p__3812;
+  var map__3813__$1 = cljs.core.seq_QMARK_.call(null, map__3813) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3813) : map__3813;
+  var data = cljs.core.get.call(null, map__3813__$1, "\ufdd0:data");
   var group_to_bin = function(vs) {
-    return qrcloj.encode.dec_to_bin.call(null, cljs.core.PersistentArrayMap.fromArray([1, 6, 2, 11], true).call(null, cljs.core.count.call(null, vs)), cljs.core._EQ_.call(null, 2, cljs.core.count.call(null, vs)) ? 45 * cljs.core.first.call(null, vs) + cljs.core.second.call(null, vs) : cljs.core.first.call(null, vs))
+    return qrcloj.utils.dec_to_bin.call(null, cljs.core.PersistentArrayMap.fromArray([1, 6, 2, 11], true).call(null, cljs.core.count.call(null, vs)), cljs.core._EQ_.call(null, 2, cljs.core.count.call(null, vs)) ? 45 * cljs.core.first.call(null, vs) + cljs.core.second.call(null, vs) : cljs.core.first.call(null, vs))
   };
   return qrcloj.encode.general_encode.call(null, qrcloj.encode.alphanumeric_values, 2, group_to_bin, data)
 });
-cljs.core._add_method.call(null, qrcloj.encode.encode_data, "\ufdd0:byte", function(p__4648) {
-  var map__4649 = p__4648;
-  var map__4649__$1 = cljs.core.seq_QMARK_.call(null, map__4649) ? cljs.core.apply.call(null, cljs.core.hash_map, map__4649) : map__4649;
-  var data = cljs.core.get.call(null, map__4649__$1, "\ufdd0:data");
-  return qrcloj.encode.general_encode.call(null, qrcloj.interop.char_to_ascii, 1, cljs.core.comp.call(null, cljs.core.partial.call(null, qrcloj.encode.dec_to_bin, 8), cljs.core.first), data)
+cljs.core._add_method.call(null, qrcloj.encode.encode_data, "\ufdd0:byte", function(p__3815) {
+  var map__3816 = p__3815;
+  var map__3816__$1 = cljs.core.seq_QMARK_.call(null, map__3816) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3816) : map__3816;
+  var data = cljs.core.get.call(null, map__3816__$1, "\ufdd0:data");
+  return qrcloj.encode.general_encode.call(null, qrcloj.interop.char_to_ascii, 1, cljs.core.comp.call(null, cljs.core.partial.call(null, qrcloj.utils.dec_to_bin, 8), cljs.core.first), data)
 });
 qrcloj.encode.mode = function mode(data) {
   if(cljs.core.truth_(cljs.core.re_matches.call(null, /\d*/, data))) {
@@ -23802,10 +23806,10 @@ qrcloj.encode.mode = function mode(data) {
     if(cljs.core.truth_(cljs.core.re_matches.call(null, /[0-9A-Z $%*+-.\/:]*/, data))) {
       return"\ufdd0:alphanumeric"
     }else {
-      if(cljs.core.every_QMARK_.call(null, function(p1__4647_SHARP_) {
-        var and__3941__auto__ = 0 <= p1__4647_SHARP_;
+      if(cljs.core.every_QMARK_.call(null, function(p1__3814_SHARP_) {
+        var and__3941__auto__ = 0 <= p1__3814_SHARP_;
         if(and__3941__auto__) {
-          return p1__4647_SHARP_ <= 255
+          return p1__3814_SHARP_ <= 255
         }else {
           return and__3941__auto__
         }
@@ -23818,41 +23822,40 @@ qrcloj.encode.mode = function mode(data) {
   }
 };
 qrcloj.encode.data_to_bitstream = function data_to_bitstream(ecl, data) {
-  var tagged = cljs.core.PersistentArrayMap.fromArray(["\ufdd0:data", data, "\ufdd0:mode", qrcloj.encode.mode.call(null, data)], true);
+  var m = qrcloj.encode.mode.call(null, data);
+  var version = qrcloj.version.best_fit.call(null, m, ecl, data);
+  var tagged = cljs.core.PersistentArrayMap.fromArray(["\ufdd0:data", data, "\ufdd0:mode", qrcloj.encode.mode.call(null, data), "\ufdd0:version", (new cljs.core.Keyword("\ufdd0:version")).call(null, version)], true);
   var bitstream = cljs.core.concat.call(null, qrcloj.encode.mode_indicator.call(null, (new cljs.core.Keyword("\ufdd0:mode")).call(null, tagged)), qrcloj.encode.char_count.call(null, tagged), qrcloj.encode.encode_data.call(null, tagged));
-  return cljs.core.concat.call(null, bitstream, qrcloj.encode.terminator.call(null, ecl, cljs.core.count.call(null, bitstream)))
-};
-qrcloj.encode.tag_with_version = function tag_with_version(ecl, data) {
-  return cljs.core.assoc.call(null, qrcloj.version.best_fit.call(null, ecl, cljs.core.count.call(null, data)), "\ufdd0:data", data)
+  return cljs.core.assoc.call(null, version, "\ufdd0:data", cljs.core.concat.call(null, bitstream, qrcloj.encode.terminator.call(null, version, cljs.core.count.call(null, bitstream))))
 };
 qrcloj.encode.pad_to = function pad_to(version_size, bitstream) {
   return cljs.core.concat.call(null, bitstream, cljs.core.take.call(null, version_size - cljs.core.count.call(null, bitstream), cljs.core.flatten.call(null, cljs.core.repeat.call(null, cljs.core.PersistentVector.fromArray([1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1], true)))))
 };
-qrcloj.encode.bitstream_to_codewords = function bitstream_to_codewords(p__4651) {
-  var map__4653 = p__4651;
-  var map__4653__$1 = cljs.core.seq_QMARK_.call(null, map__4653) ? cljs.core.apply.call(null, cljs.core.hash_map, map__4653) : map__4653;
-  var sym = map__4653__$1;
-  var data = cljs.core.get.call(null, map__4653__$1, "\ufdd0:data");
-  var ecl = cljs.core.get.call(null, map__4653__$1, "\ufdd0:ecl");
+qrcloj.encode.bitstream_to_codewords = function bitstream_to_codewords(p__3818) {
+  var map__3820 = p__3818;
+  var map__3820__$1 = cljs.core.seq_QMARK_.call(null, map__3820) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3820) : map__3820;
+  var sym = map__3820__$1;
+  var data = cljs.core.get.call(null, map__3820__$1, "\ufdd0:data");
+  var ecl = cljs.core.get.call(null, map__3820__$1, "\ufdd0:ecl");
   var to_boundary = 8 - cljs.core.rem.call(null, cljs.core.count.call(null, data), 8);
   var zero_padded = cljs.core.concat.call(null, data, cljs.core.repeat.call(null, to_boundary, 0));
-  return cljs.core.assoc.call(null, sym, "\ufdd0:data", cljs.core.map.call(null, cljs.core.comp.call(null, function(p1__4650_SHARP_) {
-    return qrcloj.interop.str_to_int.call(null, p1__4650_SHARP_, 2)
+  return cljs.core.assoc.call(null, sym, "\ufdd0:data", cljs.core.map.call(null, cljs.core.comp.call(null, function(p1__3817_SHARP_) {
+    return qrcloj.interop.str_to_int.call(null, p1__3817_SHARP_, 2)
   }, cljs.core.partial.call(null, cljs.core.apply, cljs.core.str)), cljs.core.partition.call(null, 8, qrcloj.encode.pad_to.call(null, qrcloj.version.bit_capacity.call(null, sym), zero_padded))))
 };
-qrcloj.encode.interleave_eccs = function interleave_eccs(p__4654) {
-  var map__4656 = p__4654;
-  var map__4656__$1 = cljs.core.seq_QMARK_.call(null, map__4656) ? cljs.core.apply.call(null, cljs.core.hash_map, map__4656) : map__4656;
-  var sym = map__4656__$1;
-  var data = cljs.core.get.call(null, map__4656__$1, "\ufdd0:data");
-  var ecl = cljs.core.get.call(null, map__4656__$1, "\ufdd0:ecl");
+qrcloj.encode.interleave_eccs = function interleave_eccs(p__3821) {
+  var map__3823 = p__3821;
+  var map__3823__$1 = cljs.core.seq_QMARK_.call(null, map__3823) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3823) : map__3823;
+  var sym = map__3823__$1;
+  var data = cljs.core.get.call(null, map__3823__$1, "\ufdd0:data");
+  var ecl = cljs.core.get.call(null, map__3823__$1, "\ufdd0:ecl");
   var codewords_and_eccs = qrcloj.error_correction.attach_error_correction_codewords.call(null, data, qrcloj.version.error_correction_layout.call(null, sym));
   var data__$1 = cljs.core.map.call(null, cljs.core.first, codewords_and_eccs);
   var eccs = cljs.core.map.call(null, cljs.core.second, codewords_and_eccs);
   return cljs.core.assoc.call(null, sym, "\ufdd0:data", cljs.core.concat.call(null, cljs.core.apply.call(null, qrcloj.utils.sinterleave, data__$1), cljs.core.apply.call(null, qrcloj.utils.sinterleave, eccs)))
 };
 qrcloj.encode.encode = function encode(ecl, data) {
-  return qrcloj.encode.interleave_eccs.call(null, qrcloj.encode.bitstream_to_codewords.call(null, qrcloj.encode.tag_with_version.call(null, ecl, qrcloj.encode.data_to_bitstream.call(null, ecl, data))))
+  return qrcloj.encode.interleave_eccs.call(null, qrcloj.encode.bitstream_to_codewords.call(null, qrcloj.encode.data_to_bitstream.call(null, ecl, data)))
 };
 goog.provide("qrcloj.canvas_display");
 goog.require("cljs.core");
