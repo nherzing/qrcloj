@@ -1,13 +1,8 @@
 (ns qrcloj.encode
   (:require [qrcloj.version :as v])
-  (:use [qrcloj.utils :only [sinterleave]]
+  (:use [qrcloj.utils :only [sinterleave dec-to-bin]]
         [qrcloj.error-correction :only [attach-error-correction-codewords]]
         [qrcloj.interop :only [int-to-str str-to-int char-to-ascii]]))
-
-(defn dec-to-bin [len n]
-  (let [bin (int-to-str n 2)]
-    (map {\0 0 \1 1} (concat (repeat (- len (count bin)) \0) bin))
-  ))
 
 (def mode-indicator {
   :numeric [0 0 0 1]
@@ -16,17 +11,20 @@
   })
 
 
-(def bits-in-count {
-  :numeric 10
-  :alphanumeric 9
-  :byte 8
-  })
+(defn bits-in-count [mode version]
+  (({:numeric [10 12 14]
+    :alphanumeric [9 11 13]
+    :byte [8 16 16]
+    } mode) (cond (< version 10) 0
+                  (< version 27) 1
+                  :else 2)))
 
-(defn char-count [{:keys [mode data]}]
-  (dec-to-bin (bits-in-count mode) (count data)))
 
-(defn terminator [ecl num-bits]
-  (take (- (v/bit-capacity (v/best-fit ecl num-bits)) num-bits) [0 0 0 0]))
+(defn char-count [{:keys [mode data version]}]
+  (dec-to-bin (bits-in-count mode version) (count data)))
+
+(defn terminator [version num-bits]
+  (take (- (v/bit-capacity version) num-bits) [0 0 0 0]))
 
 (defn general-encode [val-map group-size group-fn data]
   (->> data
@@ -61,15 +59,14 @@
   )
 
 (defn data-to-bitstream [ecl data]
-  (let [tagged {:data data :mode (mode data)}
+  (let [m (mode data)
+        version (v/best-fit m ecl data)
+        tagged {:data data :mode (mode data) :version (:version version)}
         bitstream (concat
                   (mode-indicator (:mode tagged))
                   (char-count tagged)
                   (encode-data tagged))]
-    (concat bitstream (terminator ecl (count bitstream)))))
-
-(defn tag-with-version [ecl data]
-  (assoc (v/best-fit ecl (count data)) :data data))
+    (assoc version :data (concat bitstream (terminator version (count bitstream))))))
 
 (defn pad-to [version-size bitstream]
   (concat bitstream
@@ -91,7 +88,6 @@
 (defn encode [ecl data]
   (->> data
        (data-to-bitstream ecl)
-       (tag-with-version ecl)
        bitstream-to-codewords
        interleave-eccs))
 
