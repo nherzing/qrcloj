@@ -1,6 +1,6 @@
 (ns qrcloj.encode
   (:require [qrcloj.version :as v])
-  (:use [qrcloj.utils :only [sinterleave dec-to-bin]]
+  (:use [qrcloj.utils :only [interleave-all dec-to-bin]]
         [qrcloj.error-correction :only [attach-error-correction-codewords]]
         [qrcloj.interop :only [int-to-str str-to-int char-to-ascii]]))
 
@@ -82,7 +82,7 @@
   (let [codewords-and-eccs (attach-error-correction-codewords data (v/error-correction-layout sym))
         data (map first codewords-and-eccs)
         eccs (map second codewords-and-eccs)]
-    (assoc sym :data (concat (apply sinterleave data) (apply sinterleave eccs)))))
+    (assoc sym :data (concat (apply interleave-all data) (apply interleave-all eccs)))))
 
 
 (defn encode [ecl data]

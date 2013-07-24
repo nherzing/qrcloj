@@ -5,9 +5,9 @@
   (first (reduce 
     (fn [[acc rem] n] [(conj acc (take n rem)) (drop n rem)]) [[] s] counts)))
 
-(defn sinterleave
-  ([c1] c1)
-  ([c1 c2 & colls] (apply interleave (concat [c1 c2] colls))))
+(defn interleave-all [& colls]
+  (if (empty? colls) []
+    (concat (map first colls) (apply interleave-all (filter first (map rest colls))))))
 
 (defn indexed [s]
   (map vector (iterate inc 0) s))
