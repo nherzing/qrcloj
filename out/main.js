@@ -21718,10 +21718,10 @@ goog.require("cljs.core");
 goog.require("qrcloj.interop");
 goog.require("qrcloj.interop");
 qrcloj.utils.take_many = function take_many(counts, s) {
-  return cljs.core.first.call(null, cljs.core.reduce.call(null, function(p__5122, n) {
-    var vec__5123 = p__5122;
-    var acc = cljs.core.nth.call(null, vec__5123, 0, null);
-    var rem = cljs.core.nth.call(null, vec__5123, 1, null);
+  return cljs.core.first.call(null, cljs.core.reduce.call(null, function(p__3868, n) {
+    var vec__3869 = p__3868;
+    var acc = cljs.core.nth.call(null, vec__3869, 0, null);
+    var rem = cljs.core.nth.call(null, vec__3869, 1, null);
     return cljs.core.PersistentVector.fromArray([cljs.core.conj.call(null, acc, cljs.core.take.call(null, n, rem)), cljs.core.drop.call(null, n, rem)], true)
   }, cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.EMPTY, s], true), counts))
 };
@@ -21741,8 +21741,8 @@ qrcloj.utils.interleave_all = function() {
     return interleave_all__delegate.call(this, colls)
   };
   interleave_all.cljs$lang$maxFixedArity = 0;
-  interleave_all.cljs$lang$applyTo = function(arglist__5124) {
-    var colls = cljs.core.seq(arglist__5124);
+  interleave_all.cljs$lang$applyTo = function(arglist__3870) {
+    var colls = cljs.core.seq(arglist__3870);
     return interleave_all__delegate(colls)
   };
   interleave_all.cljs$core$IFn$_invoke$arity$variadic = interleave_all__delegate;
@@ -21752,32 +21752,32 @@ qrcloj.utils.indexed = function indexed(s) {
   return cljs.core.map.call(null, cljs.core.vector, cljs.core.iterate.call(null, cljs.core.inc, 0), s)
 };
 qrcloj.utils.positions = function positions(pred, coll) {
-  var iter__3042__auto__ = function iter__5133(s__5134) {
+  var iter__3042__auto__ = function iter__3879(s__3880) {
     return new cljs.core.LazySeq(null, false, function() {
-      var s__5134__$1 = s__5134;
+      var s__3880__$1 = s__3880;
       while(true) {
-        var temp__4092__auto__ = cljs.core.seq.call(null, s__5134__$1);
+        var temp__4092__auto__ = cljs.core.seq.call(null, s__3880__$1);
         if(temp__4092__auto__) {
-          var s__5134__$2 = temp__4092__auto__;
-          if(cljs.core.chunked_seq_QMARK_.call(null, s__5134__$2)) {
-            var c__3040__auto__ = cljs.core.chunk_first.call(null, s__5134__$2);
+          var s__3880__$2 = temp__4092__auto__;
+          if(cljs.core.chunked_seq_QMARK_.call(null, s__3880__$2)) {
+            var c__3040__auto__ = cljs.core.chunk_first.call(null, s__3880__$2);
             var size__3041__auto__ = cljs.core.count.call(null, c__3040__auto__);
-            var b__5136 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
+            var b__3882 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
             if(function() {
-              var i__5135 = 0;
+              var i__3881 = 0;
               while(true) {
-                if(i__5135 < size__3041__auto__) {
-                  var vec__5139 = cljs.core._nth.call(null, c__3040__auto__, i__5135);
-                  var idx = cljs.core.nth.call(null, vec__5139, 0, null);
-                  var elt = cljs.core.nth.call(null, vec__5139, 1, null);
+                if(i__3881 < size__3041__auto__) {
+                  var vec__3885 = cljs.core._nth.call(null, c__3040__auto__, i__3881);
+                  var idx = cljs.core.nth.call(null, vec__3885, 0, null);
+                  var elt = cljs.core.nth.call(null, vec__3885, 1, null);
                   if(cljs.core.truth_(pred.call(null, elt))) {
-                    cljs.core.chunk_append.call(null, b__5136, idx);
-                    var G__5141 = i__5135 + 1;
-                    i__5135 = G__5141;
+                    cljs.core.chunk_append.call(null, b__3882, idx);
+                    var G__3887 = i__3881 + 1;
+                    i__3881 = G__3887;
                     continue
                   }else {
-                    var G__5142 = i__5135 + 1;
-                    i__5135 = G__5142;
+                    var G__3888 = i__3881 + 1;
+                    i__3881 = G__3888;
                     continue
                   }
                 }else {
@@ -21786,19 +21786,19 @@ qrcloj.utils.positions = function positions(pred, coll) {
                 break
               }
             }()) {
-              return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__5136), iter__5133.call(null, cljs.core.chunk_rest.call(null, s__5134__$2)))
+              return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3882), iter__3879.call(null, cljs.core.chunk_rest.call(null, s__3880__$2)))
             }else {
-              return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__5136), null)
+              return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3882), null)
             }
           }else {
-            var vec__5140 = cljs.core.first.call(null, s__5134__$2);
-            var idx = cljs.core.nth.call(null, vec__5140, 0, null);
-            var elt = cljs.core.nth.call(null, vec__5140, 1, null);
+            var vec__3886 = cljs.core.first.call(null, s__3880__$2);
+            var idx = cljs.core.nth.call(null, vec__3886, 0, null);
+            var elt = cljs.core.nth.call(null, vec__3886, 1, null);
             if(cljs.core.truth_(pred.call(null, elt))) {
-              return cljs.core.cons.call(null, idx, iter__5133.call(null, cljs.core.rest.call(null, s__5134__$2)))
+              return cljs.core.cons.call(null, idx, iter__3879.call(null, cljs.core.rest.call(null, s__3880__$2)))
             }else {
-              var G__5143 = cljs.core.rest.call(null, s__5134__$2);
-              s__5134__$1 = G__5143;
+              var G__3889 = cljs.core.rest.call(null, s__3880__$2);
+              s__3880__$1 = G__3889;
               continue
             }
           }
@@ -22915,19 +22915,21 @@ goog.require("qrcloj.utils");
 qrcloj.version.dim = function dim(version) {
   return 17 + 4 * version
 };
-qrcloj.version.from_data = cljs.core.PersistentArrayMap.fromArray(["\ufdd0:numeric", cljs.core.PersistentArrayMap.fromArray(["\ufdd0:L", cljs.core.PersistentVector.fromArray([41, 77, 127, 187, 255, 322, 370, 461, 552, 652, 772, 883, 1022, 1101, 1250, 1408, 1548], true), "\ufdd0:M", cljs.core.PersistentVector.fromArray([34, 63, 101, 149, 202, 255, 293, 365, 432, 513, 604, 691, 796, 871, 991, 1082, 1212], true), "\ufdd0:Q", cljs.core.PersistentVector.fromArray([27, 48, 77, 111, 144, 178, 207, 259, 
-312, 364, 427, 489, 580, 621, 703, 775, 876], true), "\ufdd0:H", cljs.core.PersistentVector.fromArray([17, 34, 58, 82, 106, 139, 154, 202, 235, 288, 331, 374, 427, 468, 530, 602, 674], true)], true), "\ufdd0:alphanumeric", cljs.core.PersistentArrayMap.fromArray(["\ufdd0:L", cljs.core.PersistentVector.fromArray([25, 47, 77, 114, 154, 195, 224, 279, 335, 395, 468, 535, 619, 667, 758, 854, 938], true), "\ufdd0:M", cljs.core.PersistentVector.fromArray([20, 38, 61, 90, 122, 154, 178, 221, 262, 311, 366, 
-419, 483, 528, 600, 656, 734], true), "\ufdd0:Q", cljs.core.PersistentVector.fromArray([16, 29, 47, 67, 87, 108, 125, 157, 189, 221, 259, 296, 352, 376, 426, 470, 531], true), "\ufdd0:H", cljs.core.PersistentVector.fromArray([20, 35, 50, 64, 84, 93, 122, 143, 174, 200, 227, 259, 283, 321, 365, 408], true)], true), "\ufdd0:byte", cljs.core.PersistentArrayMap.fromArray(["\ufdd0:L", cljs.core.PersistentVector.fromArray([17, 32, 53, 78, 106, 134, 154, 192, 230, 271, 321, 367, 425, 458, 520, 586, 644, 
-718, 792, 858, 929, 1003, 1091, 1171, 1273, 1367, 1475, 1528, 1628, 1732, 1840, 1952, 2068, 2188, 2303, 2431, 2563, 2699, 2809, 2953], true), "\ufdd0:M", cljs.core.PersistentVector.fromArray([14, 26, 42, 62, 84, 106, 122, 152, 180, 213, 251, 287, 331, 362, 412, 450, 504, 560, 624, 666, 711, 779, 857, 911, 997, 1059, 1125, 1190, 1264, 1370, 1452, 1538, 1628, 1722, 1809, 1911, 1989, 2099, 2213, 2331], true), "\ufdd0:Q", cljs.core.PersistentVector.fromArray([11, 20, 32, 46, 60, 74, 86, 108, 130, 151, 
-177, 203, 241, 258, 292, 322, 364], true)], true)], true);
+qrcloj.version.from_data = cljs.core.PersistentArrayMap.fromArray(["\ufdd0:numeric", cljs.core.PersistentArrayMap.fromArray(["\ufdd0:L", cljs.core.PersistentVector.fromArray([41, 77, 127, 187, 255, 322, 370, 461, 552, 652, 772, 883, 1022, 1101, 1250, 1408, 1548, 1725, 1903, 2061, 2232, 2409, 2620, 2812, 3057, 3283, 3517, 3669, 3909, 4158, 4417, 4686, 4965, 5253, 5529, 5836, 6153, 6479, 6743, 7089], true), "\ufdd0:M", cljs.core.PersistentVector.fromArray([34, 63, 101, 149, 202, 255, 293, 365, 432, 
+513, 604, 691, 796, 871, 991, 1082, 1212, 1346, 1500, 1600, 1708, 1872, 2059, 2188, 2395, 2544, 2701, 2857, 3035, 3289, 3486, 3693, 3909, 4134, 4343, 4588, 4776, 5039, 5313, 5596], true), "\ufdd0:Q", cljs.core.PersistentVector.fromArray([27, 48, 77, 111, 144, 178, 207, 259, 312, 364, 427, 489, 580, 621, 703, 775, 876, 948, 1063, 1159, 1224, 1358, 1468, 1588, 1718, 1804, 1933, 2085, 2181, 2358, 2473, 2670, 2805, 2949, 3081, 3244, 3417, 3599, 3791, 3993], true), "\ufdd0:H", cljs.core.PersistentVector.fromArray([17, 
+34, 58, 82, 106, 139, 154, 202, 235, 288, 331, 374, 427, 468, 530, 602, 674, 746, 813, 919, 969, 1056, 1108, 1228, 1286, 1425, 1501, 1581, 1677, 1782, 1897, 2022, 2157, 2301, 2361, 2524, 2625, 2735, 2927, 3057], true)], true), "\ufdd0:alphanumeric", cljs.core.PersistentArrayMap.fromArray(["\ufdd0:L", cljs.core.PersistentVector.fromArray([25, 47, 77, 114, 154, 195, 224, 279, 335, 395, 468, 535, 619, 667, 758, 854, 938, 1046, 1153, 1249, 1352, 1460, 1588, 1704, 1853, 1990, 2132, 2223, 2369, 2520, 2677, 
+2840, 3009, 3183, 3351, 3537, 3729, 3927, 4087, 4296], true), "\ufdd0:M", cljs.core.PersistentVector.fromArray([20, 38, 61, 90, 122, 154, 178, 221, 262, 311, 366, 419, 483, 528, 600, 656, 734, 816, 909, 970, 1035, 1134, 1248, 1326, 1451, 1542, 1637, 1732, 1839, 1994, 2113, 2238, 2369, 2506, 2632, 2780, 2894, 3054, 3220, 3391], true), "\ufdd0:Q", cljs.core.PersistentVector.fromArray([16, 29, 47, 67, 87, 108, 125, 157, 189, 221, 259, 296, 352, 376, 426, 470, 531, 574, 702, 742, 823, 890, 963, 1041, 
+1094, 1172, 1263, 1322, 1429, 1499, 1618, 1700, 1787, 1867, 1966, 2071, 2181, 2298, 2420], true), "\ufdd0:H", cljs.core.PersistentVector.fromArray([20, 35, 50, 64, 84, 93, 122, 143, 174, 200, 227, 259, 283, 321, 365, 408, 452, 493, 557, 587, 640, 672, 744, 779, 864, 910, 958, 1016, 1080, 1150, 1226, 1307, 1394, 1431, 1530, 1591, 1658, 1774, 1852], true)], true), "\ufdd0:byte", cljs.core.PersistentArrayMap.fromArray(["\ufdd0:L", cljs.core.PersistentVector.fromArray([17, 32, 53, 78, 106, 134, 154, 
+192, 230, 271, 321, 367, 425, 458, 520, 586, 644, 718, 792, 858, 929, 1003, 1091, 1171, 1273, 1367, 1475, 1528, 1628, 1732, 1840, 1952, 2068, 2188, 2303, 2431, 2563, 2699, 2809, 2953], true), "\ufdd0:M", cljs.core.PersistentVector.fromArray([14, 26, 42, 62, 84, 106, 122, 152, 180, 213, 251, 287, 331, 362, 412, 450, 504, 560, 624, 666, 711, 779, 857, 911, 997, 1059, 1125, 1190, 1264, 1370, 1452, 1538, 1628, 1722, 1809, 1911, 1989, 2099, 2213, 2331], true), "\ufdd0:Q", cljs.core.PersistentVector.fromArray([11, 
+20, 32, 46, 60, 74, 86, 108, 130, 151, 177, 203, 241, 258, 292, 322, 364, 394, 442, 482, 509, 565, 611, 61, 715, 751, 805, 868, 908, 982, 1030, 1112, 1168, 1228, 1283, 1351, 1423, 1499, 1579, 1663], true), "\ufdd0:H", cljs.core.PersistentVector.fromArray([7, 14, 24, 34, 44, 58, 64, 84, 98, 119, 137, 155, 177, 194, 220, 250, 280, 310, 338, 382, 403, 439, 461, 511, 535, 593, 625, 658, 698, 742, 790, 842, 898, 958, 983, 1051, 1093, 1139, 1219, 1273], true)], true)], true);
 qrcloj.version.data_capacity_by_ecl = cljs.core.PersistentArrayMap.fromArray(["\ufdd0:L", cljs.core.PersistentVector.fromArray([19, 34, 55, 80, 108, 136, 156, 194, 232, 274, 324, 370, 428, 461, 523, 589, 647, 721, 795, 861, 932, 1006, 1094, 1174, 1276, 1370, 1468, 1531, 1631, 1735, 1843, 1955, 2071, 2191, 2306, 2434, 2566, 2702, 2812, 2956], true), "\ufdd0:M", cljs.core.PersistentVector.fromArray([16, 28, 44, 64, 86, 108, 124, 154, 182, 216, 254, 290, 334, 365, 415, 453, 507, 563, 627, 669, 714, 
 782, 860, 914, 1E3, 1062, 1128, 1193, 1267, 1373, 1455, 1541, 1631, 1725, 1812, 1914, 1992, 2102, 2216, 2334], true), "\ufdd0:Q", cljs.core.PersistentVector.fromArray([13, 22, 34, 48, 62, 76, 88, 110, 132, 154, 180, 206, 244, 261, 295, 325, 367, 397, 445, 485, 512, 568, 614, 664, 718, 754, 808, 871, 911, 985, 1033, 1115, 1171, 1231, 1286, 1354, 1426, 1502, 1582, 1666], true), "\ufdd0:H", cljs.core.PersistentVector.fromArray([9, 16, 26, 36, 46, 60, 66, 86, 100, 122, 140, 158, 180, 197, 223, 253, 283, 
 313, 341, 385, 406, 442, 464, 514, 538, 596, 628, 661, 701, 745, 793, 845, 901, 961, 986, 1054, 1096, 1142, 1222, 1276], true)], true);
 qrcloj.version.best_fit = function best_fit(mode, ecl, data) {
-  var idx = cljs.core.first.call(null, qrcloj.utils.positions.call(null, function(p__3869) {
-    var vec__3870 = p__3869;
-    var f = cljs.core.nth.call(null, vec__3870, 0, null);
-    var s = cljs.core.nth.call(null, vec__3870, 1, null);
+  var idx = cljs.core.first.call(null, qrcloj.utils.positions.call(null, function(p__3808) {
+    var vec__3809 = p__3808;
+    var f = cljs.core.nth.call(null, vec__3809, 0, null);
+    var s = cljs.core.nth.call(null, vec__3809, 1, null);
     if(function() {
       var and__3941__auto__ = cljs.core.count.call(null, data) > f;
       if(and__3941__auto__) {
@@ -22944,27 +22946,27 @@ qrcloj.version.best_fit = function best_fit(mode, ecl, data) {
   return cljs.core.PersistentArrayMap.fromArray(["\ufdd0:ecl", ecl, "\ufdd0:version", idx + 1, "\ufdd0:limit", qrcloj.version.from_data.call(null, mode).call(null, ecl).call(null, idx)], true)
 };
 qrcloj.version.bit_capacity_by_ecl = cljs.core.into.call(null, cljs.core.ObjMap.EMPTY, function() {
-  var iter__3042__auto__ = function iter__3871(s__3872) {
+  var iter__3042__auto__ = function iter__3810(s__3811) {
     return new cljs.core.LazySeq(null, false, function() {
-      var s__3872__$1 = s__3872;
+      var s__3811__$1 = s__3811;
       while(true) {
-        var temp__4092__auto__ = cljs.core.seq.call(null, s__3872__$1);
+        var temp__4092__auto__ = cljs.core.seq.call(null, s__3811__$1);
         if(temp__4092__auto__) {
-          var s__3872__$2 = temp__4092__auto__;
-          if(cljs.core.chunked_seq_QMARK_.call(null, s__3872__$2)) {
-            var c__3040__auto__ = cljs.core.chunk_first.call(null, s__3872__$2);
+          var s__3811__$2 = temp__4092__auto__;
+          if(cljs.core.chunked_seq_QMARK_.call(null, s__3811__$2)) {
+            var c__3040__auto__ = cljs.core.chunk_first.call(null, s__3811__$2);
             var size__3041__auto__ = cljs.core.count.call(null, c__3040__auto__);
-            var b__3874 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
+            var b__3813 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
             if(function() {
-              var i__3873 = 0;
+              var i__3812 = 0;
               while(true) {
-                if(i__3873 < size__3041__auto__) {
-                  var vec__3877 = cljs.core._nth.call(null, c__3040__auto__, i__3873);
-                  var ecl = cljs.core.nth.call(null, vec__3877, 0, null);
-                  var versions = cljs.core.nth.call(null, vec__3877, 1, null);
-                  cljs.core.chunk_append.call(null, b__3874, cljs.core.PersistentVector.fromArray([ecl, cljs.core.vec.call(null, cljs.core.map.call(null, cljs.core.partial.call(null, cljs.core._STAR_, 8), versions))], true));
-                  var G__3879 = i__3873 + 1;
-                  i__3873 = G__3879;
+                if(i__3812 < size__3041__auto__) {
+                  var vec__3816 = cljs.core._nth.call(null, c__3040__auto__, i__3812);
+                  var ecl = cljs.core.nth.call(null, vec__3816, 0, null);
+                  var versions = cljs.core.nth.call(null, vec__3816, 1, null);
+                  cljs.core.chunk_append.call(null, b__3813, cljs.core.PersistentVector.fromArray([ecl, cljs.core.vec.call(null, cljs.core.map.call(null, cljs.core.partial.call(null, cljs.core._STAR_, 8), versions))], true));
+                  var G__3818 = i__3812 + 1;
+                  i__3812 = G__3818;
                   continue
                 }else {
                   return true
@@ -22972,15 +22974,15 @@ qrcloj.version.bit_capacity_by_ecl = cljs.core.into.call(null, cljs.core.ObjMap.
                 break
               }
             }()) {
-              return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3874), iter__3871.call(null, cljs.core.chunk_rest.call(null, s__3872__$2)))
+              return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3813), iter__3810.call(null, cljs.core.chunk_rest.call(null, s__3811__$2)))
             }else {
-              return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3874), null)
+              return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3813), null)
             }
           }else {
-            var vec__3878 = cljs.core.first.call(null, s__3872__$2);
-            var ecl = cljs.core.nth.call(null, vec__3878, 0, null);
-            var versions = cljs.core.nth.call(null, vec__3878, 1, null);
-            return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([ecl, cljs.core.vec.call(null, cljs.core.map.call(null, cljs.core.partial.call(null, cljs.core._STAR_, 8), versions))], true), iter__3871.call(null, cljs.core.rest.call(null, s__3872__$2)))
+            var vec__3817 = cljs.core.first.call(null, s__3811__$2);
+            var ecl = cljs.core.nth.call(null, vec__3817, 0, null);
+            var versions = cljs.core.nth.call(null, vec__3817, 1, null);
+            return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([ecl, cljs.core.vec.call(null, cljs.core.map.call(null, cljs.core.partial.call(null, cljs.core._STAR_, 8), versions))], true), iter__3810.call(null, cljs.core.rest.call(null, s__3811__$2)))
           }
         }else {
           return null
@@ -22991,54 +22993,79 @@ qrcloj.version.bit_capacity_by_ecl = cljs.core.into.call(null, cljs.core.ObjMap.
   };
   return iter__3042__auto__.call(null, qrcloj.version.data_capacity_by_ecl)
 }());
-qrcloj.version.bit_capacity = function bit_capacity(p__3880) {
-  var map__3882 = p__3880;
-  var map__3882__$1 = cljs.core.seq_QMARK_.call(null, map__3882) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3882) : map__3882;
-  var ecl = cljs.core.get.call(null, map__3882__$1, "\ufdd0:ecl");
-  var version = cljs.core.get.call(null, map__3882__$1, "\ufdd0:version");
+qrcloj.version.bit_capacity = function bit_capacity(p__3819) {
+  var map__3821 = p__3819;
+  var map__3821__$1 = cljs.core.seq_QMARK_.call(null, map__3821) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3821) : map__3821;
+  var ecl = cljs.core.get.call(null, map__3821__$1, "\ufdd0:ecl");
+  var version = cljs.core.get.call(null, map__3821__$1, "\ufdd0:version");
   return qrcloj.version.bit_capacity_by_ecl.call(null, ecl).call(null, version - 1)
 };
-qrcloj.version.raw_error_correction_layouts = function raw_error_correction_layouts(p__3883) {
-  var map__3885 = p__3883;
-  var map__3885__$1 = cljs.core.seq_QMARK_.call(null, map__3885) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3885) : map__3885;
-  var ecl = cljs.core.get.call(null, map__3885__$1, "\ufdd0:ecl");
-  var version = cljs.core.get.call(null, map__3885__$1, "\ufdd0:version");
+qrcloj.version.raw_error_correction_layouts = function raw_error_correction_layouts(p__3822) {
+  var map__3824 = p__3822;
+  var map__3824__$1 = cljs.core.seq_QMARK_.call(null, map__3824) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3824) : map__3824;
+  var ecl = cljs.core.get.call(null, map__3824__$1, "\ufdd0:ecl");
+  var version = cljs.core.get.call(null, map__3824__$1, "\ufdd0:version");
   return cljs.core.PersistentArrayMap.fromArray(["\ufdd0:L", cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([26, 19], true)], true), cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([44, 34], true)], true), cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([70, 55], true)], true), cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([100, 80], true)], 
   true), cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([134, 108], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([86, 68], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([98, 78], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([121, 97], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([146, 
   116], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([86, 68], true), 2, cljs.core.PersistentVector.fromArray([87, 69], true)], true), cljs.core.PersistentVector.fromArray([4, cljs.core.PersistentVector.fromArray([101, 81], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([116, 92], true), 2, cljs.core.PersistentVector.fromArray([117, 93], true)], true), cljs.core.PersistentVector.fromArray([4, cljs.core.PersistentVector.fromArray([133, 
   107], true)], true), cljs.core.PersistentVector.fromArray([3, cljs.core.PersistentVector.fromArray([145, 115], true), 1, cljs.core.PersistentVector.fromArray([146, 116], true)], true), cljs.core.PersistentVector.fromArray([5, cljs.core.PersistentVector.fromArray([109, 87], true), 1, cljs.core.PersistentVector.fromArray([110, 88], true)], true), cljs.core.PersistentVector.fromArray([5, cljs.core.PersistentVector.fromArray([122, 98], true), 1, cljs.core.PersistentVector.fromArray([123, 99], true)], 
   true), cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([135, 107], true), 5, cljs.core.PersistentVector.fromArray([136, 108], true)], true), cljs.core.PersistentVector.fromArray([5, cljs.core.PersistentVector.fromArray([150, 120], true), 1, cljs.core.PersistentVector.fromArray([151, 121], true)], true), cljs.core.PersistentVector.fromArray([3, cljs.core.PersistentVector.fromArray([141, 113], true), 4, cljs.core.PersistentVector.fromArray([142, 114], true)], true), 
-  cljs.core.PersistentVector.fromArray([3, cljs.core.PersistentVector.fromArray([135, 107], true), 5, cljs.core.PersistentVector.fromArray([136, 108], true)], true)], true), "\ufdd0:M", cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([26, 16], true)], true), cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([44, 28], true)], true), cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([70, 
-  44], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([50, 32], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([67, 43], true)], true), cljs.core.PersistentVector.fromArray([4, cljs.core.PersistentVector.fromArray([43, 27], true)], true), cljs.core.PersistentVector.fromArray([4, cljs.core.PersistentVector.fromArray([49, 31], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([60, 
-  38], true), 2, cljs.core.PersistentVector.fromArray([61, 39], true)], true), cljs.core.PersistentVector.fromArray([3, cljs.core.PersistentVector.fromArray([58, 36], true), 2, cljs.core.PersistentVector.fromArray([59, 37], true)], true), cljs.core.PersistentVector.fromArray([4, cljs.core.PersistentVector.fromArray([69, 43], true), 1, cljs.core.PersistentVector.fromArray([70, 44], true)], true), cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([80, 50], true), 4, cljs.core.PersistentVector.fromArray([81, 
-  51], true)], true), cljs.core.PersistentVector.fromArray([6, cljs.core.PersistentVector.fromArray([58, 36], true), 2, cljs.core.PersistentVector.fromArray([59, 37], true)], true), cljs.core.PersistentVector.fromArray([8, cljs.core.PersistentVector.fromArray([59, 37], true), 1, cljs.core.PersistentVector.fromArray([60, 38], true)], true), cljs.core.PersistentVector.fromArray([4, cljs.core.PersistentVector.fromArray([64, 40], true), 5, cljs.core.PersistentVector.fromArray([65, 41], true)], true), 
-  cljs.core.PersistentVector.fromArray([5, cljs.core.PersistentVector.fromArray([65, 41], true), 5, cljs.core.PersistentVector.fromArray([66, 42], true)], true), cljs.core.PersistentVector.fromArray([7, cljs.core.PersistentVector.fromArray([73, 45], true), 3, cljs.core.PersistentVector.fromArray([74, 46], true)], true), cljs.core.PersistentVector.fromArray([10, cljs.core.PersistentVector.fromArray([74, 46], true), 1, cljs.core.PersistentVector.fromArray([75, 47], true)], true), cljs.core.PersistentVector.fromArray([9, 
-  cljs.core.PersistentVector.fromArray([69, 43], true), 4, cljs.core.PersistentVector.fromArray([70, 44], true)], true), cljs.core.PersistentVector.fromArray([3, cljs.core.PersistentVector.fromArray([70, 44], true), 11, cljs.core.PersistentVector.fromArray([71, 45], true)], true), cljs.core.PersistentVector.fromArray([3, cljs.core.PersistentVector.fromArray([67, 41], true), 13, cljs.core.PersistentVector.fromArray([68, 42], true)], true)], true), "\ufdd0:Q", cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([1, 
-  cljs.core.PersistentVector.fromArray([26, 13], true)], true), cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([44, 22], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([35, 17], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([50, 24], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([33, 15], true), 2, cljs.core.PersistentVector.fromArray([34, 
-  16], true)], true), cljs.core.PersistentVector.fromArray([4, cljs.core.PersistentVector.fromArray([43, 19], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([32, 14], true), 4, cljs.core.PersistentVector.fromArray([33, 15], true)], true), cljs.core.PersistentVector.fromArray([4, cljs.core.PersistentVector.fromArray([40, 18], true), 2, cljs.core.PersistentVector.fromArray([41, 19], true)], true), cljs.core.PersistentVector.fromArray([4, cljs.core.PersistentVector.fromArray([36, 
-  16], true), 4, cljs.core.PersistentVector.fromArray([37, 17], true)], true), cljs.core.PersistentVector.fromArray([6, cljs.core.PersistentVector.fromArray([43, 19], true), 2, cljs.core.PersistentVector.fromArray([44, 20], true)], true), cljs.core.PersistentVector.fromArray([4, cljs.core.PersistentVector.fromArray([50, 22], true), 4, cljs.core.PersistentVector.fromArray([51, 23], true)], true), cljs.core.PersistentVector.fromArray([4, cljs.core.PersistentVector.fromArray([46, 20], true), 6, cljs.core.PersistentVector.fromArray([47, 
-  21], true)], true), cljs.core.PersistentVector.fromArray([8, cljs.core.PersistentVector.fromArray([44, 20], true), 4, cljs.core.PersistentVector.fromArray([45, 21], true)], true), cljs.core.PersistentVector.fromArray([11, cljs.core.PersistentVector.fromArray([36, 16], true), 5, cljs.core.PersistentVector.fromArray([37, 17], true)], true), cljs.core.PersistentVector.fromArray([5, cljs.core.PersistentVector.fromArray([54, 24], true), 7, cljs.core.PersistentVector.fromArray([55, 25], true)], true), 
-  cljs.core.PersistentVector.fromArray([15, cljs.core.PersistentVector.fromArray([43, 19], true), 2, cljs.core.PersistentVector.fromArray([44, 20], true)], true), cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([50, 22], true), 15, cljs.core.PersistentVector.fromArray([51, 23], true)], true), cljs.core.PersistentVector.fromArray([17, cljs.core.PersistentVector.fromArray([50, 22], true), 1, cljs.core.PersistentVector.fromArray([51, 23], true)], true), cljs.core.PersistentVector.fromArray([17, 
-  cljs.core.PersistentVector.fromArray([47, 21], true), 4, cljs.core.PersistentVector.fromArray([48, 22], true)], true), cljs.core.PersistentVector.fromArray([15, cljs.core.PersistentVector.fromArray([54, 24], true), 5, cljs.core.PersistentVector.fromArray([55, 25], true)], true)], true), "\ufdd0:H", cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([26, 9], true)], true), cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([44, 
-  16], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([35, 13], true)], true), cljs.core.PersistentVector.fromArray([4, cljs.core.PersistentVector.fromArray([25, 9], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([33, 11], true), 2, cljs.core.PersistentVector.fromArray([34, 12], true)], true), cljs.core.PersistentVector.fromArray([4, cljs.core.PersistentVector.fromArray([43, 15], true)], true), cljs.core.PersistentVector.fromArray([4, 
-  cljs.core.PersistentVector.fromArray([39, 13], true), 1, cljs.core.PersistentVector.fromArray([40, 14], true)], true), cljs.core.PersistentVector.fromArray([4, cljs.core.PersistentVector.fromArray([40, 14], true), 2, cljs.core.PersistentVector.fromArray([41, 15], true)], true), cljs.core.PersistentVector.fromArray([4, cljs.core.PersistentVector.fromArray([36, 12], true), 4, cljs.core.PersistentVector.fromArray([37, 13], true)], true), cljs.core.PersistentVector.fromArray([6, cljs.core.PersistentVector.fromArray([43, 
-  15], true), 2, cljs.core.PersistentVector.fromArray([44, 16], true)], true), cljs.core.PersistentVector.fromArray([3, cljs.core.PersistentVector.fromArray([36, 12], true), 8, cljs.core.PersistentVector.fromArray([37, 13], true)], true), cljs.core.PersistentVector.fromArray([7, cljs.core.PersistentVector.fromArray([42, 14], true), 4, cljs.core.PersistentVector.fromArray([43, 15], true)], true), cljs.core.PersistentVector.fromArray([12, cljs.core.PersistentVector.fromArray([33, 11], true), 4, cljs.core.PersistentVector.fromArray([34, 
-  12], true)], true), cljs.core.PersistentVector.fromArray([11, cljs.core.PersistentVector.fromArray([36, 12], true), 5, cljs.core.PersistentVector.fromArray([37, 13], true)], true), cljs.core.PersistentVector.fromArray([11, cljs.core.PersistentVector.fromArray([36, 12], true), 7, cljs.core.PersistentVector.fromArray([37, 13], true)], true), cljs.core.PersistentVector.fromArray([3, cljs.core.PersistentVector.fromArray([45, 15], true), 13, cljs.core.PersistentVector.fromArray([46, 16], true)], true), 
-  cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([42, 14], true), 17, cljs.core.PersistentVector.fromArray([43, 15], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([42, 14], true), 19, cljs.core.PersistentVector.fromArray([43, 15], true)], true), cljs.core.PersistentVector.fromArray([9, cljs.core.PersistentVector.fromArray([39, 13], true), 16, cljs.core.PersistentVector.fromArray([40, 14], true)], true), cljs.core.PersistentVector.fromArray([15, 
-  cljs.core.PersistentVector.fromArray([42, 15], true), 10, cljs.core.PersistentVector.fromArray([44, 16], true)], true)], true)], true).call(null, ecl).call(null, version - 1)
+  cljs.core.PersistentVector.fromArray([3, cljs.core.PersistentVector.fromArray([135, 107], true), 5, cljs.core.PersistentVector.fromArray([136, 108], true)], true), cljs.core.PersistentVector.fromArray([4, cljs.core.PersistentVector.fromArray([144, 116], true), 4, cljs.core.PersistentVector.fromArray([145, 117], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([139, 111], true), 7, cljs.core.PersistentVector.fromArray([140, 112], true)], true), cljs.core.PersistentVector.fromArray([4, 
+  cljs.core.PersistentVector.fromArray([151, 121], true), 5, cljs.core.PersistentVector.fromArray([152, 122], true)], true), cljs.core.PersistentVector.fromArray([6, cljs.core.PersistentVector.fromArray([147, 117], true), 4, cljs.core.PersistentVector.fromArray([148, 118], true)], true), cljs.core.PersistentVector.fromArray([8, cljs.core.PersistentVector.fromArray([132, 106], true), 4, cljs.core.PersistentVector.fromArray([133, 107], true)], true), cljs.core.PersistentVector.fromArray([10, cljs.core.PersistentVector.fromArray([142, 
+  114], true), 2, cljs.core.PersistentVector.fromArray([143, 115], true)], true), cljs.core.PersistentVector.fromArray([8, cljs.core.PersistentVector.fromArray([152, 122], true), 4, cljs.core.PersistentVector.fromArray([153, 123], true)], true), cljs.core.PersistentVector.fromArray([3, cljs.core.PersistentVector.fromArray([147, 117], true), 10, cljs.core.PersistentVector.fromArray([148, 118], true)], true), cljs.core.PersistentVector.fromArray([7, cljs.core.PersistentVector.fromArray([146, 116], 
+  true), 7, cljs.core.PersistentVector.fromArray([147, 117], true)], true), cljs.core.PersistentVector.fromArray([5, cljs.core.PersistentVector.fromArray([145, 115], true), 10, cljs.core.PersistentVector.fromArray([146, 116], true)], true), cljs.core.PersistentVector.fromArray([13, cljs.core.PersistentVector.fromArray([145, 115], true), 3, cljs.core.PersistentVector.fromArray([146, 116], true)], true), cljs.core.PersistentVector.fromArray([17, cljs.core.PersistentVector.fromArray([145, 115], true)], 
+  true), cljs.core.PersistentVector.fromArray([17, cljs.core.PersistentVector.fromArray([145, 115], true), 1, cljs.core.PersistentVector.fromArray([146, 116], true)], true), cljs.core.PersistentVector.fromArray([13, cljs.core.PersistentVector.fromArray([145, 115], true), 6, cljs.core.PersistentVector.fromArray([146, 116], true)], true), cljs.core.PersistentVector.fromArray([12, cljs.core.PersistentVector.fromArray([151, 121], true), 7, cljs.core.PersistentVector.fromArray([152, 122], true)], true), 
+  cljs.core.PersistentVector.fromArray([6, cljs.core.PersistentVector.fromArray([151, 121], true), 14, cljs.core.PersistentVector.fromArray([152, 122], true)], true), cljs.core.PersistentVector.fromArray([17, cljs.core.PersistentVector.fromArray([152, 122], true), 4, cljs.core.PersistentVector.fromArray([153, 123], true)], true), cljs.core.PersistentVector.fromArray([4, cljs.core.PersistentVector.fromArray([152, 122], true), 18, cljs.core.PersistentVector.fromArray([153, 123], true)], true), cljs.core.PersistentVector.fromArray([20, 
+  cljs.core.PersistentVector.fromArray([147, 117], true), 4, cljs.core.PersistentVector.fromArray([148, 118], true)], true), cljs.core.PersistentVector.fromArray([19, cljs.core.PersistentVector.fromArray([148, 118], true), 6, cljs.core.PersistentVector.fromArray([149, 119], true)], true)], true), "\ufdd0:M", cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([26, 16], true)], true), cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([44, 
+  28], true)], true), cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([70, 44], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([50, 32], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([67, 43], true)], true), cljs.core.PersistentVector.fromArray([4, cljs.core.PersistentVector.fromArray([43, 27], true)], true), cljs.core.PersistentVector.fromArray([4, cljs.core.PersistentVector.fromArray([49, 
+  31], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([60, 38], true), 2, cljs.core.PersistentVector.fromArray([61, 39], true)], true), cljs.core.PersistentVector.fromArray([3, cljs.core.PersistentVector.fromArray([58, 36], true), 2, cljs.core.PersistentVector.fromArray([59, 37], true)], true), cljs.core.PersistentVector.fromArray([4, cljs.core.PersistentVector.fromArray([69, 43], true), 1, cljs.core.PersistentVector.fromArray([70, 44], true)], true), 
+  cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([80, 50], true), 4, cljs.core.PersistentVector.fromArray([81, 51], true)], true), cljs.core.PersistentVector.fromArray([6, cljs.core.PersistentVector.fromArray([58, 36], true), 2, cljs.core.PersistentVector.fromArray([59, 37], true)], true), cljs.core.PersistentVector.fromArray([8, cljs.core.PersistentVector.fromArray([59, 37], true), 1, cljs.core.PersistentVector.fromArray([60, 38], true)], true), cljs.core.PersistentVector.fromArray([4, 
+  cljs.core.PersistentVector.fromArray([64, 40], true), 5, cljs.core.PersistentVector.fromArray([65, 41], true)], true), cljs.core.PersistentVector.fromArray([5, cljs.core.PersistentVector.fromArray([65, 41], true), 5, cljs.core.PersistentVector.fromArray([66, 42], true)], true), cljs.core.PersistentVector.fromArray([7, cljs.core.PersistentVector.fromArray([73, 45], true), 3, cljs.core.PersistentVector.fromArray([74, 46], true)], true), cljs.core.PersistentVector.fromArray([10, cljs.core.PersistentVector.fromArray([74, 
+  46], true), 1, cljs.core.PersistentVector.fromArray([75, 47], true)], true), cljs.core.PersistentVector.fromArray([9, cljs.core.PersistentVector.fromArray([69, 43], true), 4, cljs.core.PersistentVector.fromArray([70, 44], true)], true), cljs.core.PersistentVector.fromArray([3, cljs.core.PersistentVector.fromArray([70, 44], true), 11, cljs.core.PersistentVector.fromArray([71, 45], true)], true), cljs.core.PersistentVector.fromArray([3, cljs.core.PersistentVector.fromArray([67, 41], true), 13, cljs.core.PersistentVector.fromArray([68, 
+  42], true)], true), cljs.core.PersistentVector.fromArray([17, cljs.core.PersistentVector.fromArray([68, 42], true), 17, cljs.core.PersistentVector.fromArray([50, 22], true)], true), cljs.core.PersistentVector.fromArray([17, cljs.core.PersistentVector.fromArray([74, 46], true)], true), cljs.core.PersistentVector.fromArray([4, cljs.core.PersistentVector.fromArray([75, 47], true), 14, cljs.core.PersistentVector.fromArray([76, 48], true)], true), cljs.core.PersistentVector.fromArray([6, cljs.core.PersistentVector.fromArray([73, 
+  45], true), 14, cljs.core.PersistentVector.fromArray([74, 46], true)], true), cljs.core.PersistentVector.fromArray([8, cljs.core.PersistentVector.fromArray([75, 47], true), 13, cljs.core.PersistentVector.fromArray([76, 48], true)], true), cljs.core.PersistentVector.fromArray([19, cljs.core.PersistentVector.fromArray([74, 46], true), 4, cljs.core.PersistentVector.fromArray([75, 47], true)], true), cljs.core.PersistentVector.fromArray([22, cljs.core.PersistentVector.fromArray([73, 45], true), 3, 
+  cljs.core.PersistentVector.fromArray([74, 46], true)], true), cljs.core.PersistentVector.fromArray([3, cljs.core.PersistentVector.fromArray([73, 45], true), 23, cljs.core.PersistentVector.fromArray([74, 46], true)], true), cljs.core.PersistentVector.fromArray([21, cljs.core.PersistentVector.fromArray([73, 45], true), 7, cljs.core.PersistentVector.fromArray([74, 46], true)], true), cljs.core.PersistentVector.fromArray([19, cljs.core.PersistentVector.fromArray([75, 47], true), 10, cljs.core.PersistentVector.fromArray([76, 
+  48], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([74, 46], true), 29, cljs.core.PersistentVector.fromArray([75, 47], true)], true), cljs.core.PersistentVector.fromArray([10, cljs.core.PersistentVector.fromArray([74, 46], true), 23, cljs.core.PersistentVector.fromArray([75, 47], true)], true), cljs.core.PersistentVector.fromArray([14, cljs.core.PersistentVector.fromArray([74, 46], true), 21, cljs.core.PersistentVector.fromArray([75, 47], true)], true), 
+  cljs.core.PersistentVector.fromArray([14, cljs.core.PersistentVector.fromArray([74, 46], true), 23, cljs.core.PersistentVector.fromArray([75, 47], true)], true), cljs.core.PersistentVector.fromArray([12, cljs.core.PersistentVector.fromArray([75, 47], true), 26, cljs.core.PersistentVector.fromArray([75, 48], true)], true), cljs.core.PersistentVector.fromArray([6, cljs.core.PersistentVector.fromArray([75, 47], true), 34, cljs.core.PersistentVector.fromArray([76, 48], true)], true), cljs.core.PersistentVector.fromArray([29, 
+  cljs.core.PersistentVector.fromArray([74, 46], true), 14, cljs.core.PersistentVector.fromArray([75, 47], true)], true), cljs.core.PersistentVector.fromArray([13, cljs.core.PersistentVector.fromArray([74, 46], true), 32, cljs.core.PersistentVector.fromArray([75, 47], true)], true), cljs.core.PersistentVector.fromArray([40, cljs.core.PersistentVector.fromArray([75, 47], true), 7, cljs.core.PersistentVector.fromArray([76, 48], true)], true), cljs.core.PersistentVector.fromArray([18, cljs.core.PersistentVector.fromArray([75, 
+  48], true), 31, cljs.core.PersistentVector.fromArray([76, 48], true)], true)], true), "\ufdd0:Q", cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([26, 13], true)], true), cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([44, 22], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([35, 17], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([50, 
+  24], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([33, 15], true), 2, cljs.core.PersistentVector.fromArray([34, 16], true)], true), cljs.core.PersistentVector.fromArray([4, cljs.core.PersistentVector.fromArray([43, 19], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([32, 14], true), 4, cljs.core.PersistentVector.fromArray([33, 15], true)], true), cljs.core.PersistentVector.fromArray([4, cljs.core.PersistentVector.fromArray([40, 
+  18], true), 2, cljs.core.PersistentVector.fromArray([41, 19], true)], true), cljs.core.PersistentVector.fromArray([4, cljs.core.PersistentVector.fromArray([36, 16], true), 4, cljs.core.PersistentVector.fromArray([37, 17], true)], true), cljs.core.PersistentVector.fromArray([6, cljs.core.PersistentVector.fromArray([43, 19], true), 2, cljs.core.PersistentVector.fromArray([44, 20], true)], true), cljs.core.PersistentVector.fromArray([4, cljs.core.PersistentVector.fromArray([50, 22], true), 4, cljs.core.PersistentVector.fromArray([51, 
+  23], true)], true), cljs.core.PersistentVector.fromArray([4, cljs.core.PersistentVector.fromArray([46, 20], true), 6, cljs.core.PersistentVector.fromArray([47, 21], true)], true), cljs.core.PersistentVector.fromArray([8, cljs.core.PersistentVector.fromArray([44, 20], true), 4, cljs.core.PersistentVector.fromArray([45, 21], true)], true), cljs.core.PersistentVector.fromArray([11, cljs.core.PersistentVector.fromArray([36, 16], true), 5, cljs.core.PersistentVector.fromArray([37, 17], true)], true), 
+  cljs.core.PersistentVector.fromArray([5, cljs.core.PersistentVector.fromArray([54, 24], true), 7, cljs.core.PersistentVector.fromArray([55, 25], true)], true), cljs.core.PersistentVector.fromArray([15, cljs.core.PersistentVector.fromArray([43, 19], true), 2, cljs.core.PersistentVector.fromArray([44, 20], true)], true), cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([50, 22], true), 15, cljs.core.PersistentVector.fromArray([51, 23], true)], true), cljs.core.PersistentVector.fromArray([17, 
+  cljs.core.PersistentVector.fromArray([50, 22], true), 1, cljs.core.PersistentVector.fromArray([51, 23], true)], true), cljs.core.PersistentVector.fromArray([17, cljs.core.PersistentVector.fromArray([47, 21], true), 4, cljs.core.PersistentVector.fromArray([48, 22], true)], true), cljs.core.PersistentVector.fromArray([15, cljs.core.PersistentVector.fromArray([54, 24], true), 5, cljs.core.PersistentVector.fromArray([55, 25], true)], true), cljs.core.PersistentVector.fromArray([17, cljs.core.PersistentVector.fromArray([50, 
+  22], true), 6, cljs.core.PersistentVector.fromArray([51, 23], true)], true), cljs.core.PersistentVector.fromArray([7, cljs.core.PersistentVector.fromArray([54, 24], true), 16, cljs.core.PersistentVector.fromArray([55, 25], true)], true), cljs.core.PersistentVector.fromArray([11, cljs.core.PersistentVector.fromArray([54, 24], true), 14, cljs.core.PersistentVector.fromArray([55, 25], true)], true), cljs.core.PersistentVector.fromArray([11, cljs.core.PersistentVector.fromArray([54, 24], true), 16, 
+  cljs.core.PersistentVector.fromArray([55, 25], true)], true), cljs.core.PersistentVector.fromArray([7, cljs.core.PersistentVector.fromArray([54, 24], true), 22, cljs.core.PersistentVector.fromArray([55, 25], true)], true), cljs.core.PersistentVector.fromArray([28, cljs.core.PersistentVector.fromArray([50, 22], true), 6, cljs.core.PersistentVector.fromArray([51, 23], true)], true), cljs.core.PersistentVector.fromArray([8, cljs.core.PersistentVector.fromArray([53, 23], true), 26, cljs.core.PersistentVector.fromArray([54, 
+  24], true)], true), cljs.core.PersistentVector.fromArray([4, cljs.core.PersistentVector.fromArray([54, 24], true), 31, cljs.core.PersistentVector.fromArray([55, 25], true)], true), cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([53, 23], true), 37, cljs.core.PersistentVector.fromArray([54, 24], true)], true), cljs.core.PersistentVector.fromArray([15, cljs.core.PersistentVector.fromArray([54, 24], true), 25, cljs.core.PersistentVector.fromArray([55, 25], true)], true), 
+  cljs.core.PersistentVector.fromArray([42, cljs.core.PersistentVector.fromArray([54, 24], true), 1, cljs.core.PersistentVector.fromArray([55, 25], true)], true), cljs.core.PersistentVector.fromArray([10, cljs.core.PersistentVector.fromArray([54, 24], true), 35, cljs.core.PersistentVector.fromArray([55, 25], true)], true), cljs.core.PersistentVector.fromArray([29, cljs.core.PersistentVector.fromArray([54, 24], true), 19, cljs.core.PersistentVector.fromArray([55, 25], true)], true), cljs.core.PersistentVector.fromArray([44, 
+  cljs.core.PersistentVector.fromArray([54, 24], true), 7, cljs.core.PersistentVector.fromArray([55, 25], true)], true), cljs.core.PersistentVector.fromArray([39, cljs.core.PersistentVector.fromArray([54, 24], true), 14, cljs.core.PersistentVector.fromArray([55, 25], true)], true), cljs.core.PersistentVector.fromArray([46, cljs.core.PersistentVector.fromArray([54, 24], true), 10, cljs.core.PersistentVector.fromArray([55, 25], true)], true), cljs.core.PersistentVector.fromArray([49, cljs.core.PersistentVector.fromArray([54, 
+  24], true), 10, cljs.core.PersistentVector.fromArray([55, 25], true)], true), cljs.core.PersistentVector.fromArray([48, cljs.core.PersistentVector.fromArray([54, 24], true), 14, cljs.core.PersistentVector.fromArray([55, 25], true)], true), cljs.core.PersistentVector.fromArray([43, cljs.core.PersistentVector.fromArray([54, 24], true), 22, cljs.core.PersistentVector.fromArray([55, 25], true)], true), cljs.core.PersistentVector.fromArray([34, cljs.core.PersistentVector.fromArray([54, 24], true), 34, 
+  cljs.core.PersistentVector.fromArray([55, 25], true)], true)], true), "\ufdd0:H", cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([26, 9], true)], true), cljs.core.PersistentVector.fromArray([1, cljs.core.PersistentVector.fromArray([44, 16], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([35, 13], true)], true), cljs.core.PersistentVector.fromArray([4, cljs.core.PersistentVector.fromArray([25, 
+  9], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([33, 11], true), 2, cljs.core.PersistentVector.fromArray([34, 12], true)], true), cljs.core.PersistentVector.fromArray([4, cljs.core.PersistentVector.fromArray([43, 15], true)], true), cljs.core.PersistentVector.fromArray([4, cljs.core.PersistentVector.fromArray([39, 13], true), 1, cljs.core.PersistentVector.fromArray([40, 14], true)], true), cljs.core.PersistentVector.fromArray([4, cljs.core.PersistentVector.fromArray([40, 
+  14], true), 2, cljs.core.PersistentVector.fromArray([41, 15], true)], true), cljs.core.PersistentVector.fromArray([4, cljs.core.PersistentVector.fromArray([36, 12], true), 4, cljs.core.PersistentVector.fromArray([37, 13], true)], true), cljs.core.PersistentVector.fromArray([6, cljs.core.PersistentVector.fromArray([43, 15], true), 2, cljs.core.PersistentVector.fromArray([44, 16], true)], true), cljs.core.PersistentVector.fromArray([3, cljs.core.PersistentVector.fromArray([36, 12], true), 8, cljs.core.PersistentVector.fromArray([37, 
+  13], true)], true), cljs.core.PersistentVector.fromArray([7, cljs.core.PersistentVector.fromArray([42, 14], true), 4, cljs.core.PersistentVector.fromArray([43, 15], true)], true), cljs.core.PersistentVector.fromArray([12, cljs.core.PersistentVector.fromArray([33, 11], true), 4, cljs.core.PersistentVector.fromArray([34, 12], true)], true), cljs.core.PersistentVector.fromArray([11, cljs.core.PersistentVector.fromArray([36, 12], true), 5, cljs.core.PersistentVector.fromArray([37, 13], true)], true), 
+  cljs.core.PersistentVector.fromArray([11, cljs.core.PersistentVector.fromArray([36, 12], true), 7, cljs.core.PersistentVector.fromArray([37, 13], true)], true), cljs.core.PersistentVector.fromArray([3, cljs.core.PersistentVector.fromArray([45, 15], true), 13, cljs.core.PersistentVector.fromArray([46, 16], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([42, 14], true), 17, cljs.core.PersistentVector.fromArray([43, 15], true)], true), cljs.core.PersistentVector.fromArray([2, 
+  cljs.core.PersistentVector.fromArray([42, 14], true), 19, cljs.core.PersistentVector.fromArray([43, 15], true)], true), cljs.core.PersistentVector.fromArray([9, cljs.core.PersistentVector.fromArray([39, 13], true), 16, cljs.core.PersistentVector.fromArray([40, 14], true)], true), cljs.core.PersistentVector.fromArray([15, cljs.core.PersistentVector.fromArray([43, 15], true), 10, cljs.core.PersistentVector.fromArray([44, 16], true)], true), cljs.core.PersistentVector.fromArray([19, cljs.core.PersistentVector.fromArray([46, 
+  16], true), 6, cljs.core.PersistentVector.fromArray([47, 17], true)], true), cljs.core.PersistentVector.fromArray([16, cljs.core.PersistentVector.fromArray([55, 25], true), 34, cljs.core.PersistentVector.fromArray([37, 13], true)], true), cljs.core.PersistentVector.fromArray([16, cljs.core.PersistentVector.fromArray([45, 15], true), 14, cljs.core.PersistentVector.fromArray([46, 16], true)], true), cljs.core.PersistentVector.fromArray([30, cljs.core.PersistentVector.fromArray([46, 16], true), 2, 
+  cljs.core.PersistentVector.fromArray([47, 17], true)], true), cljs.core.PersistentVector.fromArray([22, cljs.core.PersistentVector.fromArray([45, 15], true), 13, cljs.core.PersistentVector.fromArray([46, 16], true)], true), cljs.core.PersistentVector.fromArray([33, cljs.core.PersistentVector.fromArray([46, 16], true), 4, cljs.core.PersistentVector.fromArray([47, 17], true)], true), cljs.core.PersistentVector.fromArray([12, cljs.core.PersistentVector.fromArray([45, 15], true), 28, cljs.core.PersistentVector.fromArray([46, 
+  16], true)], true), cljs.core.PersistentVector.fromArray([11, cljs.core.PersistentVector.fromArray([45, 15], true), 31, cljs.core.PersistentVector.fromArray([46, 16], true)], true), cljs.core.PersistentVector.fromArray([19, cljs.core.PersistentVector.fromArray([45, 15], true), 26, cljs.core.PersistentVector.fromArray([46, 16], true)], true), cljs.core.PersistentVector.fromArray([23, cljs.core.PersistentVector.fromArray([45, 15], true), 25, cljs.core.PersistentVector.fromArray([46, 16], true)], 
+  true), cljs.core.PersistentVector.fromArray([23, cljs.core.PersistentVector.fromArray([45, 15], true), 28, cljs.core.PersistentVector.fromArray([46, 16], true)], true), cljs.core.PersistentVector.fromArray([19, cljs.core.PersistentVector.fromArray([45, 15], true), 35, cljs.core.PersistentVector.fromArray([46, 16], true)], true), cljs.core.PersistentVector.fromArray([11, cljs.core.PersistentVector.fromArray([45, 15], true), 46, cljs.core.PersistentVector.fromArray([46, 16], true)], true), cljs.core.PersistentVector.fromArray([59, 
+  cljs.core.PersistentVector.fromArray([46, 16], true), 1, cljs.core.PersistentVector.fromArray([47, 17], true)], true), cljs.core.PersistentVector.fromArray([22, cljs.core.PersistentVector.fromArray([45, 15], true), 41, cljs.core.PersistentVector.fromArray([46, 16], true)], true), cljs.core.PersistentVector.fromArray([2, cljs.core.PersistentVector.fromArray([45, 15], true), 64, cljs.core.PersistentVector.fromArray([46, 16], true)], true), cljs.core.PersistentVector.fromArray([24, cljs.core.PersistentVector.fromArray([45, 
+  15], true), 46, cljs.core.PersistentVector.fromArray([46, 16], true)], true), cljs.core.PersistentVector.fromArray([42, cljs.core.PersistentVector.fromArray([45, 15], true), 32, cljs.core.PersistentVector.fromArray([46, 16], true)], true), cljs.core.PersistentVector.fromArray([10, cljs.core.PersistentVector.fromArray([45, 15], true), 67, cljs.core.PersistentVector.fromArray([46, 16], true)], true), cljs.core.PersistentVector.fromArray([20, cljs.core.PersistentVector.fromArray([45, 15], true), 61, 
+  cljs.core.PersistentVector.fromArray([46, 16], true)], true)], true)], true).call(null, ecl).call(null, version - 1)
 };
-qrcloj.version.error_correction_layout = function error_correction_layout(p__3886) {
-  var map__3891 = p__3886;
-  var map__3891__$1 = cljs.core.seq_QMARK_.call(null, map__3891) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3891) : map__3891;
-  var ver = map__3891__$1;
-  var ecl = cljs.core.get.call(null, map__3891__$1, "\ufdd0:ecl");
-  var version = cljs.core.get.call(null, map__3891__$1, "\ufdd0:version");
-  return cljs.core.apply.call(null, cljs.core.concat, cljs.core.map.call(null, function(p__3892) {
-    var vec__3893 = p__3892;
-    var ct = cljs.core.nth.call(null, vec__3893, 0, null);
-    var vec__3894 = cljs.core.nth.call(null, vec__3893, 1, null);
-    var total = cljs.core.nth.call(null, vec__3894, 0, null);
-    var data = cljs.core.nth.call(null, vec__3894, 1, null);
+qrcloj.version.error_correction_layout = function error_correction_layout(p__3825) {
+  var map__3830 = p__3825;
+  var map__3830__$1 = cljs.core.seq_QMARK_.call(null, map__3830) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3830) : map__3830;
+  var ver = map__3830__$1;
+  var ecl = cljs.core.get.call(null, map__3830__$1, "\ufdd0:ecl");
+  var version = cljs.core.get.call(null, map__3830__$1, "\ufdd0:version");
+  return cljs.core.apply.call(null, cljs.core.concat, cljs.core.map.call(null, function(p__3831) {
+    var vec__3832 = p__3831;
+    var ct = cljs.core.nth.call(null, vec__3832, 0, null);
+    var vec__3833 = cljs.core.nth.call(null, vec__3832, 1, null);
+    var total = cljs.core.nth.call(null, vec__3833, 0, null);
+    var data = cljs.core.nth.call(null, vec__3833, 1, null);
     return cljs.core.repeat.call(null, ct, cljs.core.PersistentVector.fromArray([data, total - data], true))
   }, cljs.core.partition.call(null, 2, qrcloj.version.raw_error_correction_layouts.call(null, ver))))
 };
@@ -23048,35 +23075,35 @@ qrcloj.version.indicator = function indicator(version) {
   return cljs.core.reverse.call(null, cljs.core.concat.call(null, data, qrcloj.error_correction.poly_rem.call(null, data, generator)))
 };
 qrcloj.version.upper_right_modules = function upper_right_modules(dim) {
-  var iter__3042__auto__ = function iter__3901(s__3902) {
+  var iter__3042__auto__ = function iter__3840(s__3841) {
     return new cljs.core.LazySeq(null, false, function() {
-      var s__3902__$1 = s__3902;
+      var s__3841__$1 = s__3841;
       while(true) {
-        var temp__4092__auto__ = cljs.core.seq.call(null, s__3902__$1);
+        var temp__4092__auto__ = cljs.core.seq.call(null, s__3841__$1);
         if(temp__4092__auto__) {
           var xs__4579__auto__ = temp__4092__auto__;
           var y = cljs.core.first.call(null, xs__4579__auto__);
-          var iterys__3038__auto__ = function(s__3902__$1, y, xs__4579__auto__, temp__4092__auto__) {
-            return function iter__3903(s__3904) {
-              return new cljs.core.LazySeq(null, false, function(s__3902__$1, y, xs__4579__auto__, temp__4092__auto__) {
+          var iterys__3038__auto__ = function(s__3841__$1, y, xs__4579__auto__, temp__4092__auto__) {
+            return function iter__3842(s__3843) {
+              return new cljs.core.LazySeq(null, false, function(s__3841__$1, y, xs__4579__auto__, temp__4092__auto__) {
                 return function() {
-                  var s__3904__$1 = s__3904;
+                  var s__3843__$1 = s__3843;
                   while(true) {
-                    var temp__4092__auto____$1 = cljs.core.seq.call(null, s__3904__$1);
+                    var temp__4092__auto____$1 = cljs.core.seq.call(null, s__3843__$1);
                     if(temp__4092__auto____$1) {
-                      var s__3904__$2 = temp__4092__auto____$1;
-                      if(cljs.core.chunked_seq_QMARK_.call(null, s__3904__$2)) {
-                        var c__3040__auto__ = cljs.core.chunk_first.call(null, s__3904__$2);
+                      var s__3843__$2 = temp__4092__auto____$1;
+                      if(cljs.core.chunked_seq_QMARK_.call(null, s__3843__$2)) {
+                        var c__3040__auto__ = cljs.core.chunk_first.call(null, s__3843__$2);
                         var size__3041__auto__ = cljs.core.count.call(null, c__3040__auto__);
-                        var b__3906 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
+                        var b__3845 = cljs.core.chunk_buffer.call(null, size__3041__auto__);
                         if(function() {
-                          var i__3905 = 0;
+                          var i__3844 = 0;
                           while(true) {
-                            if(i__3905 < size__3041__auto__) {
-                              var x = cljs.core._nth.call(null, c__3040__auto__, i__3905);
-                              cljs.core.chunk_append.call(null, b__3906, cljs.core.PersistentVector.fromArray([x, y], true));
-                              var G__3907 = i__3905 + 1;
-                              i__3905 = G__3907;
+                            if(i__3844 < size__3041__auto__) {
+                              var x = cljs.core._nth.call(null, c__3040__auto__, i__3844);
+                              cljs.core.chunk_append.call(null, b__3845, cljs.core.PersistentVector.fromArray([x, y], true));
+                              var G__3846 = i__3844 + 1;
+                              i__3844 = G__3846;
                               continue
                             }else {
                               return true
@@ -23084,13 +23111,13 @@ qrcloj.version.upper_right_modules = function upper_right_modules(dim) {
                             break
                           }
                         }()) {
-                          return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3906), iter__3903.call(null, cljs.core.chunk_rest.call(null, s__3904__$2)))
+                          return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3845), iter__3842.call(null, cljs.core.chunk_rest.call(null, s__3843__$2)))
                         }else {
-                          return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3906), null)
+                          return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__3845), null)
                         }
                       }else {
-                        var x = cljs.core.first.call(null, s__3904__$2);
-                        return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([x, y], true), iter__3903.call(null, cljs.core.rest.call(null, s__3904__$2)))
+                        var x = cljs.core.first.call(null, s__3843__$2);
+                        return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([x, y], true), iter__3842.call(null, cljs.core.rest.call(null, s__3843__$2)))
                       }
                     }else {
                       return null
@@ -23098,15 +23125,15 @@ qrcloj.version.upper_right_modules = function upper_right_modules(dim) {
                     break
                   }
                 }
-              }(s__3902__$1, y, xs__4579__auto__, temp__4092__auto__), null)
+              }(s__3841__$1, y, xs__4579__auto__, temp__4092__auto__), null)
             }
-          }(s__3902__$1, y, xs__4579__auto__, temp__4092__auto__);
+          }(s__3841__$1, y, xs__4579__auto__, temp__4092__auto__);
           var fs__3039__auto__ = cljs.core.seq.call(null, iterys__3038__auto__.call(null, cljs.core.range.call(null, dim - 11, dim - 8)));
           if(fs__3039__auto__) {
-            return cljs.core.concat.call(null, fs__3039__auto__, iter__3901.call(null, cljs.core.rest.call(null, s__3902__$1)))
+            return cljs.core.concat.call(null, fs__3039__auto__, iter__3840.call(null, cljs.core.rest.call(null, s__3841__$1)))
           }else {
-            var G__3908 = cljs.core.rest.call(null, s__3902__$1);
-            s__3902__$1 = G__3908;
+            var G__3847 = cljs.core.rest.call(null, s__3841__$1);
+            s__3841__$1 = G__3847;
             continue
           }
         }else {
@@ -23731,12 +23758,12 @@ qrcloj.encode.mode_indicator = cljs.core.PersistentArrayMap.fromArray(["\ufdd0:n
 qrcloj.encode.bits_in_count = function bits_in_count(mode, version) {
   return cljs.core.PersistentArrayMap.fromArray(["\ufdd0:numeric", cljs.core.PersistentVector.fromArray([10, 12, 14], true), "\ufdd0:alphanumeric", cljs.core.PersistentVector.fromArray([9, 11, 13], true), "\ufdd0:byte", cljs.core.PersistentVector.fromArray([8, 16, 16], true)], true).call(null, mode).call(null, version < 10 ? 0 : version < 27 ? 1 : "\ufdd0:else" ? 2 : null)
 };
-qrcloj.encode.char_count = function char_count(p__7050) {
-  var map__7052 = p__7050;
-  var map__7052__$1 = cljs.core.seq_QMARK_.call(null, map__7052) ? cljs.core.apply.call(null, cljs.core.hash_map, map__7052) : map__7052;
-  var version = cljs.core.get.call(null, map__7052__$1, "\ufdd0:version");
-  var data = cljs.core.get.call(null, map__7052__$1, "\ufdd0:data");
-  var mode = cljs.core.get.call(null, map__7052__$1, "\ufdd0:mode");
+qrcloj.encode.char_count = function char_count(p__3806) {
+  var map__3808 = p__3806;
+  var map__3808__$1 = cljs.core.seq_QMARK_.call(null, map__3808) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3808) : map__3808;
+  var version = cljs.core.get.call(null, map__3808__$1, "\ufdd0:version");
+  var data = cljs.core.get.call(null, map__3808__$1, "\ufdd0:data");
+  var mode = cljs.core.get.call(null, map__3808__$1, "\ufdd0:mode");
   return qrcloj.utils.dec_to_bin.call(null, qrcloj.encode.bits_in_count.call(null, mode, version), cljs.core.count.call(null, data))
 };
 qrcloj.encode.terminator = function terminator(version, num_bits) {
@@ -23754,29 +23781,29 @@ qrcloj.encode.encode_data = function() {
   return new cljs.core.MultiFn("encode-data", "\ufdd0:mode", "\ufdd0:default", hierarchy__3134__auto__, method_table__3130__auto__, prefer_table__3131__auto__, method_cache__3132__auto__, cached_hierarchy__3133__auto__)
 }();
 qrcloj.encode.numeric_values = cljs.core.zipmap.call(null, cljs.core.seq.call(null, "0123456789"), cljs.core.range.call(null, 0, 10));
-cljs.core._add_method.call(null, qrcloj.encode.encode_data, "\ufdd0:numeric", function(p__7054) {
-  var map__7055 = p__7054;
-  var map__7055__$1 = cljs.core.seq_QMARK_.call(null, map__7055) ? cljs.core.apply.call(null, cljs.core.hash_map, map__7055) : map__7055;
-  var data = cljs.core.get.call(null, map__7055__$1, "\ufdd0:data");
-  var group_to_bin = function(p1__7053_SHARP_) {
-    return qrcloj.utils.dec_to_bin.call(null, cljs.core.PersistentArrayMap.fromArray([1, 4, 2, 7, 3, 10], true).call(null, cljs.core.count.call(null, p1__7053_SHARP_)), qrcloj.interop.str_to_int.call(null, cljs.core.apply.call(null, cljs.core.str, p1__7053_SHARP_)))
+cljs.core._add_method.call(null, qrcloj.encode.encode_data, "\ufdd0:numeric", function(p__3810) {
+  var map__3811 = p__3810;
+  var map__3811__$1 = cljs.core.seq_QMARK_.call(null, map__3811) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3811) : map__3811;
+  var data = cljs.core.get.call(null, map__3811__$1, "\ufdd0:data");
+  var group_to_bin = function(p1__3809_SHARP_) {
+    return qrcloj.utils.dec_to_bin.call(null, cljs.core.PersistentArrayMap.fromArray([1, 4, 2, 7, 3, 10], true).call(null, cljs.core.count.call(null, p1__3809_SHARP_)), qrcloj.interop.str_to_int.call(null, cljs.core.apply.call(null, cljs.core.str, p1__3809_SHARP_)))
   };
   return qrcloj.encode.general_encode.call(null, qrcloj.encode.numeric_values, 3, group_to_bin, data)
 });
 qrcloj.encode.alphanumeric_values = cljs.core.zipmap.call(null, cljs.core.seq.call(null, "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ $%*+-./:"), cljs.core.range.call(null, 0, 45));
-cljs.core._add_method.call(null, qrcloj.encode.encode_data, "\ufdd0:alphanumeric", function(p__7056) {
-  var map__7057 = p__7056;
-  var map__7057__$1 = cljs.core.seq_QMARK_.call(null, map__7057) ? cljs.core.apply.call(null, cljs.core.hash_map, map__7057) : map__7057;
-  var data = cljs.core.get.call(null, map__7057__$1, "\ufdd0:data");
+cljs.core._add_method.call(null, qrcloj.encode.encode_data, "\ufdd0:alphanumeric", function(p__3812) {
+  var map__3813 = p__3812;
+  var map__3813__$1 = cljs.core.seq_QMARK_.call(null, map__3813) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3813) : map__3813;
+  var data = cljs.core.get.call(null, map__3813__$1, "\ufdd0:data");
   var group_to_bin = function(vs) {
     return qrcloj.utils.dec_to_bin.call(null, cljs.core.PersistentArrayMap.fromArray([1, 6, 2, 11], true).call(null, cljs.core.count.call(null, vs)), cljs.core._EQ_.call(null, 2, cljs.core.count.call(null, vs)) ? 45 * cljs.core.first.call(null, vs) + cljs.core.second.call(null, vs) : cljs.core.first.call(null, vs))
   };
   return qrcloj.encode.general_encode.call(null, qrcloj.encode.alphanumeric_values, 2, group_to_bin, data)
 });
-cljs.core._add_method.call(null, qrcloj.encode.encode_data, "\ufdd0:byte", function(p__7059) {
-  var map__7060 = p__7059;
-  var map__7060__$1 = cljs.core.seq_QMARK_.call(null, map__7060) ? cljs.core.apply.call(null, cljs.core.hash_map, map__7060) : map__7060;
-  var data = cljs.core.get.call(null, map__7060__$1, "\ufdd0:data");
+cljs.core._add_method.call(null, qrcloj.encode.encode_data, "\ufdd0:byte", function(p__3815) {
+  var map__3816 = p__3815;
+  var map__3816__$1 = cljs.core.seq_QMARK_.call(null, map__3816) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3816) : map__3816;
+  var data = cljs.core.get.call(null, map__3816__$1, "\ufdd0:data");
   return qrcloj.encode.general_encode.call(null, qrcloj.interop.char_to_ascii, 1, cljs.core.comp.call(null, cljs.core.partial.call(null, qrcloj.utils.dec_to_bin, 8), cljs.core.first), data)
 });
 qrcloj.encode.mode = function mode(data) {
@@ -23786,10 +23813,10 @@ qrcloj.encode.mode = function mode(data) {
     if(cljs.core.truth_(cljs.core.re_matches.call(null, /[0-9A-Z $%*+-.\/:]*/, data))) {
       return"\ufdd0:alphanumeric"
     }else {
-      if(cljs.core.every_QMARK_.call(null, function(p1__7058_SHARP_) {
-        var and__3941__auto__ = 0 <= p1__7058_SHARP_;
+      if(cljs.core.every_QMARK_.call(null, function(p1__3814_SHARP_) {
+        var and__3941__auto__ = 0 <= p1__3814_SHARP_;
         if(and__3941__auto__) {
-          return p1__7058_SHARP_ <= 255
+          return p1__3814_SHARP_ <= 255
         }else {
           return and__3941__auto__
         }
@@ -23811,24 +23838,24 @@ qrcloj.encode.data_to_bitstream = function data_to_bitstream(ecl, data) {
 qrcloj.encode.pad_to = function pad_to(version_size, bitstream) {
   return cljs.core.concat.call(null, bitstream, cljs.core.take.call(null, version_size - cljs.core.count.call(null, bitstream), cljs.core.flatten.call(null, cljs.core.repeat.call(null, cljs.core.PersistentVector.fromArray([1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1], true)))))
 };
-qrcloj.encode.bitstream_to_codewords = function bitstream_to_codewords(p__7062) {
-  var map__7064 = p__7062;
-  var map__7064__$1 = cljs.core.seq_QMARK_.call(null, map__7064) ? cljs.core.apply.call(null, cljs.core.hash_map, map__7064) : map__7064;
-  var sym = map__7064__$1;
-  var data = cljs.core.get.call(null, map__7064__$1, "\ufdd0:data");
-  var ecl = cljs.core.get.call(null, map__7064__$1, "\ufdd0:ecl");
+qrcloj.encode.bitstream_to_codewords = function bitstream_to_codewords(p__3818) {
+  var map__3820 = p__3818;
+  var map__3820__$1 = cljs.core.seq_QMARK_.call(null, map__3820) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3820) : map__3820;
+  var sym = map__3820__$1;
+  var data = cljs.core.get.call(null, map__3820__$1, "\ufdd0:data");
+  var ecl = cljs.core.get.call(null, map__3820__$1, "\ufdd0:ecl");
   var to_boundary = 8 - cljs.core.rem.call(null, cljs.core.count.call(null, data), 8);
   var zero_padded = cljs.core.concat.call(null, data, cljs.core.repeat.call(null, to_boundary, 0));
-  return cljs.core.assoc.call(null, sym, "\ufdd0:data", cljs.core.map.call(null, cljs.core.comp.call(null, function(p1__7061_SHARP_) {
-    return qrcloj.interop.str_to_int.call(null, p1__7061_SHARP_, 2)
+  return cljs.core.assoc.call(null, sym, "\ufdd0:data", cljs.core.map.call(null, cljs.core.comp.call(null, function(p1__3817_SHARP_) {
+    return qrcloj.interop.str_to_int.call(null, p1__3817_SHARP_, 2)
   }, cljs.core.partial.call(null, cljs.core.apply, cljs.core.str)), cljs.core.partition.call(null, 8, qrcloj.encode.pad_to.call(null, qrcloj.version.bit_capacity.call(null, sym), zero_padded))))
 };
-qrcloj.encode.interleave_eccs = function interleave_eccs(p__7065) {
-  var map__7067 = p__7065;
-  var map__7067__$1 = cljs.core.seq_QMARK_.call(null, map__7067) ? cljs.core.apply.call(null, cljs.core.hash_map, map__7067) : map__7067;
-  var sym = map__7067__$1;
-  var data = cljs.core.get.call(null, map__7067__$1, "\ufdd0:data");
-  var ecl = cljs.core.get.call(null, map__7067__$1, "\ufdd0:ecl");
+qrcloj.encode.interleave_eccs = function interleave_eccs(p__3821) {
+  var map__3823 = p__3821;
+  var map__3823__$1 = cljs.core.seq_QMARK_.call(null, map__3823) ? cljs.core.apply.call(null, cljs.core.hash_map, map__3823) : map__3823;
+  var sym = map__3823__$1;
+  var data = cljs.core.get.call(null, map__3823__$1, "\ufdd0:data");
+  var ecl = cljs.core.get.call(null, map__3823__$1, "\ufdd0:ecl");
   var codewords_and_eccs = qrcloj.error_correction.attach_error_correction_codewords.call(null, data, qrcloj.version.error_correction_layout.call(null, sym));
   var data__$1 = cljs.core.map.call(null, cljs.core.first, codewords_and_eccs);
   var eccs = cljs.core.map.call(null, cljs.core.second, codewords_and_eccs);
