@@ -64,15 +64,15 @@
 
 (defn raw-data-path [dim]
   (let [on-sym? (fn [y] (and (>= y 0) (< y dim)))
-        doit (fn doit [[prev-x prev-y] direction]
+        doit (fn [[prev-x prev-y] direction acc]
           (let [new-y (direction prev-y)
                 new-x (if (= prev-x 8) 5 (- prev-x 2))]
             (if (on-sym? new-y)
-              (cons [[prev-x new-y] [(dec prev-x) new-y]] 
-                    (doit [prev-x new-y] direction))
-              (if (< new-x 0) []
-                (doit [new-x new-y] ({inc dec dec inc} direction))))))]
-    (apply concat (doit [(dec dim) dim] dec))))
+              (recur [prev-x new-y] direction 
+                (cons [[prev-x new-y] [(dec prev-x) new-y]] acc))
+              (if (< new-x 0) (reverse acc)
+                (recur [new-x new-y] ({inc dec dec inc} direction) acc)))))]
+    (apply concat (doit [(dec dim) dim] dec []))))
 
 (defn format-modules [dim]
   (let [vert (concat (for [y (range 0 9)] [8 y])
